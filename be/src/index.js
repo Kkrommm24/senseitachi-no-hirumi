@@ -1,16 +1,16 @@
 import express from 'express'
 import { createServer } from 'http'
 import cors from 'cors'
-import { errorHandler } from './middlewares/errorHandler'
+import { errorHandler } from './middlewares/errorHandler.js'
 
 const app = express()
 const httpServer = createServer(app)
 
-const cors = {
+const corsOptions = {
   origin: 'http://localhost:5173'
 }
 
-app.use(cors(cors))
+app.use(cors(corsOptions))
 app.use(express.json())
 
 app.use(errorHandler)
