@@ -28,10 +28,41 @@ model Food {
   name        String
   description String?
   image       String?
+  price       Float
+  ingredients FoodIngredient[]
+  flavors     FoodFlavor[]
   favorites   Favorite[]
   comments    Comment[]
   foodRestaurant FoodRestaurant[]
   foodTag     FoodTag[]
+}
+
+model Ingredient {
+  id    Int     @id @default(autoincrement())
+  name  String  @unique
+  foodIngredients FoodIngredient[]
+}
+
+model FoodIngredient {
+  id           Int       @id @default(autoincrement())
+  foodId       Int
+  ingredientId Int
+  food         Food      @relation(fields: [foodId], references: [id])
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
+}
+
+model Flavor {
+  id    Int     @id @default(autoincrement())
+  name  String  @unique
+  foodFlavors FoodFlavor[]
+}
+
+model FoodFlavor {
+  id       Int   @id @default(autoincrement())
+  foodId   Int
+  flavorId Int
+  food     Food  @relation(fields: [foodId], references: [id])
+  flavor   Flavor @relation(fields: [flavorId], references: [id])
 }
 
 model Tag {
