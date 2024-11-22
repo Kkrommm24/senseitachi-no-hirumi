@@ -1,0 +1,123 @@
+export const Food = [
+    {
+      name: 'Phở Bò',
+      description: 'Món phở truyền thống với thịt bò và nước dùng đậm đà.',
+      image: 'https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/809b494f6cb84b33b90cb8b3d4c3ec98.jpeg?w=800&h=800&org_if_sml=1',
+      price: 50000,
+    },
+    {
+      name: 'Bánh Mì',
+      description: 'Bánh mì Việt Nam với nhân thịt, chả, và rau sống.',
+      image: 'https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/958359ac5c784eae9e5020241748890e.jpeg?w=800&h=800&org_if_sml=1',
+      price: 25000,
+    },
+    {
+      name: 'Bún Chả',
+      description: 'Bún ăn kèm thịt nướng, rau sống và nước mắm chua ngọt.',
+      image: 'https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/9719fb7a35604ae896a44d4edf180a9f.jpeg?w=800&h=800&org_if_sml=1',
+      price: 60000,
+    },
+    {
+      name: 'Gỏi Cuốn',
+      description: 'Cuốn bánh tráng với tôm, thịt, bún và rau sống.',
+      image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Summer_roll.jpg/800px-Summer_roll.jpg',
+      price: 30000,
+    },
+    {
+      name: 'Cơm Tấm',
+      description: 'Cơm tấm ăn cùng sườn nướng, bì, trứng và nước mắm.',
+      image: 'https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/904cfdf47a6d4534978d8e855653f348.jpeg?w=800&h=800&org_if_sml=1',
+      price: 55000,
+    },
+    {
+      name: 'Chả Giò',
+      description: 'Cuốn chiên giòn với nhân thịt, rau củ và miến.',
+      image: 'https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/8fbcd7a93d234678b64c68303f3058e0.jpeg?w=800&h=800&org_if_sml=1',
+      price: 40000,
+    },
+    {
+      name: 'Hủ Tiếu',
+      description: 'Món hủ tiếu nước hoặc khô với thịt và rau ăn kèm.',
+      image: 'https://product.hstatic.net/200000797031/product/hu_tieu_kho_c76c91a6498b4febb717d89e37cabeaa_master.jpg',
+      price: 50000,
+    },
+    {
+      name: 'Bánh Xèo',
+      description: 'Bánh xèo vàng giòn với tôm, thịt và giá đỗ.',
+      image: 'https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/d77ed7297a7243bfb20c2baeafec02fc.jpeg?w=800&h=800&org_if_sml=1',
+      price: 45000,
+    },
+    {
+      name: 'Bún Bò Huế',
+      description: 'Bún bò cay đậm vị, đặc trưng của Huế.',
+      image: 'https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/5355e406bcd240ae9054daffdf950ad9.jpeg?w=800&h=800&org_if_sml=1',
+      price: 65000,
+    },
+    {
+      name: 'Mì Quảng',
+      description: 'Mì Quảng với nước dùng đậm đà, tôm, thịt và bánh tráng.',
+      image: 'https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/c03a7bef0dbb47fe8381d1fd4bc5f813.jpeg?w=800&h=800&org_if_sml=1',
+      price: 55000,
+    },
+    {
+      name: 'Lẩu Thái',
+      description: 'Món lẩu cay chua với hải sản và rau.',
+      image: 'https://product.hstatic.net/200000294248/product/set_lau_680k1_f4f3b4c10530412c9297223ba2103f31_master.jpg',
+      price: 150000,
+    },
+    {
+      name: 'Bún Riêu',
+      description: 'Bún với riêu cua, cà chua và nước dùng chua thanh.',
+      image: 'https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/536536004f614d3995ed5d266c58a587.jpeg?w=800&h=800&org_if_sml=1',
+      price: 50000,
+    },
+    {
+      name: 'Nem Nướng',
+      description: 'Nem nướng thơm ngon ăn cùng bún và rau sống.',
+      image: 'https://cdn.tgdd.vn/2021/09/CookDish/cach-lam-nem-nuong-nha-trang-bang-noi-chien-khong-dau-thom-avt-1200x676.jpg',
+      price: 60000,
+    },
+    {
+      name: 'Bánh Cuốn',
+      description: 'Bánh cuốn mỏng dai, ăn kèm chả và nước mắm.',
+      image: 'https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/1c03287d1c4a438b9b8af53cb9948f3c.jpeg?w=800&h=800&org_if_sml=1',
+      price: 35000,
+    },
+    {
+      name: 'Bánh Canh',
+      description: 'Món bánh canh với nước dùng đậm đà, tôm và thịt.',
+      image: 'https://axwwgrkdco.cloudimg.io/v7/__gmpics3__/d76551a23c4c436da1d998fc34fc0750.jpeg?w=800&h=800&org_if_sml=1',
+      price: 45000,
+    },
+    {
+      name: 'Xôi Gấc',
+      description: 'Xôi gấc đỏ thơm, thường dùng trong dịp lễ Tết.',
+      image: 'https://cdn.tgdd.vn/Files/2018/06/09/1094282/cach-nau-xoi-gac-truyen-thong-deo-thom-cuc-hap-dan-tai-nha-202207051354146963.jpg',
+      price: 35000,
+    },
+    {
+      name: 'Cá Kho Tộ',
+      description: 'Cá kho trong nồi đất với nước màu và gia vị đậm đà.',
+      image: 'https://i.ytimg.com/vi/zvlct2ZXhj8/maxresdefault.jpg',
+      price: 70000,
+    },
+    {
+      name: 'Thịt Kho Tàu',
+      description: 'Thịt heo kho với trứng và nước dừa thơm ngon.',
+      image: 'https://nhahangcham.com/wp-content/uploads/2024/08/Meo-de-nau-thit-kho-tau.jpg',
+      price: 65000,
+    },
+    {
+      name: 'Chè Ba Màu',
+      description: 'Món chè ngọt với đậu xanh, thạch, và nước cốt dừa.',
+      image: 'https://cdn.tgdd.vn/2021/11/CookDish/cach-nau-che-ba-mau-ngot-thom-thanh-mat-giai-nhiet-mua-he-avt-1200x676.jpg',
+      price: 30000,
+    },
+    {
+      name: 'Bánh Da Lợn',
+      description: 'Món bánh ngọt nhiều tầng làm từ bột năng và lá dứa.',
+      image: 'https://cdn.tgdd.vn/Files/2019/03/08/1153592/cach-lam-banh-da-lon-deo-ngon-bui-bui-nhu-mua-ngoai-hang-202112031617559658.jpg',
+      price: 25000,
+    },
+  ];
+  

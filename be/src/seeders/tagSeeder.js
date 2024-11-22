@@ -1,0 +1,22 @@
+export const Tag = [
+    { name: 'Miền Bắc' },
+    { name: 'Miền Trung' },
+    { name: 'Miền Nam' },
+    { name: 'Đặc sản Hà Nội' },
+    { name: 'Ăn vặt' },
+    { name: 'Truyền thống' },
+    { name: 'Chay' },
+    { name: 'Nướng' },
+    { name: 'Chiên' },
+    { name: 'Canh' },
+    { name: 'Hải sản' },
+    { name: 'Nước lèo' },
+    { name: 'Ngọt' },
+    { name: 'Ăn gia đình' },
+    { name: 'Sáng' },
+    { name: 'Tối' },
+    { name: 'Nhanh' },
+    { name: 'Gỏi' },
+    { name: 'Xào' },
+    { name: 'Lẩu' }
+  ];

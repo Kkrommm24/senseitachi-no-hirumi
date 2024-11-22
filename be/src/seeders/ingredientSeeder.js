@@ -1,0 +1,23 @@
+export const Ingredient = [
+    { name: 'Bò' },
+    { name: 'Thịt heo' },
+    { name: 'Tôm' },
+    { name: 'Cá' },
+    { name: 'Trứng' },
+    { name: 'Gạo' },
+    { name: 'Bún' },
+    { name: 'Bột mì' },
+    { name: 'Rau sống' },
+    { name: 'Hành tây' },
+    { name: 'Tỏi' },
+    { name: 'Hành lá' },
+    { name: 'Gừng' },
+    { name: 'Gia vị' },
+    { name: 'Nước mắm' },
+    { name: 'Đường' },
+    { name: 'Muối' },
+    { name: 'Ớt' },
+    { name: 'Nước dùng' },
+    { name: 'Dưa leo' },
+  ];
+  
