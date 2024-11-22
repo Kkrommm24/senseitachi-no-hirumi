@@ -6,29 +6,37 @@ export const searchFoodsByTag = async (req, res) => {
   const { tags } = req.query;
 
   try {
-    // Kiểm tra tham số tags
     if (!tags) {
       return res.status(400).json({ error: 'Tags are required for filtering.' });
     }
 
-    // Tách danh sách tags từ query parameters
-    const tagList = tags.split(',');
+    const tagList = tags.split(',').map((tag) => tag.trim());
 
-    // Truy vấn bảng food dựa trên các tag
     const foods = await prisma.food.findMany({
       where: {
-        foodTag: {
-          some: { tag: { name: { in: tagList } } }, // Lọc món ăn dựa trên danh sách tag name
-        },
+        AND: tagList.map((tagName) => ({
+          foodTag: {
+            some: {
+              tag: {
+                name: tagName,
+              },
+            },
+          },
+        })),
       },
-      include: {
-        foodTag: { include: { tag: true } }, // Bao gồm thông tin chi tiết về các tag
+      select: {
+        id: true,
+        name: true, 
       },
     });
 
-    res.json(foods);
+    if (foods.length === 0) {
+      return res.status(404).json({ message: 'No foods found with all the given tags.' });
+    }
+
+    res.status(200).json(foods); // Trả về danh sách tên món ăn
   } catch (error) {
-    console.error(error);
+    console.error('Error searching foods by all tags:', error);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
