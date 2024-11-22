@@ -1,0 +1,22 @@
+export const FoodRestaurant = [
+    { foodId: 1, restaurantId: 1 },
+    { foodId: 2, restaurantId: 1 },
+    { foodId: 3, restaurantId: 2 },
+    { foodId: 4, restaurantId: 2 },
+    { foodId: 5, restaurantId: 3 },
+    { foodId: 6, restaurantId: 3 },
+    { foodId: 7, restaurantId: 4 },
+    { foodId: 8, restaurantId: 4 },
+    { foodId: 9, restaurantId: 5 },
+    { foodId: 10, restaurantId: 5 },
+    { foodId: 11, restaurantId: 6 },
+    { foodId: 12, restaurantId: 6 },
+    { foodId: 13, restaurantId: 7 },
+    { foodId: 14, restaurantId: 7 },
+    { foodId: 15, restaurantId: 8 },
+    { foodId: 16, restaurantId: 8 },
+    { foodId: 17, restaurantId: 9 },
+    { foodId: 18, restaurantId: 9 },
+    { foodId: 19, restaurantId: 10 },
+    { foodId: 20, restaurantId: 11 }
+];
