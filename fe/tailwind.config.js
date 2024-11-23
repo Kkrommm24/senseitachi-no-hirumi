@@ -7,7 +7,13 @@ export default {
     './src/**/*.{js,jsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        custom: {
+          red: '#fb524f',
+        },
+      },
+    },
   },
   plugins: [
     
