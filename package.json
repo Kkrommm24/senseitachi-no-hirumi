@@ -10,7 +10,7 @@
     "dev:be": "npm run dev --workspaces=be",
     "build:fe": "npm run build --workspaces=fe",
     "build:be": "npm run build --workspaces=be",
-    "start": "npm run start:fe && npm run start:be",
+    "start": "npm run dev:fe && npm run start:be",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
