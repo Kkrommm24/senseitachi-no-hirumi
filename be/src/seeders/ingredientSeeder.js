@@ -1,0 +1,22 @@
+export const Ingredient = [
+  { name: '牛肉' },
+  { name: '豚肉' },
+  { name: 'エビ' },
+  { name: '魚' },
+  { name: '卵' },
+  { name: 'ご飯' },
+  { name: '麺' },
+  { name: '小麦粉' },
+  { name: '生野菜' },
+  { name: '玉ねぎ' },
+  { name: 'ニンニク' },
+  { name: 'ねぎ' },
+  { name: '生姜' },
+  { name: '調味料' },
+  { name: '魚醤' },
+  { name: '砂糖' },
+  { name: '塩' },
+  { name: '唐辛子' },
+  { name: 'スープ' },
+  { name: 'きゅうり' }
+];
