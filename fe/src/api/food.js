@@ -6,6 +6,15 @@ const Food = {
     return API.get(url)
   },
 
+  getFoodByTags: (tagNames) => {
+    const url = '/searchByTag'
+    return API.get(url, {
+      params: {
+        tags: tagNames,
+      }
+    });
+  }
+
 }
 
 export default Food

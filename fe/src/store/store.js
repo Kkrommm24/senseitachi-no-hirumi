@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './features/counter/counterSlice';
+import selectedDishesReducer from 'store/slices/selectedDishesSlice';
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    selectedDishes: selectedDishesReducer,
   },
 });
 

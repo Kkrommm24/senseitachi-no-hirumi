@@ -1,28 +1,38 @@
-import { useState } from 'react';
-import './ChooseByTagPage.css';
-
-// Dữ liệu tạm thời cho tags và món ăn
-const tagsData = [
-  { id: 1, name: 'Spicy' },
-  { id: 2, name: 'Vegan' },
-  { id: 3, name: 'Dessert' },
-  { id: 4, name: 'Seafood' },
-  { id: 5, name: 'Grilled' },
-];
-
-const dishesData = [
-  { id: 1, name: 'Spicy Ramen', img: 'https://via.placeholder.com/150', tags: ['Spicy'] },
-  { id: 2, name: 'Vegan Salad', img: 'https://via.placeholder.com/150', tags: ['Vegan'] },
-  { id: 3, name: 'Chocolate Cake', img: 'https://via.placeholder.com/150', tags: ['Dessert'] },
-  { id: 4, name: 'Grilled Salmon', img: 'https://via.placeholder.com/150', tags: ['Seafood', 'Grilled'] },
-  { id: 5, name: 'Spicy Tofu', img: 'https://via.placeholder.com/150', tags: ['Spicy', 'Vegan'] },
-];
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { selectDish, deselectDish } from "store/slices/selectedDishesSlice";
+import "./ChooseByTagPage.css";
+import Tag from "api/tag";
+import { Link } from "react-router-dom";
+import Food from "api/food";
 
 const ChooseByTagPage = () => {
   const [selectedTags, setSelectedTags] = useState([]);
-  const [selectedDishes, setSelectedDishes] = useState([]);
+  const [allTags, setAllTags] = useState([]);
+  const [dishes, setDishes] = useState([])
 
-  // Handle tag selection
+  const selectedDishes = useSelector((state) => state.selectedDishes.value);
+  const dispatch = useDispatch();
+
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
+
+  const getAllTags = async () => {
+    // setLoading(true);
+    try {
+      const response = await Tag.getAllTags();
+      setAllTags(response.data);
+    } catch (err) {
+      // setError(err);
+      console.error(err);
+    }
+    // setLoading(false);
+  };
+
+  useEffect(() => {
+    getAllTags();
+  }, []);
+
   const handleTagChange = (tagName) => {
     if (selectedTags.includes(tagName)) {
       setSelectedTags(selectedTags.filter((tag) => tag !== tagName));
@@ -31,17 +41,30 @@ const ChooseByTagPage = () => {
     }
   };
 
-  // Filter dishes based on selected tags
-  const filteredDishes = dishesData.filter((dish) =>
-    dish.tags.some((tag) => selectedTags.includes(tag))
-  );
+  const getFoodByTags = async (tagNames) => {
+    try {
+      const response = await Food.getFoodByTags(tagNames);
+      setDishes(response.data)
+    } catch (error) {
+      setDishes([])
+      console.error("Error fetching data:", error);
+    }
+  };
 
-  // Handle dish selection for the "random wheel"
+  useEffect(() => {
+    const tagNames = selectedTags.length ? selectedTags.join(', ') : undefined;
+    if (tagNames) {
+      getFoodByTags(tagNames);
+    }
+    else setDishes([])
+  }, [selectedTags])
+
   const handleDishSelection = (dishId) => {
-    if (selectedDishes.includes(dishId)) {
-      setSelectedDishes(selectedDishes.filter((id) => id !== dishId)); // Remove from selected dishes
+    const selectedDish = dishes.find((dish) => dish.id === dishId);
+    if (selectedDishes.some((dish) => dish.id === dishId)) {
+      dispatch(deselectDish(dishId));
     } else {
-      setSelectedDishes([...selectedDishes, dishId]); // Add to selected dishes
+      dispatch(selectDish(selectedDish));
     }
   };
 
@@ -52,10 +75,12 @@ const ChooseByTagPage = () => {
       <div className="tag-selection">
         <h2 className="tag-selection-title">タグを選択:</h2>
         <div className="tags">
-          {tagsData.map((tag) => (
+          {allTags.map((tag) => (
             <label
               key={tag.id}
-              className={`tag ${selectedTags.includes(tag.name) ? 'selected' : ''}`}
+              className={`tag ${
+                selectedTags.includes(tag.name) ? "selected" : ""
+              }`}
             >
               <input
                 type="checkbox"
@@ -71,22 +96,28 @@ const ChooseByTagPage = () => {
 
       <div className="dishes">
         <h2 className="dishes-title">選ばれた料理:</h2>
-        {filteredDishes.length > 0 ? (
+        {dishes.length > 0 ? (
           <div className="dishes-grid">
-            {filteredDishes.map((dish) => (
+            {dishes.map((dish) => (
               <div key={dish.id} className="dish-card">
-                <img
-                  src={dish.img}
-                  alt={dish.name}
-                  className="dish-img"
-                />
+                <img src={dish.image} alt={dish.name} className="dish-img" />
                 <h3 className="dish-name">{dish.name}</h3>
                 <button
-                  className={`select-dish-btn ${selectedDishes.includes(dish.id) ? 'selected' : ''}`}
+                  className={`select-dish-btn ${
+                    selectedDishes.some((d) => d.id === dish.id)
+                      ? "selected"
+                      : ""
+                  }`}
                   onClick={() => handleDishSelection(dish.id)}
                 >
-                  <span>{`${selectedDishes.includes(dish.id) ? '-' : '+'}`}</span>
-                  <span className="button-text">{selectedDishes.includes(dish.id) ? 'ランダムホイールから取り除くa' : 'ランダムホイールに追加する'}</span>
+                  <span>{`${
+                    selectedDishes.some((d) => d.id === dish.id) ? "-" : "+"
+                  }`}</span>
+                  <span className="button-text">
+                    {selectedDishes.some((d) => d.id === dish.id)
+                      ? "ランダムホイールから取り除く"
+                      : "ランダムホイールに追加する"}
+                  </span>
                 </button>
               </div>
             ))}
@@ -95,6 +126,8 @@ const ChooseByTagPage = () => {
           <p className="no-dishes">選ばれた料理はありません。</p>
         )}
       </div>
+
+      <Link className="link-button" to="/random-wheel">ランダムホイールページに移動する</Link>
     </div>
   );
 };

@@ -1,20 +1,20 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-export const foodSlice = createSlice({
+export const selectedDishesSlice = createSlice({
   name: 'food',
   initialState: {
     value: [],
   },
   reducers: {
-    addFood: (state, action) => {
+    selectDish: (state, action) => {
       state.value.push(action.payload);
     },
-    removeFood: (state, action) => {
+    deselectDish: (state, action) => {
       state.value = state.value.filter(food => food.id !== action.payload);
     },
   },
 });
 
-export const { addFood, removeFood } = foodSlice.actions;
+export const { selectDish, deselectDish } = selectedDishesSlice.actions;
 
-export default foodSlice.reducer;
+export default selectedDishesSlice.reducer;

@@ -7,15 +7,12 @@ import RandomWheel from 'views/pages/wheelpage/RandomWheel.jsx';
 
 function AllRoutes() {
     return (
-        <>
-            <Routes>
-                {/* <Route path="/" element={<Homepage />} /> */}
-                <Route path="/" element={<MainLayout children={<Homepage />}/>} />
-                <Route path="/random-wheel" element={<MainLayout children={<RandomWheel />}/>} />
-                <Route path="/choose-by-tag" element={<ChooseByTagPage />} />
-            </Routes>
-        </>
-    )
+        <Routes>
+            <Route path="/" element={<MainLayout><Homepage /></MainLayout>} />
+            <Route path="/random-wheel" element={<MainLayout><RandomWheel /></MainLayout>} />
+            <Route path="/choose-by-tag" element={<MainLayout><ChooseByTagPage /></MainLayout>} />
+        </Routes>
+    );
 }
 
 export default AllRoutes
