@@ -75,3 +75,23 @@ export const getTags = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+
+export const getAllFoods = async (req, res) => {
+    try {
+      const foods = await prisma.food.findMany({
+        include: {
+          foodTag: { include: { tag: true } },
+          comments: true,
+          favorites: true,
+          ingredients: { include: { ingredient: true } },
+          flavors: { include: { flavor: true } },
+        },
+      });
+
+      res.json(foods);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal server error' });
+    }
+  };

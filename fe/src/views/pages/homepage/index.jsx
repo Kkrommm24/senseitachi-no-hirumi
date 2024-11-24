@@ -1,337 +1,32 @@
+import Food from "api/food";
+import { useState, useEffect } from "react";
 
 const Homepage = () => {
+
+    const [foods, setFoods] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const fetchFoods = async () => {
+            try {
+                const response = await Food.getAllFood();
+                setFoods(response.data);
+                console.log(response.data);
+
+                // setLoading(false);
+            } catch (err) {
+                setError(err);
+                // setLoading(false);
+            }
+        };
+
+        fetchFoods();
+    }, []);
+
     return (
+
         <div>
-            <div class="preloader"><div class="load loade"><hr /><hr /><hr /><hr /></div></div>
-
-
-            <div class="search-area">
-                <div class="search-input">
-                    <div class="search-close">
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <form>
-                        <input type="text" name="text" placeholder="*Search Here......." />
-                    </form>
-                </div>
-            </div>
-
-            <div class="mobile-menu">
-                <nav class="mobile-header d-xl-none">
-                    <div class="header-logo">
-                        <a href="index.html" class="logo"><img src="assets/images/logo/01.png" alt="logo" /></a>
-                    </div>
-                    <div class="header-bar">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </nav>
-                <nav class="menu">
-                    <div class="mobile-menu-area d-xl-none">
-                        <div class="mobile-menu-area-inner" id="scrollbar">
-                            <div class="mobile-search">
-                                <input type="text" placeholder="Search Here........." />
-                                <button type="submit"><i class="icofont-search-2"></i></button>
-                            </div>
-                            <ul>
-                                <li>
-                                    <a class="active" href="index-3.html#0">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Home Page One</a></li>
-                                        <li><a href="index-2.html">Home Page Two</a></li>
-                                        <li><a class="active" href="index-3.html">Home Page</a></li>
-                                        <li><a href="index-4.html">Home Page Four</a></li>
-                                        <li><a href="index-5.html">Home Page Five</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about.html">About</a></li>
-                                <li>
-                                    <a href="index-3.html#0">Pages</a>
-                                    <ul>
-                                        <li>
-                                            <a href="index-3.html#0">Category</a>
-                                            <ul>
-                                                <li><a href="food-menu.html">Food Category</a></li>
-                                                <li><a href="menu-card.html">Category style 1</a></li>
-                                                <li><a href="menu-card-2.html">Category style 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="index-3.html#0">Chef</a>
-                                            <ul>
-                                                <li><a href="homechef.html">Home Chef</a></li>
-                                                <li><a href="homechef-single.html">Home Chef Single</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="recepi-single.html">Single Recipe</a></li>
-                                        <li><a href="404.html">404 Page</a></li>
-                                        <li><a href="coming-soon.html">Coming Soon Page</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="index-3.html#0">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="index-3.html#0">Shop</a>
-                                    <ul>
-                                        <li><a href="shop-page.html">Shop Page</a></li>
-                                        <li><a href="shop-single.html">Shop Single style-1</a></li>
-                                        <li><a href="shop-single-2.html">Shop Single style-2</a></li>
-                                        <li><a href="cart-page.html">Cart Page</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact-us.html">Contact</a></li>
-                            </ul>
-                            <div class="scocial-media">
-                                <a href="index-3.html#" class="facebook"><i class="icofont-facebook"></i></a>
-                                <a href="index-3.html#" class="twitter"><i class="icofont-twitter"></i></a>
-                                <a href="index-3.html#" class="linkedin"><i class="icofont-linkedin"></i></a>
-                                <a href="index-3.html#" class="vimeo"><i class="icofont-vimeo"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-
-            <header class="header-section header-3 d-xl-block d-none">
-                <div class="container">
-                    <div class="">
-                        <div class="header-top w-100">
-                            <div class="logo">
-                                <a href="index.html"><img src="assets/images/logo/01.png" alt="logo" /></a>
-                            </div>
-                            <div class="menu-search-form">
-                                <div class="widget-search">
-                                    <form action="https://foxcoders.com/" method="get">
-                                        <input type="text" placeholder="Type here and press enter..." name="s" />
-                                        <button type="submit"><i class="icofont-search-2"></i></button>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="scocial-media">
-                                <a href="index-3.html#" class="facebook"><i class="icofont-facebook"></i></a>
-                                <a href="index-3.html#" class="twitter"><i class="icofont-twitter"></i></a>
-                                <a href="index-3.html#" class="linkedin"><i class="icofont-linkedin"></i></a>
-                                <a href="index-3.html#" class="vimeo"><i class="icofont-vimeo"></i></a>
-                            </div>
-                        </div>
-                        <div class="header-bottom w-100">
-                            <div class="main-menu">
-                                <ul>
-                                    <li>
-                                        <a class="active" href="index-3.html#0">Home</a>
-                                        {/* <ul>
-                                            <li><a href="index.html">Home Page One</a></li>
-                                            <li><a href="index-2.html">Home Page Two</a></li>
-                                            <li><a class="active" href="index-3.html">Home Page Three</a></li>
-                                            <li><a href="index-4.html">Home Page Four</a></li>
-                                            <li><a href="index-5.html">Home Page Five</a></li>
-                                        </ul> */}
-                                    </li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li>
-                                        <a href="index-3.html#0">Pages</a>
-                                        <ul>
-                                            <li>
-                                                <a href="index-3.html#0">Category</a>
-                                                <ul>
-                                                    <li><a href="food-menu.html">Food Category</a></li>
-                                                    <li><a href="menu-card.html">Category style 1</a></li>
-                                                    <li><a href="menu-card-2.html">Category style 2</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="index-3.html#0">Chef</a>
-                                                <ul>
-                                                    <li><a href="homechef.html">Home Chef</a></li>
-                                                    <li><a href="homechef-single.html">Home Chef Single</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="recepi-single.html">Single Recipe</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                            <li><a href="coming-soon.html">Coming Soon Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="index-3.html#0">Blog</a>
-                                        <ul>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="index-3.html#0">Shop</a>
-                                        <ul>
-                                            <li><a href="shop-page.html">Shop Page</a></li>
-                                            <li><a href="shop-single.html">Shop Single style-1</a></li>
-                                            <li><a href="shop-single-2.html">Shop Single style-2</a></li>
-                                            <li><a href="cart-page.html">Cart Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact-us.html">Contact</a></li>
-                                </ul>
-                            </div>
-                            <div class="author-option">
-                                <div class="author-area">
-                                    <div class="city-lang">
-                                        <img src="assets/images/header/01.png" alt="city-lang" />
-                                        <select name="lang" id="lang">
-                                            <option value="1">ENG</option>
-                                            <option value="2">BAN</option>
-                                            <option value="3">ESP</option>
-                                        </select>
-                                    </div>
-                                    <div class="cart-option">
-                                        <img src="assets/images/header/cart.png" alt="shop-cart" />
-                                        <div class="count-item">04</div>
-                                        <div class="cart-content">
-                                            <div class="cart-title">
-                                                <div class="add-item">4 Items Added</div>
-                                                <div class="list-close"><a href="index-3.html#">Close</a></div>
-                                            </div>
-                                            <div class="cart-scr scrollbar">
-                                                <div class="cart-con-item">
-                                                    <div class="cart-item">
-                                                        <div class="cart-inner">
-                                                            <div class="cart-top">
-                                                                <div class="thumb">
-                                                                    <a href="index-3.html#"><img src="assets/images/popular-food/01.jpg" alt="" /></a>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <a href="index-3.html#">Split Remedy Split End Shampoo</a>
-                                                                </div>
-                                                                <div class="remove-btn">
-                                                                    <a href="index-3.html#"><i class="icofont-close"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-bottom">
-                                                                <div class="sing-price">Tk. 140</div>
-                                                                <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                                                    <div class="dec qtybutton">-</div>
-                                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                                                    <div class="inc qtybutton">+</div>
-                                                                    <div class="inc qtybutton">+</div></div>
-                                                                <div class="total-price">Tk. 280.00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cart-item">
-                                                        <div class="cart-inner">
-                                                            <div class="cart-top">
-                                                                <div class="thumb">
-                                                                    <a href="index-3.html#"><img src="assets/images/popular-food/02.jpg" alt="" /></a>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <a href="index-3.html#">Split Remedy Split End Shampoo</a>
-                                                                </div>
-                                                                <div class="remove-btn">
-                                                                    <a href="index-3.html#"><i class="icofont-close"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-bottom">
-                                                                <div class="sing-price">Tk. 140</div>
-                                                                <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                                                    <div class="dec qtybutton">-</div>
-                                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                                                    <div class="inc qtybutton">+</div>
-                                                                    <div class="inc qtybutton">+</div></div>
-                                                                <div class="total-price">Tk. 280.00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cart-item">
-                                                        <div class="cart-inner">
-                                                            <div class="cart-top">
-                                                                <div class="thumb">
-                                                                    <a href="index-3.html#"><img src="assets/images/popular-food/03.jpg" alt="" /></a>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <a href="index-3.html#">Split Remedy Split End Shampoo</a>
-                                                                </div>
-                                                                <div class="remove-btn">
-                                                                    <a href="index-3.html#"><i class="icofont-close"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-bottom">
-                                                                <div class="sing-price">Tk. 140</div>
-                                                                <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                                                    <div class="dec qtybutton">-</div>
-                                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                                                    <div class="inc qtybutton">+</div>
-                                                                    <div class="inc qtybutton">+</div></div>
-                                                                <div class="total-price">Tk. 280.00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cart-item">
-                                                        <div class="cart-inner">
-                                                            <div class="cart-top">
-                                                                <div class="thumb">
-                                                                    <a href="index-3.html#"><img src="assets/images/popular-food/04.jpg" alt="" /></a>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <a href="index-3.html#">Split Remedy Split End Shampoo</a>
-                                                                </div>
-                                                                <div class="remove-btn">
-                                                                    <a href="index-3.html#"><i class="icofont-close"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-bottom">
-                                                                <div class="sing-price">Tk. 140</div>
-                                                                <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                                                    <div class="dec qtybutton">-</div>
-                                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                                                    <div class="inc qtybutton">+</div>
-                                                                    <div class="inc qtybutton">+</div></div>
-                                                                <div class="total-price">Tk. 280.00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="cart-scr-bottom">
-                                                <ul>
-                                                    <li>
-                                                        <div class="title">Subtotal</div>
-                                                        <div class="price">Tk. 1045.00</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="title">Shipping</div>
-                                                        <div class="price">Tk. 40.00</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="title">Cart Total</div>
-                                                        <div class="price">Tk. 1085.00</div>
-                                                    </li>
-                                                </ul>
-                                                <a href="index-3.html#" class="food-btn"><span>Place Order</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="author-account">
-                                        <div class="author-icon">
-                                            <img src="assets/images/chef/author/08.jpg" alt="author" />
-                                        </div>
-                                        <div class="author-select">
-                                            <select name="author-select" id="author-select">
-                                                <option value="1">My Account </option>
-                                                <option value="2">Log Out </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-
             <section class="banner style-3">
                 <div class="container">
                     <div class="">
@@ -737,12 +432,12 @@ const Homepage = () => {
             <section class="recent-recipe home-3 padding-tb bg-body pb-0">
                 <div class="container">
                     <div class="section-header style-2">
-                        <h4>Recent Recipes</h4>
+                        <h4>Popular Recipes</h4>
                         <a href="index-3.html#" class="text-btn">All Recipes<i class="icofont-rounded-double-right"></i></a>
                     </div>
                     <div class="section-wrapper">
                         <div class="row justify-content-center">
-                            <div class="col-xl-4 col-md-6 col-12">
+                            {/* <div class="col-xl-4 col-md-6 col-12">
                                 <div class="recipe-item">
                                     <div class="recipe-thumb">
                                         <a href="index-3.html#"> <img src="assets/images/food-recipe/01.jpg" alt="food-recipe" /></a>
@@ -776,84 +471,64 @@ const Homepage = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-4 col-md-6 col-12">
-                                <div class="recipe-item">
-                                    <div class="recipe-thumb">
-                                        <a href="index-3.html#"> <img src="assets/images/food-recipe/02.jpg" alt="food-recipe" /></a>
-                                    </div>
-                                    <div class="recipe-content">
-                                        <div class="meta-tag">
-                                            <div class="categori">
-                                                <a href="index-3.html#">Chicken</a>
-                                            </div>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <span>(5.5)</span>
-                                            </div>
+                            </div> */}
+                            {foods.slice(0, 9).map((food) => (
+                                <div key={food.id} class="col-xl-4 col-md-6 col-12">
+                                    <div class="recipe-item">
+                                        <div class="recipe-thumb custom-img">
+                                            <a href="index-3.html#"> <img src={food.image} alt="food-recipe" /></a>
                                         </div>
-                                        <h6><a href="index-3.html#">Food Corner: Top Japanese Best Restaurants for Sushi</a></h6>
-                                        <div class="meta-post">
-                                            <ul>
-                                                <li>
-                                                    <img src="assets/images/meta-post/recipe/01.jpg" alt="food-recipe" />
-                                                    <a href="index-3.html#" class="author">Hunter Max </a>
-                                                </li>
-                                                <li>
-                                                    <i class="icofont-clock-time"></i>
-                                                    <a href="index-3.html#" class="date">Time: 30 min</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-md-6 col-12">
-                                <div class="recipe-item">
-                                    <div class="recipe-thumb">
-                                        <a href="index-3.html#"> <img src="assets/images/food-recipe/03.jpg" alt="food-recipe" /></a>
-                                    </div>
-                                    <div class="recipe-content">
-                                        <div class="meta-tag">
-                                            <div class="categori">
-                                                <a href="index-3.html#">Chicken</a>
+                                        <div class="recipe-content">
+                                            <div class="meta-tag">
+                                                <div class="categori">
+                                                    <a href="index-3.html#">Hot</a>
+                                                </div>
+                                                <div class="rating">
+                                                    <i class="icofont-star"></i>
+                                                    <i class="icofont-star"></i>
+                                                    <i class="icofont-star"></i>
+                                                    <i class="icofont-star"></i>
+                                                    <i class="icofont-star"></i>
+                                                    <span>(5)</span>
+                                                </div>
                                             </div>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <span>(5.5)</span>
+                                            <h6><a href="index-3.html#">{food.name}:{food.description}</a></h6>
+                                            <div class="meta-post">
+                                                <div style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
+                                                    <img
+                                                        src="assets/images/image.png"
+                                                        alt="food-recipe"
+                                                        style={{
+                                                            width: "30px",
+                                                            height: "30px",
+                                                            borderRadius: "50%",
+                                                        }}
+                                                    />
+
+                                                    <div
+                                                        style={{
+                                                            maxWidth: "calc(100% - 60px)", // Tự động tính toán chiều rộng trừ khoảng cách hình ảnh
+                                                            display: "block",
+                                                            wordWrap: "break-word", // Cho phép xuống dòng nếu text quá dài
+                                                            overflow: "hidden",
+                                                            textOverflow: "ellipsis",
+                                                        }}
+                                                    >
+                                                        {food.comments[0].content}
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <h6><a href="index-3.html#">Food Corner: Top Japanese Best Restaurants for Sushi</a></h6>
-                                        <div class="meta-post">
-                                            <ul>
-                                                <li>
-                                                    <img src="assets/images/meta-post/recipe/01.jpg" alt="food-recipe" />
-                                                    <a href="index-3.html#" class="author">Hunter Max </a>
-                                                </li>
-                                                <li>
-                                                    <i class="icofont-clock-time"></i>
-                                                    <a href="index-3.html#" class="date">Time: 30 min</a>
-                                                </li>
-                                            </ul>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>
             </section>
 
 
-            <section class="blog-section overflow-hidden padding-tb bg-body home-3 pb-0">
+            {/* <section class="blog-section overflow-hidden padding-tb bg-body home-3 pb-0">
                 <div class="container">
                     <div class="section-header style-2">
                         <h4>Popular Recipes</h4>
@@ -985,7 +660,7 @@ const Homepage = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             <section class="product style-3 padding-tb bg-body ">
                 <div class="container">
@@ -1348,54 +1023,7 @@ const Homepage = () => {
                     </div>
                 </div>
             </div>
-
-            <footer class="footer">
-                <div class="bg-shape-style"></div>
-                <div class="container">
-                    <div class="footer-top">
-                        <div class="footer-area text-center">
-                            <div class="footer-logo">
-                                <a href="index.html"><img src="assets/images/header/footer/01.png" alt="footer-logo" /></a>
-                            </div>
-                            <div class="scocial-media">
-                                <a href="index-3.html#" class="facebook"><i class="icofont-facebook"></i></a>
-                                <a href="index-3.html#" class="twitter"><i class="icofont-twitter"></i></a>
-                                <a href="index-3.html#" class="linkedin"><i class="icofont-linkedin"></i></a>
-                                <a href="index-3.html#" class="vimeo"><i class="icofont-vimeo"></i></a>
-                            </div>
-                            <div class="footer-menu">
-                                <ul>
-                                    <li><a href="index-3.html#">Home</a></li>
-                                    <li><a href="index-3.html#">How it works?</a></li>
-                                    <li><a href="index-3.html#">Menus</a></li>
-                                    <li><a href="index-3.html#">Chefs</a></li>
-                                    <li><a href="index-3.html#">Recipes</a></li>
-                                    <li><a href="index-3.html#">Contact</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="footer-bottom text-center">
-                        <p>&copy; 2021 <a href="index-3.html#"><span>Mezban</span></a> Design by <a href="index-3.html#"><span>FoxCoders</span></a>.</p>
-                    </div>
-                </div>
-            </footer>
-
-
             <a href="index-3.html#" class="scrollToTop"><i class="icofont-swoosh-up"></i></a>
-
-
-
-            <script src="assets/js/jquery.js"></script>
-            <script src="assets/js/waypoints.min.js"></script>
-            <script src="assets/js/bootstrap.min.js"></script>
-            <script src="assets/js/isotope.pkgd.min.js"></script>
-            <script src="assets/js/wow.min.js"></script>
-            <script src="assets/js/swiper.min.js"></script>
-            <script src="assets/js/tab.js"></script>
-            <script src="assets/js/lightcase.js"></script>
-            <script src="assets/js/jquery.counterup.min.js"></script>
-            <script src="assets/js/functions.js"></script>
         </div>
     )
 }

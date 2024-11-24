@@ -1,5 +1,5 @@
 import express from 'express';
-import { searchFoods, getIngredients, getFlavors, getTags } from '../controllers/foodController.js';
+import { searchFoods, getIngredients, getFlavors, getTags, getAllFoods } from '../controllers/foodController.js';
 
 const router = express.Router();
 
@@ -14,5 +14,8 @@ router.get('/flavors', getFlavors);
 
 // Route lấy danh sách tags
 router.get('/tags', getTags);
+
+// Route lấy tất cả các món ăn
+router.get('/all-foods', getAllFoods);
 
 export default router;

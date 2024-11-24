@@ -16,12 +16,12 @@ Table of CONTENT
 
 01. Normalize CSS
 02. Global CSS
-03. Header 
+03. Header
   * Style-1
   * Style-2
   * Style-3
   * Mobile Menu
-04. Banner 
+04. Banner
   * Style-1
   * Style-2
   * Style-3
@@ -1682,6 +1682,21 @@ aside {
 .recipe-item .recipe-thumb a {
   display: block;
 }
+.recipe-thumb.custom-img  {
+    width: 100%; /* Đảm bảo hình ảnh chiếm hết chiều rộng container */
+    aspect-ratio: 4 / 3; /* Giữ tỷ lệ 4:3 (hoặc tỷ lệ khác tùy chọn) */
+    overflow: hidden; /* Cắt hình ảnh nếu lớn hơn container */
+    display: flex; /* Căn giữa hình ảnh nếu cần */
+    justify-content: center;
+    align-items: center;
+}
+
+.recipe-thumb.custom-img  img {
+    width: 100%; /* Chiều rộng 100% */
+    height: 100%; /* Chiều cao 100% */
+    object-fit: cover; /* Giữ tỷ lệ và cắt ảnh để vừa với container */
+}
+
 .recipe-item .recipe-thumb a img {
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;

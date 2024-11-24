@@ -4,9 +4,11 @@
     },
     "include": [
       "src",
+      "src/components/",
       "src/components/footer",
       "src/components/siderbar",
       "src/components/header",
+      "src/components/layout",
     ],
     "exclude": [
       "node_modules"
