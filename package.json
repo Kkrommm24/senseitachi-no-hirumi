@@ -1,7 +1,7 @@
 {
   "name": "senseitachi-no-hirumi",
   "version": "1.0.0",
-  "workspaces":[
+  "workspaces": [
     "fe",
     "be"
   ],
@@ -14,5 +14,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.3.0",
+    "react-redux": "^9.1.2"
+  }
 }
