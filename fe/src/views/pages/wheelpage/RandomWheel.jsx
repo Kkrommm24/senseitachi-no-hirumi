@@ -110,15 +110,15 @@ const RandomWheel = () => {
               },
             }}
           >
-            <h2>🎉 Congratulations! 🎉</h2>
+            <h2>🎉 お祝い! 🎉</h2>
             <p>
-              The food you got: <strong>{selectedResult}</strong>
+              <strong style={{ fontSize: "20px" }}>食べ物: {selectedResult} </strong>
             </p>
             <button
               style={{
                 marginTop: "20px",
                 padding: "10px 15px",
-                backgroundColor: "#33FF57",
+                backgroundColor: "#ff5733",
                 color: "white",
                 border: "none",
                 borderRadius: "5px",
