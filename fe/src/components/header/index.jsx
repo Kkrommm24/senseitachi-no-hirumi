@@ -1,4 +1,14 @@
 const Header = () => {
+    const options = [
+        { value: "1", label: "My Account" },
+        { value: "3", label: "Profile" },
+        { value: "4", label: "Set Favorite Tags" },
+        { value: "5", label: "Manage Recipes (Admin)" },
+        { value: "6", label: "Recipe List" },
+        { value: "7", label: "Decide Recipe" },
+        { value: "8", label: "Share Recipe" },
+        { value: "9", label: "Sign Out" }
+    ];
     return (
         <div>
             {/* <div class="preloader"><div class="load loade"><hr /><hr /><hr /><hr /></div></div> */}
@@ -44,47 +54,7 @@ const Header = () => {
                                         <li><a href="index-5.html">Home Page Five</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="about.html">About</a></li>
-                                <li>
-                                    <a href="index-3.html#0">Pages</a>
-                                    <ul>
-                                        <li>
-                                            <a href="index-3.html#0">Category</a>
-                                            <ul>
-                                                <li><a href="food-menu.html">Food Category</a></li>
-                                                <li><a href="menu-card.html">Category style 1</a></li>
-                                                <li><a href="menu-card-2.html">Category style 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="index-3.html#0">Chef</a>
-                                            <ul>
-                                                <li><a href="homechef.html">Home Chef</a></li>
-                                                <li><a href="homechef-single.html">Home Chef Single</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="recepi-single.html">Single Recipe</a></li>
-                                        <li><a href="404.html">404 Page</a></li>
-                                        <li><a href="coming-soon.html">Coming Soon Page</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="index-3.html#0">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="index-3.html#0">Shop</a>
-                                    <ul>
-                                        <li><a href="shop-page.html">Shop Page</a></li>
-                                        <li><a href="shop-single.html">Shop Single style-1</a></li>
-                                        <li><a href="shop-single-2.html">Shop Single style-2</a></li>
-                                        <li><a href="cart-page.html">Cart Page</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="contact-us.html">Contact</a></li>
+
                             </ul>
                             <div class="scocial-media">
                                 <a href="index-3.html#" class="facebook"><i class="icofont-facebook"></i></a>
@@ -105,221 +75,55 @@ const Header = () => {
                                 <a href="index.html"><img src="assets/images/logo/01.png" alt="logo" /></a>
                             </div>
                             <div class="menu-search-form">
-                                <div class="widget-search">
+                                <div class="widget-search mt-4">
                                     <form action="https://foxcoders.com/" method="get">
                                         <input type="text" placeholder="Type here and press enter..." name="s" />
                                         <button type="submit"><i class="icofont-search-2"></i></button>
                                     </form>
                                 </div>
-                            </div>
-                            <div class="scocial-media">
-                                <a href="index-3.html#" class="facebook"><i class="icofont-facebook"></i></a>
-                                <a href="index-3.html#" class="twitter"><i class="icofont-twitter"></i></a>
-                                <a href="index-3.html#" class="linkedin"><i class="icofont-linkedin"></i></a>
-                                <a href="index-3.html#" class="vimeo"><i class="icofont-vimeo"></i></a>
-                            </div>
-                        </div>
-                        <div class="header-bottom w-100">
-                            <div class="main-menu">
-                                <ul>
-                                    <li>
-                                        <a class="active" href="index-3.html#0">Home</a>
+                                <div style={{width: "100%"}} class="header-bottom ">
+                                    <div class="main-menu w-100">
+                                        <ul>
+                                            <li>
+                                                <div class="fw-bold fs-6 text-danger" href="index-3.html#0">Promotion Tag</div>
+                                            </li>
+                                            <li>
+                                                <a class="" href="index-3.html#0">Tag 1</a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="index-3.html#0">Tag 2</a>
+                                            </li>
 
-                                    </li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li>
-                                        <a href="index-3.html#0">Pages</a>
-                                        <ul>
-                                            <li>
-                                                <a href="index-3.html#0">Category</a>
-                                                <ul>
-                                                    <li><a href="food-menu.html">Food Category</a></li>
-                                                    <li><a href="menu-card.html">Category style 1</a></li>
-                                                    <li><a href="menu-card-2.html">Category style 2</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="index-3.html#0">Chef</a>
-                                                <ul>
-                                                    <li><a href="homechef.html">Home Chef</a></li>
-                                                    <li><a href="homechef-single.html">Home Chef Single</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="recepi-single.html">Single Recipe</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                            <li><a href="coming-soon.html">Coming Soon Page</a></li>
                                         </ul>
-                                    </li>
-                                    <li>
-                                        <a href="index-3.html#0">Blog</a>
-                                        <ul>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-single.html">Blog Single</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="index-3.html#0">Shop</a>
-                                        <ul>
-                                            <li><a href="shop-page.html">Shop Page</a></li>
-                                            <li><a href="shop-single.html">Shop Single style-1</a></li>
-                                            <li><a href="shop-single-2.html">Shop Single style-2</a></li>
-                                            <li><a href="cart-page.html">Cart Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact-us.html">Contact</a></li>
-                                </ul>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="author-option">
-                                <div class="author-area">
-                                    <div class="city-lang">
-                                        <img src="assets/images/header/01.png" alt="city-lang" />
-                                        <select name="lang" id="lang">
-                                            <option value="1">ENG</option>
-                                            <option value="2">BAN</option>
-                                            <option value="3">ESP</option>
+                            <div class=" d-flex justify-content-end align-items-center">
+                                <div class="city-lang ">
+                                    <img src="assets/images/header/01.png" alt="city-lang" />
+                                    <select name="lang" id="lang">
+                                        <option value="1">ENG</option>
+                                        <option value="2">BAN</option>
+                                        <option value="3">ESP</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div style={{ width: "10%" }}>
+                                <div class="author-account" style={{ width: "100px" }}>
+                                    <div class="author-select">
+                                        <select name="author-select" id="author-select">
+                                            {options.map(option => (
+                                                <option key={option.value} value={option.value}>
+                                                    {option.label}
+                                                </option>
+                                            ))}
                                         </select>
-                                    </div>
-                                    <div class="cart-option">
-                                        <img src="assets/images/header/cart.png" alt="shop-cart" />
-                                        <div class="count-item">04</div>
-                                        <div class="cart-content">
-                                            <div class="cart-title">
-                                                <div class="add-item">4 Items Added</div>
-                                                <div class="list-close"><a href="index-3.html#">Close</a></div>
-                                            </div>
-                                            <div class="cart-scr scrollbar">
-                                                <div class="cart-con-item">
-                                                    <div class="cart-item">
-                                                        <div class="cart-inner">
-                                                            <div class="cart-top">
-                                                                <div class="thumb">
-                                                                    <a href="index-3.html#"><img src="assets/images/popular-food/01.jpg" alt="" /></a>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <a href="index-3.html#">Split Remedy Split End Shampoo</a>
-                                                                </div>
-                                                                <div class="remove-btn">
-                                                                    <a href="index-3.html#"><i class="icofont-close"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-bottom">
-                                                                <div class="sing-price">Tk. 140</div>
-                                                                <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                                                    <div class="dec qtybutton">-</div>
-                                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                                                    <div class="inc qtybutton">+</div>
-                                                                    <div class="inc qtybutton">+</div></div>
-                                                                <div class="total-price">Tk. 280.00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cart-item">
-                                                        <div class="cart-inner">
-                                                            <div class="cart-top">
-                                                                <div class="thumb">
-                                                                    <a href="index-3.html#"><img src="assets/images/popular-food/02.jpg" alt="" /></a>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <a href="index-3.html#">Split Remedy Split End Shampoo</a>
-                                                                </div>
-                                                                <div class="remove-btn">
-                                                                    <a href="index-3.html#"><i class="icofont-close"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-bottom">
-                                                                <div class="sing-price">Tk. 140</div>
-                                                                <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                                                    <div class="dec qtybutton">-</div>
-                                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                                                    <div class="inc qtybutton">+</div>
-                                                                    <div class="inc qtybutton">+</div></div>
-                                                                <div class="total-price">Tk. 280.00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cart-item">
-                                                        <div class="cart-inner">
-                                                            <div class="cart-top">
-                                                                <div class="thumb">
-                                                                    <a href="index-3.html#"><img src="assets/images/popular-food/03.jpg" alt="" /></a>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <a href="index-3.html#">Split Remedy Split End Shampoo</a>
-                                                                </div>
-                                                                <div class="remove-btn">
-                                                                    <a href="index-3.html#"><i class="icofont-close"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-bottom">
-                                                                <div class="sing-price">Tk. 140</div>
-                                                                <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                                                    <div class="dec qtybutton">-</div>
-                                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                                                    <div class="inc qtybutton">+</div>
-                                                                    <div class="inc qtybutton">+</div></div>
-                                                                <div class="total-price">Tk. 280.00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="cart-item">
-                                                        <div class="cart-inner">
-                                                            <div class="cart-top">
-                                                                <div class="thumb">
-                                                                    <a href="index-3.html#"><img src="assets/images/popular-food/04.jpg" alt="" /></a>
-                                                                </div>
-                                                                <div class="content">
-                                                                    <a href="index-3.html#">Split Remedy Split End Shampoo</a>
-                                                                </div>
-                                                                <div class="remove-btn">
-                                                                    <a href="index-3.html#"><i class="icofont-close"></i></a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="cart-bottom">
-                                                                <div class="sing-price">Tk. 140</div>
-                                                                <div class="cart-plus-minus"><div class="dec qtybutton">-</div>
-                                                                    <div class="dec qtybutton">-</div>
-                                                                    <input class="cart-plus-minus-box" type="text" name="qtybutton" value="1" />
-                                                                    <div class="inc qtybutton">+</div>
-                                                                    <div class="inc qtybutton">+</div></div>
-                                                                <div class="total-price">Tk. 280.00</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="cart-scr-bottom">
-                                                <ul>
-                                                    <li>
-                                                        <div class="title">Subtotal</div>
-                                                        <div class="price">Tk. 1045.00</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="title">Shipping</div>
-                                                        <div class="price">Tk. 40.00</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="title">Cart Total</div>
-                                                        <div class="price">Tk. 1085.00</div>
-                                                    </li>
-                                                </ul>
-                                                <a href="index-3.html#" class="food-btn"><span>Place Order</span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="author-account">
-                                        <div class="author-icon">
-                                            <img src="assets/images/chef/author/08.jpg" alt="author" />
-                                        </div>
-                                        <div class="author-select">
-                                            <select name="author-select" id="author-select">
-                                                <option value="1">My Account </option>
-                                                <option value="2">Log Out </option>
-                                            </select>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </header>
