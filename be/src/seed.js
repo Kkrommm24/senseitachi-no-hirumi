@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import bcrypt from 'bcrypt';
 import { User } from './seeders/userSeeder.js';
 import { Ingredient } from './seeders/ingredientSeeder.js';
 import { Flavor } from './seeders/flavorSeeder.js';
@@ -45,8 +46,12 @@ async function main() {
 
   // Seed user
   for (let user of User) {
+    const hashedPassword = await bcrypt.hash(user.password, 10);
     await prisma.user.create({
-      data: user,
+      data: {
+        ...user,
+        password: hashedPassword,
+      },
     });
   }
 

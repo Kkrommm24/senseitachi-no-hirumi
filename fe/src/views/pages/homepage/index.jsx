@@ -27,7 +27,7 @@ const Homepage = () => {
     return (
 
         <div>
-            <section class="banner style-3">
+            {/* <section class="banner style-3">
                 <div class="container">
                     <div class="">
                         <div class="swiper-container gallery-top">
@@ -334,7 +334,7 @@ const Homepage = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             <section class="recipe-categori padding-tb home-3 bg-body pb-0">
                 <div class="container">

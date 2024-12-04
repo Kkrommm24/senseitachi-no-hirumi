@@ -17,6 +17,21 @@ const clearDatabase = async () => {
     await prisma.restaurant.deleteMany();
     await prisma.user.deleteMany();
 
+    // Reset ID của các bảng
+    await prisma.$executeRaw`ALTER SEQUENCE "Food_id_seq" RESTART WITH 1`;
+    await prisma.$executeRaw`ALTER SEQUENCE "Ingredient_id_seq" RESTART WITH 1`;
+    await prisma.$executeRaw`ALTER SEQUENCE "Flavor_id_seq" RESTART WITH 1`;
+    await prisma.$executeRaw`ALTER SEQUENCE "Tag_id_seq" RESTART WITH 1`;
+    await prisma.$executeRaw`ALTER SEQUENCE "Restaurant_id_seq" RESTART WITH 1`;
+    await prisma.$executeRaw`ALTER SEQUENCE "User_id_seq" RESTART WITH 1`;
+    await prisma.$executeRaw`ALTER SEQUENCE "FoodIngredient_id_seq" RESTART WITH 1`;
+    await prisma.$executeRaw`ALTER SEQUENCE "FoodFlavor_id_seq" RESTART WITH 1`;
+    await prisma.$executeRaw`ALTER SEQUENCE "FoodTag_id_seq" RESTART WITH 1`;
+    await prisma.$executeRaw`ALTER SEQUENCE "FoodRestaurant_id_seq" RESTART WITH 1`;
+    await prisma.$executeRaw`ALTER SEQUENCE "Favorite_id_seq" RESTART WITH 1`;
+    await prisma.$executeRaw`ALTER SEQUENCE "Comment_id_seq" RESTART WITH 1`;
+
+
     console.log('All data cleared');
   } catch (error) {
     console.error('Error clearing database:', error);
