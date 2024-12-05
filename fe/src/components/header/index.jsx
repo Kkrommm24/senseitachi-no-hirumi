@@ -68,7 +68,7 @@ const Header = () => {
             </div>
 
             <header class="header-section header-3 d-xl-block d-none">
-                <div class="container">
+                <div class="container" style={{ padding: 0 }}>
                     <div class="">
                         <div class="header-top w-100">
                             <div class="logo">
@@ -77,51 +77,54 @@ const Header = () => {
                             <div class="menu-search-form">
                                 <div class="widget-search mt-4">
                                     <form action="https://foxcoders.com/" method="get">
-                                        <input type="text" placeholder="Type here and press enter..." name="s" />
+                                        <input type="text" placeholder="ここに入力して「エンター」キーを押してください..." name="s" />
                                         <button type="submit"><i class="icofont-search-2"></i></button>
                                     </form>
                                 </div>
-                                <div style={{width: "100%"}} class="header-bottom ">
+                                <div style={{ width: "100%" }} class="header-bottom ">
                                     <div class="main-menu w-100">
                                         <ul>
                                             <li>
-                                                <div class="fw-bold fs-6 text-danger" href="index-3.html#0">Promotion Tag</div>
+                                                <a class="active" href="index-3.html#0">トップページ</a>
                                             </li>
                                             <li>
-                                                <a class="" href="index-3.html#0">Tag 1</a>
+                                                <a class="" href="index-3.html#0">料理一覧</a>
                                             </li>
                                             <li>
-                                                <a class="" href="index-3.html#0">Tag 2</a>
+                                                <a class="" href="index-3.html#0">料理決め</a>
+                                            </li>
+                                            <li>
+                                                <a class="" href="index-3.html#0">料理共有</a>
                                             </li>
 
                                         </ul>
                                     </div>
                                 </div>
                             </div>
-                            <div class=" d-flex justify-content-end align-items-center">
+                            <div class="d-flex ">
                                 <div class="city-lang ">
                                     <img src="assets/images/header/01.png" alt="city-lang" />
                                     <select name="lang" id="lang">
-                                        <option value="1">ENG</option>
-                                        <option value="2">BAN</option>
-                                        <option value="3">ESP</option>
+                                        <option value="1">日本語</option>
+                                        <option value="2">ベトナム語</option>
                                     </select>
                                 </div>
-
-                            </div>
-                            <div style={{ width: "10%" }}>
-                                <div class="author-account" style={{ width: "100px" }}>
+                                <div class="author-account">
+                                    <div class="author-icon">
+                                        <img src="assets/images/chef/author/08.jpg" alt="author" />
+                                    </div>
                                     <div class="author-select">
                                         <select name="author-select" id="author-select">
-                                            {options.map(option => (
-                                                <option key={option.value} value={option.value}>
-                                                    {option.label}
-                                                </option>
-                                            ))}
+                                            <option value="1">アカウント</option>
+                                            <option value="1.25">プロフィール</option>
+                                            <option value="1.5">好きなタグ設定</option>
+                                            <option value="2">サインアウト</option>
                                         </select>
                                     </div>
                                 </div>
+
                             </div>
+
                         </div>
 
                     </div>

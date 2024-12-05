@@ -25,322 +25,12 @@ const Homepage = () => {
     }, []);
 
     return (
-
         <div>
-            {/* <section class="banner style-3">
-                <div class="container">
-                    <div class="">
-                        <div class="swiper-container gallery-top">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="banner-item">
-                                        <div class="banner-inner">
-                                            <div class="banner-thumb">
-                                                <img src="assets/images/banner/bg/05.jpg" alt="banner" />
-                                            </div>
-                                            <div class="banner-content">
-                                                <div class="banner-content-area">
-                                                    <div class="meta-tag">
-                                                        <div class="categori">
-                                                            <a href="index-3.html#">Chicken</a>
-                                                        </div>
-                                                        <div class="rating">
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <span>(5.5)</span>
-                                                        </div>
-                                                    </div>
-                                                    <h4><a href="recepi-single.html">My New Favourite Recipes For Healthy Living</a></h4>
-                                                    <div class="meta-post">
-                                                        <ul>
-                                                            <li>
-                                                                <img src="assets/images/meta-post/recipe/01.jpg" alt="food-recipe" />
-                                                                <a href="index-3.html#" class="author">Hunter Max </a>
-                                                            </li>
-                                                            <li>
-                                                                <i class="icofont-clock-time"></i>
-                                                                <a href="index-3.html#" class="date">Cooking Time: 30 min</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <p>Would you like to get motivate Herei some nfonato for you top mobile appe developers of 20 thier ratn and income If youre looking for</p>
-                                                    <div class="meta-post mb-0">
-                                                        <ul>
-                                                            <li>
-                                                                <i class="icofont-heart-alt"></i>
-                                                                <a href="index-3.html#" class="heart">20 Likes</a>
-                                                            </li>
-                                                            <li>
-                                                                <i class="icofont-eye"></i>
-                                                                <a href="index-3.html#" class="view">2636 Views</a>
-                                                            </li>
-                                                            <li>
-                                                                <i class="icofont-speech-comments"></i>
-                                                                <a href="index-3.html#" class="comment">24 comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-item">
-                                        <div class="banner-inner">
-                                            <div class="banner-thumb">
-                                                <img src="assets/images/banner/bg/02.jpg" alt="banner" />
-                                            </div>
-                                            <div class="banner-content">
-                                                <div class="banner-content-area">
-                                                    <div class="meta-tag">
-                                                        <div class="categori">
-                                                            <a href="index-3.html#">Chicken</a>
-                                                        </div>
-                                                        <div class="rating">
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <span>(5.5)</span>
-                                                        </div>
-                                                    </div>
-                                                    <h4><a href="recepi-single.html">My New Favourite Recipes For Healthy Living</a></h4>
-                                                    <div class="meta-post">
-                                                        <ul>
-                                                            <li>
-                                                                <img src="assets/images/meta-post/recipe/01.jpg" alt="food-recipe" />
-                                                                <a href="index-3.html#" class="author">Hunter Max </a>
-                                                            </li>
-                                                            <li>
-                                                                <i class="icofont-clock-time"></i>
-                                                                <a href="index-3.html#" class="date">Cooking Time: 30 min</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <p>Would you like to get motivate Herei some nfonato for you top mobile appe developers of 20 thier ratn and income If youre looking for</p>
-                                                    <div class="meta-post mb-0">
-                                                        <ul>
-                                                            <li>
-                                                                <i class="icofont-heart-alt"></i>
-                                                                <a href="index-3.html#" class="heart">20 Likes</a>
-                                                            </li>
-                                                            <li>
-                                                                <i class="icofont-eye"></i>
-                                                                <a href="index-3.html#" class="view">2636 Views</a>
-                                                            </li>
-                                                            <li>
-                                                                <i class="icofont-speech-comments"></i>
-                                                                <a href="index-3.html#" class="comment">24 comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-item">
-                                        <div class="banner-inner">
-                                            <div class="banner-thumb">
-                                                <img src="assets/images/banner/bg/03.jpg" alt="banner" />
-                                            </div>
-                                            <div class="banner-content">
-                                                <div class="banner-content-area">
-                                                    <div class="meta-tag">
-                                                        <div class="categori">
-                                                            <a href="index-3.html#">Chicken</a>
-                                                        </div>
-                                                        <div class="rating">
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <span>(5.5)</span>
-                                                        </div>
-                                                    </div>
-                                                    <h4><a href="recepi-single.html">My New Favourite Recipes For Healthy Living</a></h4>
-                                                    <div class="meta-post">
-                                                        <ul>
-                                                            <li>
-                                                                <img src="assets/images/meta-post/recipe/01.jpg" alt="food-recipe" />
-                                                                <a href="index-3.html#" class="author">Hunter Max </a>
-                                                            </li>
-                                                            <li>
-                                                                <i class="icofont-clock-time"></i>
-                                                                <a href="index-3.html#" class="date">Cooking Time: 30 min</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <p>Would you like to get motivate Herei some nfonato for you top mobile appe developers of 20 thier ratn and income If youre looking for</p>
-                                                    <div class="meta-post mb-0">
-                                                        <ul>
-                                                            <li>
-                                                                <i class="icofont-heart-alt"></i>
-                                                                <a href="index-3.html#" class="heart">20 Likes</a>
-                                                            </li>
-                                                            <li>
-                                                                <i class="icofont-eye"></i>
-                                                                <a href="index-3.html#" class="view">2636 Views</a>
-                                                            </li>
-                                                            <li>
-                                                                <i class="icofont-speech-comments"></i>
-                                                                <a href="index-3.html#" class="comment">24 comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-item">
-                                        <div class="banner-inner">
-                                            <div class="banner-thumb">
-                                                <img src="assets/images/banner/bg/04.jpg" alt="banner" />
-                                            </div>
-                                            <div class="banner-content">
-                                                <div class="banner-content-area">
-                                                    <div class="meta-tag">
-                                                        <div class="categori">
-                                                            <a href="index-3.html#">Chicken</a>
-                                                        </div>
-                                                        <div class="rating">
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <i class="icofont-star"></i>
-                                                            <span>(5.5)</span>
-                                                        </div>
-                                                    </div>
-                                                    <h4><a href="recepi-single.html">My New Favourite Recipes For Healthy Living</a></h4>
-                                                    <div class="meta-post">
-                                                        <ul>
-                                                            <li>
-                                                                <img src="assets/images/meta-post/recipe/01.jpg" alt="food-recipe" />
-                                                                <a href="index-3.html#" class="author">Hunter Max </a>
-                                                            </li>
-                                                            <li>
-                                                                <i class="icofont-clock-time"></i>
-                                                                <a href="index-3.html#" class="date">Cooking Time: 30 min</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                    <p>Would you like to get motivate Herei some nfonato for you top mobile appe developers of 20 thier ratn and income If youre looking for</p>
-                                                    <div class="meta-post">
-                                                        <ul>
-                                                            <li>
-                                                                <i class="icofont-heart-alt"></i>
-                                                                <a href="index-3.html#" class="heart">20 Likes</a>
-                                                            </li>
-                                                            <li>
-                                                                <i class="icofont-eye"></i>
-                                                                <a href="index-3.html#" class="view">2636 Views</a>
-                                                            </li>
-                                                            <li>
-                                                                <i class="icofont-speech-comments"></i>
-                                                                <a href="index-3.html#" class="comment">24 comments</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-container gallery-thumbs">
-                            <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="banner-bitem">
-                                        <div class="banner-binner">
-                                            <div class="banner-bcontent">
-                                                <div class="meta-tag">
-                                                    <div class="categori">
-                                                        <a href="index-3.html#0">Chicken</a>
-                                                    </div>
-                                                </div>
-                                                <h6>My New Favourite Recipes For Healthy Living</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-bitem">
-                                        <div class="banner-binner">
-                                            <div class="banner-bcontent">
-                                                <div class="meta-tag">
-                                                    <div class="categori">
-                                                        <a href="index-3.html#0">Chicken</a>
-                                                    </div>
-                                                </div>
-                                                <h6>My New Favourite Recipes For Healthy Living</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-bitem">
-                                        <div class="banner-binner">
-                                            <div class="banner-bcontent">
-                                                <div class="meta-tag">
-                                                    <div class="categori">
-                                                        <a href="index-3.html#0">Chicken</a>
-                                                    </div>
-                                                </div>
-                                                <h6>My New Favourite Recipes For Healthy Living</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-bitem">
-                                        <div class="banner-binner">
-                                            <div class="banner-bcontent">
-                                                <div class="meta-tag">
-                                                    <div class="categori">
-                                                        <a href="index-3.html#0">Chicken</a>
-                                                    </div>
-                                                </div>
-                                                <h6>My New Favourite Recipes For Healthy Living</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="banner-bitem">
-                                        <div class="banner-binner">
-                                            <div class="banner-bcontent">
-                                                <div class="meta-tag">
-                                                    <div class="categori">
-                                                        <a href="index-3.html#0">Chicken</a>
-                                                    </div>
-                                                </div>
-                                                <h6>My New Favourite Recipes For Healthy Living</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> */}
-
             <section class="recipe-categori padding-tb home-3 bg-body pb-0">
                 <div class="container">
                     <div class="section-header style-2">
-                        <h4>Recipes Categories</h4>
-                        <a href="index-3.html#" class="text-btn">All Recipes<i class="icofont-rounded-double-right"></i></a>
+                        <h4>レシピカテゴリー</h4>
+                        <a href="index-3.html#" class="text-btn">すべてのレシピ<i class="icofont-rounded-double-right"></i></a>
                     </div>
                     <div class="section-wrapper">
                         <div class="row justify-content-center">
@@ -350,7 +40,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/01.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">Chicken</a>
+                                        <a href="index-3.html#">チキン</a>
                                     </div>
                                 </div>
                             </div>
@@ -360,7 +50,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/02.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">Fast Food</a>
+                                        <a href="index-3.html#">ファストフード</a>
                                     </div>
                                 </div>
                             </div>
@@ -370,7 +60,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/03.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">sea Fish</a>
+                                        <a href="index-3.html#">シーフード</a>
                                     </div>
                                 </div>
                             </div>
@@ -380,7 +70,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/01.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">Hot Pizza</a>
+                                        <a href="index-3.html#">ホットピザ</a>
                                     </div>
                                 </div>
                             </div>
@@ -390,7 +80,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/08.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">Salads</a>
+                                        <a href="index-3.html#">サラダ</a>
                                     </div>
                                 </div>
                             </div>
@@ -400,7 +90,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/06.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">soft drink</a>
+                                        <a href="index-3.html#">ソフトドリンク</a>
                                     </div>
                                 </div>
                             </div>
@@ -410,7 +100,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/07.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">lunch</a>
+                                        <a href="index-3.html#">ランチ</a>
                                     </div>
                                 </div>
                             </div>
@@ -420,7 +110,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/08.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">dinner</a>
+                                        <a href="index-3.html#">ディナー</a>
                                     </div>
                                 </div>
                             </div>
@@ -432,46 +122,11 @@ const Homepage = () => {
             <section class="recent-recipe home-3 padding-tb bg-body pb-0">
                 <div class="container">
                     <div class="section-header style-2">
-                        <h4>Popular Recipes</h4>
-                        <a href="index-3.html#" class="text-btn">All Recipes<i class="icofont-rounded-double-right"></i></a>
+                        <h4>人気のレシピ</h4>
+                        <a href="index-3.html#" class="text-btn">すべて<i class="icofont-rounded-double-right"></i></a>
                     </div>
                     <div class="section-wrapper">
                         <div class="row justify-content-center">
-                            {/* <div class="col-xl-4 col-md-6 col-12">
-                                <div class="recipe-item">
-                                    <div class="recipe-thumb">
-                                        <a href="index-3.html#"> <img src="assets/images/food-recipe/01.jpg" alt="food-recipe" /></a>
-                                    </div>
-                                    <div class="recipe-content">
-                                        <div class="meta-tag">
-                                            <div class="categori">
-                                                <a href="index-3.html#">Chicken</a>
-                                            </div>
-                                            <div class="rating">
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <i class="icofont-star"></i>
-                                                <span>(5.5)</span>
-                                            </div>
-                                        </div>
-                                        <h6><a href="index-3.html#">Food Corner: Top Japanese Best Restaurants for Sushi</a></h6>
-                                        <div class="meta-post">
-                                            <ul>
-                                                <li>
-                                                    <img src="assets/images/meta-post/recipe/01.jpg" alt="food-recipe" />
-                                                    <a href="index-3.html#" class="author">Hunter Max </a>
-                                                </li>
-                                                <li>
-                                                    <i class="icofont-clock-time"></i>
-                                                    <a href="index-3.html#" class="date">Time: 30 min</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
                             {foods.slice(0, 9).map((food) => (
                                 <div key={food.id} class="col-xl-4 col-md-6 col-12">
                                     <div class="recipe-item">
@@ -481,7 +136,7 @@ const Homepage = () => {
                                         <div class="recipe-content">
                                             <div class="meta-tag">
                                                 <div class="categori">
-                                                    <a href="index-3.html#">Hot</a>
+                                                    <a href="index-3.html#">ホット</a>
                                                 </div>
                                                 <div class="rating">
                                                     <i class="icofont-star"></i>
@@ -527,327 +182,11 @@ const Homepage = () => {
                 </div>
             </section>
 
-
-            {/* <section class="blog-section overflow-hidden padding-tb bg-body home-3 pb-0">
-                <div class="container">
-                    <div class="section-header style-2">
-                        <h4>Popular Recipes</h4>
-                        <a href="index-3.html#" class="text-btn">All Recipes<i class="icofont-rounded-double-right"></i></a>
-                    </div>
-                    <div class="section-wrapper">
-                        <div class="row g-5">
-                            <div class="col-lg-6 col-12 blog-left">
-                                <div class="post-item">
-                                    <div class="post-inner">
-                                        <div class="post-thumb">
-                                            <a href="index-3.html#">
-                                                <img src="assets/images/blog/01.jpg" alt="petuk-blog" />
-                                            </a>
-                                        </div>
-                                        <div class="post-content">
-                                            <div class="meta-tag">
-                                                <div class="categori">
-                                                    <a href="index-3.html#">Chicken</a>
-                                                </div>
-                                                <div class="rating">
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <span>(5.5)</span>
-                                                </div>
-                                            </div>
-                                            <h5><a href="index-3.html#">Top Japanese Best Restaurants For Sush..</a></h5>
-                                            <div class="meta-post">
-                                                <ul>
-                                                    <li>
-                                                        <img src="assets/images/meta-post/recipe/01.jpg" alt="food-recipe" />
-                                                        <a href="index-3.html#" class="author">Hunter Max </a>
-                                                    </li>
-                                                    <li>
-                                                        <i class="icofont-clock-time"></i>
-                                                        <a href="index-3.html#" class="date">Time: 30 min</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <p>Semper odio Nam fringilla scelerisque tincidunt Orcing varius natoque Donec tincidunt posuere ornare. phasellus placerat odionon feugiating volutpat, arcu tellus facilisis nulla,</p>
-                                            <a href="index-3.html#" class="food-btn style-2"><span>Read More</span></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-12 blog-right">
-                                <div class="row g-4">
-                                    <div class="col-md-6 col-12">
-                                        <div class="post-item">
-                                            <div class="post-inner">
-                                                <div class="post-thumb">
-                                                    <a href="index-3.html#">
-                                                        <img src="assets/images/blog/02.jpg" alt="petuk-blog" />
-                                                    </a>
-                                                </div>
-                                                <div class="post-content">
-                                                    <div class="meta-tag">
-                                                        <div class="categori">
-                                                            <a href="index-3.html#">Chicken</a>
-                                                        </div>
-                                                    </div>
-                                                    <h6><a href="index-3.html#">My New Favourite Recipes For Healthy</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="post-item">
-                                            <div class="post-inner">
-                                                <div class="post-thumb">
-                                                    <a href="index-3.html#">
-                                                        <img src="assets/images/blog/03.jpg" alt="petuk-blog" />
-                                                    </a>
-                                                </div>
-                                                <div class="post-content">
-                                                    <div class="meta-tag">
-                                                        <div class="categori">
-                                                            <a href="index-3.html#">Chicken</a>
-                                                        </div>
-                                                    </div>
-                                                    <h6><a href="index-3.html#">My New Favourite Recipes For Healthy</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="post-item">
-                                            <div class="post-inner">
-                                                <div class="post-thumb">
-                                                    <a href="index-3.html#">
-                                                        <img src="assets/images/blog/04.jpg" alt="petuk-blog" />
-                                                    </a>
-                                                </div>
-                                                <div class="post-content">
-                                                    <div class="meta-tag">
-                                                        <div class="categori">
-                                                            <a href="index-3.html#">Chicken</a>
-                                                        </div>
-                                                    </div>
-                                                    <h6><a href="index-3.html#">My New Favourite Recipes For Healthy</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="post-item">
-                                            <div class="post-inner">
-                                                <div class="post-thumb">
-                                                    <a href="index-3.html#">
-                                                        <img src="assets/images/blog/05.jpg" alt="petuk-blog" />
-                                                    </a>
-                                                </div>
-                                                <div class="post-content">
-                                                    <div class="meta-tag">
-                                                        <div class="categori">
-                                                            <a href="index-3.html#">Chicken</a>
-                                                        </div>
-                                                    </div>
-                                                    <h6><a href="index-3.html#">My New Favourite Recipes For Healthy</a></h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> */}
-
-            <section class="product style-3 padding-tb bg-body ">
-                <div class="container">
-                    <div class="section-header style-2">
-                        <h4>Popular Products</h4>
-                        <a href="index-3.html#" class="text-btn">All Products<i class="icofont-rounded-double-right"></i></a>
-                    </div>
-                    <div class="section-wrapper">
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6 col-12">
-                                <div class="product-item">
-                                    <div class="product-thumb">
-                                        <img src="assets/images/product/01.jpg" alt="food-product" />
-                                        <span class="price">$10</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <p>Mexican Food</p>
-                                        <h6><a href="index-3.html#">Cream Chicken Chiladas</a></h6>
-                                        <div class="rating">
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 col-12">
-                                <div class="product-item">
-                                    <div class="product-thumb">
-                                        <img src="assets/images/product/02.jpg" alt="food-product" />
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <p>Mexican Food</p>
-                                        <h6><a href="index-3.html#">Cream Chicken Chiladas</a></h6>
-                                        <div class="rating">
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 col-12">
-                                <div class="product-item">
-                                    <div class="product-thumb">
-                                        <img src="assets/images/product/03.jpg" alt="food-product" />
-                                        <span class="price">$30</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <p>Mexican Food</p>
-                                        <h6><a href="index-3.html#">Cream Chicken Chiladas</a></h6>
-                                        <div class="rating">
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 col-12">
-                                <div class="product-item">
-                                    <div class="product-thumb">
-                                        <img src="assets/images/product/04.jpg" alt="food-product" />
-                                        <span class="price">$40</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <p>Mexican Food</p>
-                                        <h6><a href="index-3.html#">Cream Chicken Chiladas</a></h6>
-                                        <div class="rating">
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-
-            <section class="product style-4 padding-tb bg-body pb-0">
-                <div class="container">
-                    <div class="section-header style-2">
-                        <h4>Recipes Books</h4>
-                        <a href="index-3.html#" class="text-btn">All Products<i class="icofont-rounded-double-right"></i></a>
-                    </div>
-                    <div class="section-wrapper">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                                <div class="product-item">
-                                    <div class="product-thumb">
-                                        <img src="assets/images/product/home-3/01.jpg" alt="food-product" />
-                                        <span class="price">$10</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <p>Mexican Food</p>
-                                        <h6><a href="index-3.html#">Cream Chicken Chiladas</a></h6>
-                                        <div class="rating">
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                                <div class="product-item">
-                                    <div class="product-thumb">
-                                        <img src="assets/images/product/home-3/02.jpg" alt="food-product" />
-                                        <span class="price">$20</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <p>Mexican Food</p>
-                                        <h6><a href="index-3.html#">Cream Chicken Chiladas</a></h6>
-                                        <div class="rating">
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                                <div class="product-item">
-                                    <div class="product-thumb">
-                                        <img src="assets/images/product/home-3/03.jpg" alt="food-product" />
-                                        <span class="price">$30</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <p>Mexican Food</p>
-                                        <h6><a href="index-3.html#">Cream Chicken Chiladas</a></h6>
-                                        <div class="rating">
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-lg-4 col-md-6 col-12">
-                                <div class="product-item">
-                                    <div class="product-thumb">
-                                        <img src="assets/images/product/home-3/04.jpg" alt="food-product" />
-                                        <span class="price">$40</span>
-                                    </div>
-                                    <div class="product-content">
-                                        <p>Mexican Food</p>
-                                        <h6><a href="index-3.html#">Cream Chicken Chiladas</a></h6>
-                                        <div class="rating">
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                            <i class="icofont-star"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
             <section class="blog-section overflow-hidden trending padding-tb bg-body home-3 pb-0">
                 <div class="container">
                     <div class="section-header style-2">
-                        <h4>Trending Posts</h4>
-                        <a href="index-3.html#" class="text-btn">View All Posts<i class="icofont-rounded-double-right"></i></a>
+                        <h4>トレンド投稿</h4>
+                        <a href="index-3.html#" class="text-btn">すべて<i class="icofont-rounded-double-right"></i></a>
                     </div>
                     <div class="section-wrapper">
                         <div class="row g-4">
@@ -859,15 +198,15 @@ const Homepage = () => {
                                             <div class="post-content">
                                                 <div class="meta-tag">
                                                     <div class="categori">
-                                                        <a href="index-3.html#">Chicken</a>
+                                                        <a href="index-3.html#">CNN</a>
                                                     </div>
                                                 </div>
-                                                <h5><a href="index-3.html#">Top Japanese Best Restaurants For Sush..</a></h5>
+                                                <h5><a href="index-3.html#">寿司のための日本のトップレストラン</a></h5>
                                                 <div class="meta-post">
                                                     <ul>
                                                         <li>
                                                             <i class="icofont-calendar"></i>
-                                                            <a href="index-3.html#" class="date">12 May 2021</a>
+                                                            <a href="index-3.html#" class="date">12 2024</a>
                                                         </li>
                                                         <li>
                                                             <i class="icofont-eye"></i>
@@ -895,15 +234,15 @@ const Homepage = () => {
                                         <div class="post-content">
                                             <div class="meta-tag">
                                                 <div class="categori">
-                                                    <a href="index-3.html#">Chicken</a>
+                                                    <a href="index-3.html#">BBC</a>
                                                 </div>
                                             </div>
-                                            <h6><a href="index-3.html#">My New Favourite Recipes For Healthy</a></h6>
+                                            <h6><a href="index-3.html#">新しいお気に入りのヘルシーレシピ</a></h6>
                                             <div class="meta-post">
                                                 <ul>
                                                     <li>
                                                         <i class="icofont-calendar"></i>
-                                                        <a href="index-3.html#" class="date">12 May 2021</a>
+                                                        <a href="index-3.html#" class="date">12 2024</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -922,15 +261,15 @@ const Homepage = () => {
                                         <div class="post-content">
                                             <div class="meta-tag">
                                                 <div class="categori">
-                                                    <a href="index-3.html#">Chicken</a>
+                                                    <a href="index-3.html#">MNC</a>
                                                 </div>
                                             </div>
-                                            <h6><a href="index-3.html#">My New Favourite Recipes For Healthy</a></h6>
+                                            <h6><a href="index-3.html#">新しいお気に入りのヘルシーレシピ</a></h6>
                                             <div class="meta-post">
                                                 <ul>
                                                     <li>
                                                         <i class="icofont-calendar"></i>
-                                                        <a href="index-3.html#" class="date">12 May 2021</a>
+                                                        <a href="index-3.html#" class="date">12 2024</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -947,8 +286,8 @@ const Homepage = () => {
                 <div class="container">
                     <div class="gallery-area">
                         <div class="section-header style-2">
-                            <h4>Photo Galleries</h4>
-                            <a href="index-3.html#" class="text-btn">View All Photos<i class="icofont-rounded-double-right"></i></a>
+                            <h4>写真ギャラリー</h4>
+                            <a href="index-3.html#" class="text-btn">すべて<i class="icofont-rounded-double-right"></i></a>
                         </div>
                         <div class="section-wrapper">
                             <div class="row justify-content-center g-0">
@@ -1010,14 +349,14 @@ const Homepage = () => {
                 <div class="container">
                     <div class="section-wrapper">
                         <div class="news-title">
-                            <h3>For Newsletter</h3>
+                            <h3>ニュースレター</h3>
                         </div>
                         <div class="news-form">
                             <form action="https://foxcoders.com/">
                                 <label>
-                                    <input type="email" name="email" placeholder="Enter Your Email" />
+                                    <input type="email" name="email" placeholder="メールアドレスを入力" />
                                 </label>
-                                <input type="submit" name="submit" value="Subscribe now" />
+                                <input type="submit" name="submit" value="今すぐ購読" />
                             </form>
                         </div>
                     </div>
