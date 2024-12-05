@@ -1,9 +1,16 @@
 import express from 'express';
-import { getFavoriteFoodById } from '../controllers/favoriteController.js';
+import { getFavoriteFoodById, addToFavorite, removeFromFavorite } from '../controllers/favoriteController.js';
+import { authMiddleware } from '../middlewares/authMiddleware.js';
 
-const route = express.Router();
+const router = express.Router();
 
 // Route get favorite food by userId
-route.get('/favorites/:userId', getFavoriteFoodById);
+router.get('/favorites/:userId', getFavoriteFoodById);
 
-export default route;
+// Route to add favorite food
+router.post('/add-favorites', authMiddleware, addToFavorite);
+
+// Route to remove favorite food
+router.delete('/favorites/:foodId', authMiddleware, removeFromFavorite);
+
+export default router;
