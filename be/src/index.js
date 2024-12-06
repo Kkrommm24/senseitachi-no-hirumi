@@ -7,6 +7,7 @@ import foodRoutes from './routes/foodRoutes.js';
 import searchbytagRoutes from './routes/searchbytagRoutes.js';
 import favoriteRoutes from './routes/favoriteRoutes.js';
 import authRoutes from './routes/authRoutes.js';
+import commentRoutes from './routes/commentRoutes.js';
 
 const app = express();
 const httpServer = createServer(app);
@@ -26,6 +27,7 @@ app.use('/api', foodRoutes);
 app.use('/api', searchbytagRoutes);
 app.use('/api', favoriteRoutes);
 app.use('/api', authRoutes);
+app.use('/api', commentRoutes);
 
 app.use(errorHandler);
 
