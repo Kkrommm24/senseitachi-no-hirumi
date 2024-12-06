@@ -21,6 +21,7 @@ model User {
   avatar   String?
   favorites Favorite[]
   comments  Comment[]
+  favoriteTags UserFavoriteTag[]
 }
 
 model Food {
@@ -69,6 +70,7 @@ model Tag {
   id    Int     @id @default(autoincrement())
   name  String  @unique
   foodTags FoodTag[]
+  userFavoriteTags UserFavoriteTag[] 
 }
 
 model Favorite {
@@ -77,6 +79,14 @@ model Favorite {
   foodId Int
   user   User  @relation(fields: [userId], references: [id])
   food   Food  @relation(fields: [foodId], references: [id])
+}
+
+model UserFavoriteTag {  
+  id     Int   @id @default(autoincrement())  
+  userId Int  
+  tagId  Int  
+  user   User  @relation(fields: [userId], references: [id])  
+  tag    Tag   @relation(fields: [tagId], references: [id])  
 }
 
 model Comment {
