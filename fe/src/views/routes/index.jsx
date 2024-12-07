@@ -6,6 +6,7 @@ import Homepage from 'views/pages/homepage'
 import RandomWheel from 'views/pages/wheelpage/RandomWheel.jsx';
 import FoodDetailPage from "views/pages/food-detail-page/FoodDetailPage";
 import SearchFoodPage from "views/pages/search-foods-page/SearchFoodPage";
+import TagPage from "views/pages/tags-page/TagPage";
 
 function AllRoutes() {
     return (
@@ -15,6 +16,7 @@ function AllRoutes() {
             <Route path="/choose-by-tag" element={<MainLayout><ChooseByTagPage /></MainLayout>} />
             <Route path="/foods/:foodId" element={<MainLayout><FoodDetailPage /></MainLayout>} />
             <Route path="/foods/search" element={<MainLayout><SearchFoodPage /></MainLayout>} />
+            <Route path="/tags" element={<MainLayout><TagPage /></MainLayout>} />
         </Routes>
     );
 }

@@ -13,7 +13,7 @@ const API = axios.create({
 API.interceptors.request.use(
   function (req) {
     // Lấy token từ localStorage hoặc sử dụng token cố định để kiểm tra
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTczMzU1OTc5NSwiZXhwIjoxNzMzNTYzMzk1fQ.7-JnWfKjGqQgAsSCsnVa9iDwWxq3BzlI5QhCVprCz-0';
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTczMzU4MDE3NSwiZXhwIjoxNzMzNTgzNzc1fQ.XYnURRvrsqlq2dBguWCz2IR6hHoowtI90MyME5jr5kI';
     // const token = JSON.parse(localStorage.getItem('token')); // nếu dùng localStorage
     // const token = undefined; // Nếu không có token
 
