@@ -134,7 +134,7 @@ const Header = () => {
         </nav>
       </div>
 
-      <header className="header-section header-3 d-xl-block d-none">
+      <header className="container header-section header-3 d-xl-block d-none my-0">
         <div className="container" style={{ padding: 0 }}>
           <div className="">
             <div className="header-top w-100">

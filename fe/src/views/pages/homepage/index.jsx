@@ -1,5 +1,8 @@
 import Food from "api/food";
 import { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+import FavoritesFood from "../favorites-food";
+import FoodList from "./food-list";
 
 const Homepage = () => {
 
@@ -25,10 +28,10 @@ const Homepage = () => {
     }, []);
 
     return (
-        <div>
-            <section class="recipe-categori padding-tb home-3 bg-body pb-0">
+        <div className="container bg-[#f5f5f1]">
+            <section class="recipe-categori pt-2 home-3 bg-body pb-0">
                 <div class="container">
-                    <div class="section-header style-2">
+                    <div class="section-header border-0 style-2">
                         <h4>レシピカテゴリー</h4>
                         <a href="index-3.html#" class="text-btn">すべてのレシピ<i class="icofont-rounded-double-right"></i></a>
                     </div>
@@ -119,72 +122,19 @@ const Homepage = () => {
                 </div>
             </section>
 
-            <section class="recent-recipe home-3 padding-tb bg-body pb-0">
+            <section class="recent-recipe home-3 pt-2 bg-body pb-0">
                 <div class="container">
-                    <div class="section-header style-2">
+                    <div class="section-header border-0 style-2">
                         <h4>人気のレシピ</h4>
                         <a href="index-3.html#" class="text-btn">すべて<i class="icofont-rounded-double-right"></i></a>
                     </div>
-                    <div class="section-wrapper">
-                        <div class="row justify-content-center">
-                            {foods.slice(0, 9).map((food) => (
-                                <div key={food.id} class="col-xl-4 col-md-6 col-12">
-                                    <div class="recipe-item">
-                                        <div class="recipe-thumb custom-img">
-                                            <a href="index-3.html#"> <img src={food.image} alt="food-recipe" /></a>
-                                        </div>
-                                        <div class="recipe-content">
-                                            <div class="meta-tag">
-                                                <div class="categori">
-                                                    <a href="index-3.html#">ホット</a>
-                                                </div>
-                                                <div class="rating">
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <i class="icofont-star"></i>
-                                                    <span>(5)</span>
-                                                </div>
-                                            </div>
-                                            <h6><a href="index-3.html#">{food.name}:{food.description}</a></h6>
-                                            <div class="meta-post">
-                                                <div style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
-                                                    <img
-                                                        src="assets/images/image.png"
-                                                        alt="food-recipe"
-                                                        style={{
-                                                            width: "30px",
-                                                            height: "30px",
-                                                            borderRadius: "50%",
-                                                        }}
-                                                    />
-
-                                                    <div
-                                                        style={{
-                                                            maxWidth: "calc(100% - 60px)", // Tự động tính toán chiều rộng trừ khoảng cách hình ảnh
-                                                            display: "block",
-                                                            wordWrap: "break-word", // Cho phép xuống dòng nếu text quá dài
-                                                            overflow: "hidden",
-                                                            textOverflow: "ellipsis",
-                                                        }}
-                                                    >
-                                                        {food.comments[0].content}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+                    <FoodList foods={foods} />
                 </div>
             </section>
 
-            <section class="blog-section overflow-hidden trending padding-tb bg-body home-3 pb-0">
+            <section class="blog-section overflow-hidden trending pt-2 bg-body home-3 pb-0">
                 <div class="container">
-                    <div class="section-header style-2">
+                    <div class="section-header border-0 style-2">
                         <h4>トレンド投稿</h4>
                         <a href="index-3.html#" class="text-btn">すべて<i class="icofont-rounded-double-right"></i></a>
                     </div>
@@ -282,10 +232,10 @@ const Homepage = () => {
                 </div>
             </section>
 
-            <section class="gallery-section padding-tb bg-body">
+            <section class="gallery-section pt-2 bg-body">
                 <div class="container">
                     <div class="gallery-area">
-                        <div class="section-header style-2">
+                        <div class="section-header border-0 style-2">
                             <h4>写真ギャラリー</h4>
                             <a href="index-3.html#" class="text-btn">すべて<i class="icofont-rounded-double-right"></i></a>
                         </div>
@@ -363,6 +313,7 @@ const Homepage = () => {
                 </div>
             </div>
             <a href="index-3.html#" class="scrollToTop"><i class="icofont-swoosh-up"></i></a>
+            <FavoritesFood />
         </div>
     )
 }
