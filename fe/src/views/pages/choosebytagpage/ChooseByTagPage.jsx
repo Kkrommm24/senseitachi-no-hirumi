@@ -29,8 +29,18 @@ const ChooseByTagPage = () => {
     // setLoading(false);
   };
 
+  const getFavouriteTags = async () => {
+    try {
+      const response = await Tag.getFavouriteTags()
+      setSelectedTags(response.data.data.map(tag => tag.name));
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     getAllTags();
+    getFavouriteTags();
   }, []);
 
   const handleTagChange = (tagName) => {
@@ -51,12 +61,16 @@ const ChooseByTagPage = () => {
     }
   };
 
+  
+
   useEffect(() => {
     const tagNames = selectedTags.length ? selectedTags.join(', ') : undefined;
     if (tagNames) {
       getFoodByTags(tagNames);
     }
     else setDishes([])
+
+
   }, [selectedTags])
 
   const handleDishSelection = (dishId) => {
