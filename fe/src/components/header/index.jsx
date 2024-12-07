@@ -1,9 +1,10 @@
 import Food from "api/food";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   // const options = [
   //   { value: "1", label: "My Account" },
   //   { value: "3", label: "Profile" },
@@ -18,10 +19,26 @@ const Header = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  // Hàm thay đổi giá trị input
+  const queryName = searchParams.get("name");
+  const hasNameParam = searchParams.has("name");
+
   const handleInputChange = async (e) => {
     setSearchTerm(e.target.value);
-    await handleSearch(e.target.value);
+    if (!hasNameParam) {
+      await handleSearch(e.target.value);
+    } else setSearchParams({ name: e.target.value });
+  };
+
+  useEffect(() => {
+    setSearchTerm(queryName);
+  }, [queryName]);
+
+  const handleKeyDown = (e) => {
+    console.log(searchTerm);
+    if (e.key === "Enter") {
+      e.preventDefault();
+      navigate(`/foods/search?name=${searchTerm}`);
+    }
   };
 
   const handleSearch = async (searchTerm) => {
@@ -35,8 +52,6 @@ const Header = () => {
       }
     }
   };
-
-  console.log(searchResults[0]);
 
   return (
     <div>
@@ -137,9 +152,12 @@ const Header = () => {
                       name="s"
                       value={searchTerm}
                       onChange={handleInputChange}
+                      onKeyDown={handleKeyDown}
                       onBlur={() => {
-                        setSearchTerm("");
-                        setSearchResults([]);
+                        if (!hasNameParam) {
+                          setSearchTerm("");
+                          setSearchResults([]);
+                        }
                       }}
                     />
                     <button
@@ -151,7 +169,8 @@ const Header = () => {
                   </form>
                 </div>
                 {searchResults.length > 0 &&
-                searchResults[0] != "食べ物は見つかりませんでした。" ? (
+                searchResults[0] !== "食べ物は見つかりませんでした。" &&
+                !hasNameParam ? (
                   <div className="search-results absolute w-[607.67px] mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-10">
                     <ul>
                       {searchResults.map((item, index) => (
@@ -184,7 +203,8 @@ const Header = () => {
                     </ul>
                   </div>
                 ) : (
-                  searchResults.length > 0 && (
+                  searchResults.length > 0 &&
+                  !hasNameParam && (
                     <div className="search-results absolute w-[607.67px] text-gray-400 h-20 px-5 flex justify-center items-center mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-10">
                       食べ物は見つかりませんでした。
                     </div>
