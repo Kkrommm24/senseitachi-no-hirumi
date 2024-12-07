@@ -69,6 +69,7 @@ export const getFoodDetails = async (req, res) => {
       name: food.name,
       image: food.image,
       description: food.description,
+      price: food.price,
       tags: Array.isArray(food.foodTag) ? food.foodTag.map((ft) => ft.tag?.name) : [],
       restaurants: Array.isArray(food.foodRestaurant)
         ? food.foodRestaurant.map((fr) => ({
