@@ -28,7 +28,7 @@ const Header = () => {
             <div class="mobile-menu">
                 <nav class="mobile-header d-xl-none">
                     <div class="header-logo">
-                        <a href="index.html" class="logo"><img src="assets/images/logo/01.png" alt="logo" /></a>
+                        <a href="index.html" class="logo"><img src="./assets/images/logo/01.png" alt="logo" /></a>
                     </div>
                     <div class="header-bar">
                         <span></span>
