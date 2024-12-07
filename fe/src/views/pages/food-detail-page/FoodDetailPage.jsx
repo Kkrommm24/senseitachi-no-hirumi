@@ -1,9 +1,33 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Food from "api/food";
+import Comment from "api/comment";
 
 const FoodDetailPage = () => {
   const { foodId } = useParams();
+  const [comment, setComment] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (comment.trim() === "") {
+      return;
+    }
+
+    try {
+      await Comment.saveComment(foodId, comment);
+      setComment("");
+    } catch (error) {
+      console.error("コメントの送信中にエラーが発生しました:", error);
+    }
+
+    try {
+      const response = await Food.getFoodDetail(foodId);
+      setFoodData(response.data);
+    } catch (error) {
+      console.error("Lỗi khi lấy chi tiết món ăn:", error);
+    }
+  };
+
   const [foodData, setFoodData] = useState({
     id: foodId,
     name: "Sushi",
@@ -13,9 +37,10 @@ const FoodDetailPage = () => {
       "Sushi là một món ăn truyền thống của Nhật Bản, được làm từ cơm trộn giấm và hải sản tươi.",
     restaurants: ["Tokyo Deli", "Sushi World"],
     comments: [
-      { username: "Alice", content: "Món này rất ngon!" },
-      { username: "Bob", content: "Tôi thích vị tươi của cá." },
+      { userName: "Alice", content: "Món này rất ngon!" },
+      { userName: "Bob", content: "Tôi thích vị tươi của cá." },
     ],
+    price: "700000",
     isFavorite: true,
   });
 
@@ -40,7 +65,12 @@ const FoodDetailPage = () => {
 
   return (
     <div className="max-w-6xl mx-auto p-6">
-      <h1 className="text-3xl font-bold text-gray-800 mb-4">{foodData.name}</h1>
+      <h1 className="text-3xl font-bold text-gray-800 mb-4">
+        {foodData.name}
+        <span className="text-xl text-gray-500 italic font-normal ml-5">
+          {foodData.price} VND
+        </span>
+      </h1>
 
       <div className="flex gap-6">
         <div className="flex-1">
@@ -139,17 +169,19 @@ const FoodDetailPage = () => {
                 className="p-3 bg-white rounded-lg shadow-sm border border-gray-200"
               >
                 <strong className="block text-gray-900">
-                  {comment.username ? comment.username : comment.userId}
+                  {comment.userName ? comment.userName : comment.userId}
                 </strong>
                 <p className="text-gray-600">{comment.content}</p>
               </div>
             ))}
           </div>
 
-          <form className="mt-6 space-y-3">
+          <form onSubmit={handleSubmit} className="mt-6 space-y-3">
             <textarea
+              onChange={(e) => setComment(e.target.value)}
               placeholder="コメントを追加..."
               className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
+              value={comment}
             />
             <button
               type="submit"
