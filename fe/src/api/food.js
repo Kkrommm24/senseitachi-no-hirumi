@@ -13,6 +13,15 @@ const Food = {
         tags: tagNames,
       }
     });
+  },
+
+  getFoodDetail: (foodId) => {
+    const url = '/get-food-detail'
+    return API.get(url, {
+      params: {
+        id: foodId,
+      }
+    })
   }
 
 }
