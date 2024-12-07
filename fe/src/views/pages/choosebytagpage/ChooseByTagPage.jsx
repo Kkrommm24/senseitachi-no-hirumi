@@ -69,7 +69,7 @@ const ChooseByTagPage = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container w-3/4 min-w-[700px] max-w-[1200px] m-auto">
       <h1 className="title">タグで料理を選ぶ</h1>
 
       <div className="tag-selection">
