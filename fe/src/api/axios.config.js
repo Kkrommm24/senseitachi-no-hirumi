@@ -12,13 +12,20 @@ const API = axios.create({
 
 API.interceptors.request.use(
   function (req) {
-    const token = JSON.parse(localStorage.getItem('token'))
-    if (token) req.headers['auth-token'] = token
-    return req
+    // Lấy token từ localStorage hoặc sử dụng token cố định để kiểm tra
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTczMzU1OTc5NSwiZXhwIjoxNzMzNTYzMzk1fQ.7-JnWfKjGqQgAsSCsnVa9iDwWxq3BzlI5QhCVprCz-0';
+    // const token = JSON.parse(localStorage.getItem('token')); // nếu dùng localStorage
+    // const token = undefined; // Nếu không có token
+
+    if (token) {
+      req.headers['Authorization'] = `Bearer ${token}`;
+    }
+    return req;
   },
   function (error) {
-    return Promise.reject(error)
-  },
-)
+    return Promise.reject(error);
+  }
+);
+
 
 export default API
