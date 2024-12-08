@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-// FAVORITE TAGS
+// SAVE FAVORITE TAGS
 export const saveFavoriteTag = async (req, res) => {
   const userId = req.userId;
   const tagIds = req.body.tagIds;
@@ -16,30 +16,35 @@ export const saveFavoriteTag = async (req, res) => {
   }
 
   try {
-    const validTagIds = await prisma.tag.findMany({
+    const existingTags = await prisma.userFavoriteTag.findMany({
       where: {
-        id: { in: tagIds },
+        userId,
+        tagId: { in: tagIds }
       },
       select: {
-        id: true,
-        name: true,
-      },
+        tagId: true
+      }
     });
 
-    const favoriteTags = await prisma.userFavoriteTag.createMany({
-      data: tagIds.map(tagId => ({
-        userId,
-        tagId
-      })),
-    });
+    const existingTagIds = existingTags.map(tag => tag.tagId);
+    const newTagIds = tagIds.filter(tagId => !existingTagIds.includes(tagId));
+
+    if (newTagIds.length > 0) {
+      await prisma.userFavoriteTag.createMany({
+        data: newTagIds.map(tagId => ({
+          userId,
+          tagId
+        }))
+      });
+    }
 
     const savedFavoriteTags = await prisma.tag.findMany({
       where: {
         id: { in: tagIds },
       },
       select: {
-        name: true,  // Lấy tên của tag
-      },
+        name: true
+      }
     });
 
     return res.status(201).json({
