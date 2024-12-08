@@ -16,3 +16,4 @@
 - Chạy lệnh node -e "console.log(require('crypto').randomBytes(64).toString('hex'))" để JWT_SECRET dưới be
 - Đối với BE, thì thực hiện login (viết request login, đã có route trong be) -> copy token -> vào request -> Authorization -> Bearer Token -> Paste token đã copy vào là chạy được
 - xem db: npx prisma studio
+- tạo tài khoản cloudinary và copy các thông số trong example vào .env của mình

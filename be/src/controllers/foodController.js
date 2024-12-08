@@ -99,11 +99,15 @@ export const getAllFoods = async (req, res) => {
 export const addFood = async (req, res) => {
   const { name, description, image, price, ingredients, flavors, tags, restaurant } = req.body;
 
+  console.log('Input data:', req.body);
+
   try {
     // Validate ingredients
     const validIngredients = await prisma.ingredient.findMany({
       where: { name: { in: ingredients } }
     });
+
+    console.log('Valid ingredients:', validIngredients);
 
     if (validIngredients.length !== ingredients.length) {
       return res.status(400).json({ message: 'Invalid ingredients' });
@@ -114,6 +118,8 @@ export const addFood = async (req, res) => {
       where: { name: { in: flavors } }
     });
 
+    console.log('Valid flavors:', validFlavors);
+
     if (validFlavors.length !== flavors.length) {
       return res.status(400).json({ message: 'Invalid flavors' });
     }
@@ -122,6 +128,8 @@ export const addFood = async (req, res) => {
     const validTags = await prisma.tag.findMany({
       where: { name: { in: tags } }
     });
+
+    console.log('Valid tags:', validTags);
 
     if (validTags.length !== tags.length) {
       return res.status(400).json({ message: 'Invalid tags' });
@@ -135,6 +143,8 @@ export const addFood = async (req, res) => {
       }
     });
 
+    console.log('Restaurant data:', restaurantData);
+
     if (!restaurantData) {
       restaurantData = await prisma.restaurant.create({
         data: {
@@ -144,6 +154,8 @@ export const addFood = async (req, res) => {
           latitude: restaurant.latitude,
         }
       });
+
+      console.log('Created restaurant data:', restaurantData);
     }
 
     const newFood = await prisma.food.create({
@@ -182,6 +194,8 @@ export const addFood = async (req, res) => {
         }
       }
     });
+
+    console.log('Created food data:', newFood);
 
     res.status(201).json(newFood);
   } catch (error) {
