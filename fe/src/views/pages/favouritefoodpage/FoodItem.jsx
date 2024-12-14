@@ -12,7 +12,7 @@ const FoodItem = ({ id, image, name, removeFood }) => {
       <div className="p-3 flex justify-between items-center">
         <h2 className="text-lg font-medium text-gray-800">{name}</h2>
         <button
-          onClick={() => removeFood(food.id)}
+          onClick={() => removeFood(id)}
           className="text-red-500 hover:text-red-600 p-1"
           >
           <i className="fas fa-trash"></i>

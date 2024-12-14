@@ -5,7 +5,7 @@ import { authMiddleware } from '../middlewares/authMiddleware.js';
 const router = express.Router();
 
 // Route get favorite food by userId
-router.get('/favorites/:userId', getFavoriteFoodById);
+router.get('/favorites', authMiddleware, getFavoriteFoodById);
 
 // Route to add favorite food
 router.post('/add-favorites', authMiddleware, addToFavorite);

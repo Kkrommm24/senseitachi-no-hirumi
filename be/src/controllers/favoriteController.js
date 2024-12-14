@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export const getFavoriteFoodById = async (req, res) => {
-  const userId = parseInt(req.params.userId);
+  const userId = parseInt(req.userId);
   const { page, limit } = req.query;
 
   const pageNumber = page ? parseInt(page) : null;
