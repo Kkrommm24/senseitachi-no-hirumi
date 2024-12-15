@@ -1,14 +1,14 @@
-import axios from 'axios'
-import queryString from 'query-string'
+import axios from 'axios';
+import queryString from 'query-string';
 
 const API = axios.create({
-  baseURL: 'http://localhost:3000/api',
-  withCredentials: true,
-  headers: {
-    'content-type': 'application/json',
-  },
-  paramsSerializer: (params) => queryString.stringify(params),
-})
+    baseURL: 'http://localhost:3000/api',
+    withCredentials: true,
+    headers: {
+        'content-type': 'application/json',
+    },
+    paramsSerializer: (params) => queryString.stringify(params),
+});
 
 API.interceptors.request.use(
   function (req) {
@@ -21,4 +21,4 @@ API.interceptors.request.use(
   },
 )
 
-export default API
+export default API;
