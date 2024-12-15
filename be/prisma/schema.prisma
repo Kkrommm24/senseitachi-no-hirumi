@@ -28,7 +28,7 @@ model Food {
   id          Int            @id @default(autoincrement())
   name        String
   description String?
-  image       String?
+  images      FoodImage[]
   price       Float
   ingredients FoodIngredient[]
   flavors     FoodFlavor[]
@@ -36,6 +36,13 @@ model Food {
   comments    Comment[]
   foodRestaurant FoodRestaurant[]
   foodTag     FoodTag[]
+}
+
+model FoodImage {
+  id      Int    @id @default(autoincrement())
+  url     String
+  foodId  Int
+  food    Food   @relation(fields: [foodId], references: [id])
 }
 
 model Ingredient {
