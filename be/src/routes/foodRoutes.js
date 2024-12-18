@@ -20,6 +20,6 @@ router.get('/tags', getTags);
 router.get('/all-foods', getAllFoods);
 
 // Route thêm món ăn
-router.post('/add-food', authMiddleware, addFood);
+router.post('/add-food', addFood);
 
 export default router;

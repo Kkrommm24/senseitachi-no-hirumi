@@ -49,6 +49,29 @@ const Food = {
         const url = '/add-favorites/';
         return API.post(url, { foodId });
     },
+    uploadImage: (image) => {
+        const url = '/upload-images';
+        const formData = new FormData();
+        formData.append('image', image);
+
+        return API.post(url, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+    },
+    getIngredients: () => {
+        const url = '/ingredients';
+        return API.get(url);
+    },
+    getFlavors: () => {
+        const url = '/flavors';
+        return API.get(url);
+    },
+    addFood: (foodData) => {
+        const url = '/add-food';
+        return API.post(url, foodData);
+    }
 };
 
 export default Food;
