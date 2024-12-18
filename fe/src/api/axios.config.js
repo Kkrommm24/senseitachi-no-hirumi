@@ -12,9 +12,8 @@ const API = axios.create({
 
 API.interceptors.request.use(
     function (req) {
-        const token =
-            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjExLCJpYXQiOjE3MzM1NTY5MTAsImV4cCI6MTc2NTk1NjkxMH0.w6fzWP44DCvcfbACylhFDmZh7imUUlc8ksxK7H5lP4Y';
-        // const token = JSON.parse(localStorage.getItem('token')); // nếu dùng localStorage
+        const token = '7c1dac99392c81a66697b4b8ae1acd4613d4d042f282a736fe9da8d8bc518267b9550c6422cfb7b3d8b805743fafeb9319b090074032e944792f8b24c7b2bfc1';
+        // const token = localStorage.getItem('token'); // nếu dùng localStorage
 
         if (token) {
             req.headers['Authorization'] = `Bearer ${token}`;

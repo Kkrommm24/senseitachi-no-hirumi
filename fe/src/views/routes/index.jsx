@@ -7,6 +7,8 @@ import RandomWheel from 'views/pages/wheelpage/RandomWheel.jsx';
 import FoodDetailPage from "views/pages/food-detail-page/FoodDetailPage";
 import SearchFoodPage from "views/pages/search-foods-page/SearchFoodPage";
 import TagPage from "views/pages/tags-page/TagPage";
+import FavoriteFoodPage from "views/pages/favouritefoodpage";
+import ShareFoodPage from "views/pages/sharefoodpage";
 
 function AllRoutes() {
     return (
