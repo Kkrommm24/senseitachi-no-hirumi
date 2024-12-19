@@ -67,7 +67,7 @@ export const getFoodDetails = async (req, res) => {
     // Chuẩn bị dữ liệu trả về
     const foodDetails = {
       name: food.name,
-      image: food.image,
+      images: food.images,
       description: food.description,
       price: food.price,
       tags: Array.isArray(food.foodTag) ? food.foodTag.map((ft) => ft.tag?.name) : [],

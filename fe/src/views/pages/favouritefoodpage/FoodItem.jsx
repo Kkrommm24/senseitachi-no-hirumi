@@ -1,11 +1,11 @@
-const FoodItem = ({ id, image, name, removeFood }) => {
+const FoodItem = ({ id, images, name, removeFood }) => {
   return (
     <div 
     key={id}
     className="bg-white rounded-lg shadow-md overflow-hidden"
     >
       <img
-        src={image}
+        src={images[0]}
         alt={name}
         className="w-full aspect-square object-cover"
       />

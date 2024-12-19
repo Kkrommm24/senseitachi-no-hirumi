@@ -30,7 +30,7 @@ const FoodList = ({ foods }) => {
                                 <div className="recipe-item">
                                     <div className="recipe-thumb custom-img">
                                         <a href="l#">
-                                            <img src={food.image} alt="food-recipe" />
+                                            <img src={food.images[0]} alt="food-recipe" />
                                         </a>
                                     </div>
                                     <div className="recipe-content">

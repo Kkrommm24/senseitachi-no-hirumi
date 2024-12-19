@@ -162,6 +162,7 @@ export const addFood = async (req, res) => {
       data: {
         name,
         description,
+        images,
         price,
         ingredients: {
           create: validIngredients.map(ingredient => ({
@@ -193,15 +194,6 @@ export const addFood = async (req, res) => {
         }
       }
     });
-
-    if (images && images.length > 0) {
-      await prisma.foodImage.createMany({
-        data: images.map(imageUrl => ({
-          url: imageUrl,
-          foodId: newFood.id
-        }))
-      });
-    }
 
     console.log('Created food data:', newFood);
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Food from "api/food";
 import Comment from "api/comment";
@@ -6,6 +6,21 @@ import Comment from "api/comment";
 const FoodDetailPage = () => {
   const { foodId } = useParams();
   const [comment, setComment] = useState("");
+  const [foodData, setFoodData] = useState({
+    id: foodId,
+    name: "Sushi",
+    images: ["https://example.com/sushi.jpg"],
+    tags: ["Japanese", "Seafood", "Rice"],
+    description:
+      "Sushi là một món ăn truyền thống của Nhật Bản, được làm từ cơm trộn giấm và hải sản tươi.",
+    restaurants: ["Tokyo Deli", "Sushi World"],
+    comments: [
+      { userName: "Alice", content: "Món này rất ngon!" },
+      { userName: "Bob", content: "Tôi thích vị tươi của cá." },
+    ],
+    price: "700000",
+    isFavorite: true,
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,22 +42,6 @@ const FoodDetailPage = () => {
       console.error("Lỗi khi lấy chi tiết món ăn:", error);
     }
   };
-
-  const [foodData, setFoodData] = useState({
-    id: foodId,
-    name: "Sushi",
-    image: "https://example.com/sushi.jpg",
-    tags: ["Japanese", "Seafood", "Rice"],
-    description:
-      "Sushi là một món ăn truyền thống của Nhật Bản, được làm từ cơm trộn giấm và hải sản tươi.",
-    restaurants: ["Tokyo Deli", "Sushi World"],
-    comments: [
-      { userName: "Alice", content: "Món này rất ngon!" },
-      { userName: "Bob", content: "Tôi thích vị tươi của cá." },
-    ],
-    price: "700000",
-    isFavorite: true,
-  });
 
   const toggleFavorite = () => {
     // Chuyển đổi trạng thái
@@ -75,7 +74,7 @@ const FoodDetailPage = () => {
       <div className="flex gap-6">
         <div className="flex-1">
           <img
-            src={foodData.image}
+            src={foodData.images[0]}
             alt={foodData.name}
             className="w-full h-80 object-cover rounded-lg shadow-md mb-6"
           />
