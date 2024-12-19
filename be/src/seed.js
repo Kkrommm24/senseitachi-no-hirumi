@@ -23,7 +23,7 @@ async function main() {
   await prisma.foodRestaurant.deleteMany();
   await prisma.comment.deleteMany();
   await prisma.favorite.deleteMany();
-  await prisma.userFavoriteTag.deleteMany(); 
+  await prisma.userFavoriteTag.deleteMany();
   await prisma.food.deleteMany();
   await prisma.ingredient.deleteMany();
   await prisma.flavor.deleteMany();

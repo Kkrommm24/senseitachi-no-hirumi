@@ -1,5 +1,12 @@
 export const User = [
   {
+    name: 'Admin User',
+    email: 'admin@example.com',
+    password: 'adminpassword',
+    avatar: 'https://gravatar.com/avatar/00000000000000000000000000000000?s=400&d=identicon&r=x',
+    isAdmin: true, // Admin account
+  },
+  {
     name: '山田 太郎',
     email: 'taro.yamada@example.jp',
     password: 'a1b2c3d4',
