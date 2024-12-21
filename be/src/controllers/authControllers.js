@@ -5,6 +5,40 @@ import { addToken, removeToken } from '../tokenStore.js';
 
 const prisma = new PrismaClient();
 
+export const signup = async (req, res) => {
+  const { email, password, name } = req.body;
+  try {
+    const existingUser = await prisma.user.findUnique({
+      where: { email },
+    });
+    if (existingUser) {
+      return res.status(400).json({ error: 'Email aready exist!' });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = await prisma.user.create({
+      data: {
+        email,
+        password: hashedPassword,
+        name,
+        isAdmin: false,
+      },
+    });
+
+    return res.status(201).json({
+      message: 'Register successfully',
+      user: {
+        id: newUser.id,
+        email: newUser.email,
+        name: newUser.name,
+        isAdmin: newUser.isAdmin,
+      },
+    });
+  } catch (error) {
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+}
+
 export const login = async (req, res) => {
   const { email, password } = req.body;
 
