@@ -1,5 +1,15 @@
 import express from 'express';
-import { searchFoods, getIngredients, getFlavors, getTags, getAllFoods, addFood, getAdminOrUserFoods, updateFood, deleteFood } from '../controllers/foodController.js';
+import {
+    searchFoods,
+    getIngredients,
+    getFlavors,
+    getTags,
+    getAllFoods,
+    addFood,
+    getAdminOrUserFoods,
+    updateFood,
+    deleteFood,
+} from '../controllers/foodController.js';
 import { authMiddleware } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();

@@ -40,7 +40,11 @@
         "home_page_four": "ホームページ4",
         "home_page_five": "ホームページ5",
         "enter_here": "ここに入力して「エンター」キーを押してください...",
-        "no_food_found": "食べ物は見つかりませんでした。"
+        "no_food_found": "食べ物は見つかりませんでした。",
+        "add_favorites_success": "お気に入りリストに追加しました",
+        "add_favorites_error": "お気に入りリストへの追加に失敗しました",
+        "remove_favorites_success": "お気に入りリストから削除しました",
+        "remove_favorites_error": "お気に入りリストからの削除に失敗しました"
     },
     "vi": {
         "recipe_category": "Danh mục công thức",
@@ -83,6 +87,10 @@
         "home_page_four": "Trang chủ 4",
         "home_page_five": "Trang chủ 5",
         "enter_here": "Nhập vào đây và nhấn 'Enter'...",
-        "no_food_found": "Không tìm thấy món ăn nào."
+        "no_food_found": "Không tìm thấy món ăn nào.",
+        "add_favorites_success": "Thêm vào danh sách yêu thích thành công",
+        "add_favorites_error": "Lỗi khi thêm vào danh sách yêu thích",
+        "remove_favorites_success": "Xóa khỏi danh sách yêu thích thành công",
+        "remove_favorites_error": "Lỗi khi xóa khỏi danh sách yêu thích"
     }
 }

@@ -1,3 +1,4 @@
+import { removeFavorite } from 'store/slices/favoritesSlice';
 import API from './axios.config';
 
 const Food = {
@@ -48,6 +49,10 @@ const Food = {
     addFavoritesFood: (foodId) => {
         const url = '/add-favorites/';
         return API.post(url, { foodId });
+    },
+    removeFavoritesFood: (foodId) => {
+        const url = `/favorites/${foodId}`;
+        return API.delete(url);
     },
     uploadImage: (image) => {
         const url = '/upload-images';

@@ -1,4 +1,5 @@
 import { PrismaClient } from '@prisma/client';
+import jwt from 'jsonwebtoken';
 
 const prisma = new PrismaClient();
 
@@ -79,6 +80,21 @@ export const getTags = async (req, res) => {
 
 export const getAllFoods = async (req, res) => {
     try {
+      const authHeader = req.headers.authorization;
+      let userId = null;
+
+      if (authHeader) {
+        const token = authHeader.split(' ')[1];
+        if (token) {
+          try {
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            userId = decoded.userId;
+          } catch (error) {
+            return res.status(401).json({ message: 'Invalid token' });
+          }
+        }
+      }
+
       const foods = await prisma.food.findMany({
         include: {
           foodTag: { include: { tag: true } },
@@ -89,12 +105,33 @@ export const getAllFoods = async (req, res) => {
         },
       });
 
-      res.json(foods);
+      if (userId) {
+        const favoriteFoods = await prisma.favorite.findMany({
+          where: { userId },
+          select: { foodId: true },
+        });
+
+        const favoriteFoodIds = favoriteFoods.map(fav => fav.foodId);
+
+        const foodsWithFavorites = foods.map(food => ({
+          ...food,
+          isFavorites: favoriteFoodIds.includes(food.id),
+        }));
+
+        return res.json(foodsWithFavorites);
+      } else {
+        const foodsWithFavorites = foods.map(food => ({
+          ...food,
+          isFavorites: false,
+        }));
+
+        return res.json(foodsWithFavorites);
+      }
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Internal server error' });
+      console.error('Error fetching foods:', error);
+      return res.status(500).json({ error: 'Internal server error' });
     }
-};
+  };
 
 export const addFood = async (req, res) => {
   const { name, description, images, price, ingredients, flavors, tags, restaurant } = req.body;

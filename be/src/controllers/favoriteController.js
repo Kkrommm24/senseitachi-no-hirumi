@@ -58,6 +58,8 @@ export const addToFavorite = async (req, res) => {
   const userId = req.userId; // From auth middleware
 
   try {
+    console.log(foodId, userId);
+
     const existingFavorite = await prisma.favorite.findFirst({
       where: {
         userId,

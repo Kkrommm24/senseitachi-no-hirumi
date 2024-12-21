@@ -1,30 +1,73 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { HeartFilled } from '@ant-design/icons';
+import { HeartFilled, HeartOutlined } from '@ant-design/icons';
 import Food from 'api/food';
-import { message } from 'antd'; // Sử dụng Ant Design để hiển thị thông báo
-
-const handleAddToFavorites = (food) => {
-    Food.addFavoritesFood(food.id)
-        .then(response => {
-            message.success(`Thêm ${food.name} vào danh sách yêu thích thành công`);
-            // Thêm logic để cập nhật Redux store hoặc UI nếu cần
-        })
-        .catch(error => {
-            message.error('Món ăn đã có trong danh sách yêu thích');
-            console.error('Lỗi khi thêm vào danh sách yêu thích', error);
-        });
-};
+import { message } from 'antd';
+import { useTranslation } from 'react-i18next'; // Add this import
 
 const FoodList = ({ foods }) => {
+    const { t } = useTranslation(); // Add this hook
+    const token = localStorage.getItem('token'); // Lấy token từ localStorage
+    const [favoriteFoods, setFavoriteFoods] = useState(foods.map(food => ({
+        ...food,
+        isFavorites: food.isFavorites || false,
+    })));
+
+    useEffect(() => {
+        setFavoriteFoods(foods.map(food => ({
+            ...food,
+            isFavorites: food.isFavorites || false,
+        })));
+    }, [foods]);
+
+    const handleAddToFavorites = (foodId) => {
+        Food.addFavoritesFood(foodId)
+            .then(response => {
+                message.success(t('add_favorites_success'));
+                setFavoriteFoods(favoriteFoods.map(food =>
+                    food.id === foodId ? { ...food, isFavorites: true } : food
+                ));
+            })
+            .catch(error => {
+                message.error(t('add_favorites_error'));
+                console.error(t('add_favorites_error'), error);
+            });
+    };
+
+    const handleRemoveFromFavorites = (foodId) => {
+        Food.removeFavoritesFood(foodId)
+            .then(response => {
+                message.success(t('remove_favorites_success'));
+                setFavoriteFoods(favoriteFoods.map(food =>
+                    food.id === foodId ? { ...food, isFavorites: false } : food
+                ));
+            })
+            .catch(error => {
+                message.error(t('remove_favorites_error'));
+                console.error(t('remove_favorites_error'), error);
+            });
+    };
+
     return (
         <div className="section-wrapper">
             <div className="row justify-content-center">
-                {foods.slice(0, 9).map((food) => (
+                {favoriteFoods.slice(0, 9).map((food) => (
                     <div key={food.id} className='col-xl-4 col-md-6 col-12 relative'>
-                        <div className='absolute z-50 right-5 top-2'>
-                            <HeartFilled onClick={() => handleAddToFavorites(food)} className="text-[#fb524f] text-4xl cursor-pointer" />
-                        </div>
+                        {token && (
+                            <div className='absolute z-50 right-5 top-2'>
+                                {food.isFavorites ? (
+                                    <HeartFilled
+                                        onClick={() => handleRemoveFromFavorites(food.id)}
+                                        className="text-[#fb524f] text-4xl cursor-pointer"
+                                    />
+                                ) : (
+                                    <HeartFilled
+                                        onClick={() => handleAddToFavorites(food.id)}
+                                        className="text-[#000000] text-4xl cursor-pointer"
+                                    />
+                                )}
+                            </div>
+                        )}
                         <div className="">
                             <Link to={`/foods/${food.id}`}>
                                 <div className="recipe-item">
