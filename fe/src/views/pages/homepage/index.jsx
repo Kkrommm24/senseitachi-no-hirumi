@@ -37,11 +37,11 @@ const Homepage = () => {
                         <h4>{t('recipe_category')}</h4>
                         <a href="index-3.html#" class="text-btn">{t('all_recipes')}<i class="icofont-rounded-double-right"></i></a>
                     </div>
-                    <div class="section-wrapper">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                                <div class="recipe-item">
-                                    <div class="recipe-thumb">
+                    <div className="section-wrapper">
+                        <div className="row justify-content-center">
+                            <div className="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div className="recipe-item">
+                                    <div className="recipe-thumb">
                                         <img src="assets/images/food-recipe/01.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
@@ -49,9 +49,9 @@ const Homepage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                                <div class="recipe-item">
-                                    <div class="recipe-thumb">
+                            <div className="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div className="recipe-item">
+                                    <div className="recipe-thumb">
                                         <img src="assets/images/food-recipe/02.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
@@ -59,9 +59,9 @@ const Homepage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                                <div class="recipe-item">
-                                    <div class="recipe-thumb">
+                            <div className="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div className="recipe-item">
+                                    <div className="recipe-thumb">
                                         <img src="assets/images/food-recipe/03.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
@@ -69,9 +69,9 @@ const Homepage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                                <div class="recipe-item">
-                                    <div class="recipe-thumb">
+                            <div className="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div className="recipe-item">
+                                    <div className="recipe-thumb">
                                         <img src="assets/images/food-recipe/01.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
@@ -79,9 +79,9 @@ const Homepage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                                <div class="recipe-item">
-                                    <div class="recipe-thumb">
+                            <div className="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div className="recipe-item">
+                                    <div className="recipe-thumb">
                                         <img src="assets/images/food-recipe/08.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
@@ -89,9 +89,9 @@ const Homepage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                                <div class="recipe-item">
-                                    <div class="recipe-thumb">
+                            <div className="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div className="recipe-item">
+                                    <div className="recipe-thumb">
                                         <img src="assets/images/food-recipe/06.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
@@ -99,9 +99,9 @@ const Homepage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                                <div class="recipe-item">
-                                    <div class="recipe-thumb">
+                            <div className="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div className="recipe-item">
+                                    <div className="recipe-thumb">
                                         <img src="assets/images/food-recipe/07.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
@@ -109,9 +109,9 @@ const Homepage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-lg-4 col-sm-6 col-12">
-                                <div class="recipe-item">
-                                    <div class="recipe-thumb">
+                            <div className="col-xl-3 col-lg-4 col-sm-6 col-12">
+                                <div className="recipe-item">
+                                    <div className="recipe-thumb">
                                         <img src="assets/images/food-recipe/08.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
@@ -140,16 +140,16 @@ const Homepage = () => {
                         <h4>{t('trending_posts')}</h4>
                         <a href="index-3.html#" class="text-btn">{t('view_all')}<i class="icofont-rounded-double-right"></i></a>
                     </div>
-                    <div class="section-wrapper">
-                        <div class="row g-4">
-                            <div class="col-xl-6  col-12">
-                                <div class="post-item">
-                                    <div class="post-inner">
-                                        <div class="post-thumb">
+                    <div className="section-wrapper">
+                        <div className="row g-4">
+                            <div className="col-xl-6  col-12">
+                                <div className="post-item">
+                                    <div className="post-inner">
+                                        <div className="post-thumb">
                                             <a href="index-3.html#"><img src="assets/images/blog/trending/01.jpg" alt="trending-blog" /></a>
-                                            <div class="post-content">
-                                                <div class="meta-tag">
-                                                    <div class="categori">
+                                            <div className="post-content">
+                                                <div className="meta-tag">
+                                                    <div className="categori">
                                                         <a href="index-3.html#">CNN</a>
                                                     </div>
                                                 </div>
@@ -157,16 +157,16 @@ const Homepage = () => {
                                                 <div class="meta-post">
                                                     <ul>
                                                         <li>
-                                                            <i class="icofont-calendar"></i>
-                                                            <a href="index-3.html#" class="date">12 2024</a>
+                                                            <i className="icofont-calendar"></i>
+                                                            <a href="index-3.html#" className="date">12 2024</a>
                                                         </li>
                                                         <li>
-                                                            <i class="icofont-eye"></i>
-                                                            <a href="index-3.html#" class="view">2636</a>
+                                                            <i className="icofont-eye"></i>
+                                                            <a href="index-3.html#" className="view">2636</a>
                                                         </li>
                                                         <li>
-                                                            <i class="icofont-speech-comments"></i>
-                                                            <a href="index-3.html#" class="comment">24</a>
+                                                            <i className="icofont-speech-comments"></i>
+                                                            <a href="index-3.html#" className="comment">24</a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -175,17 +175,17 @@ const Homepage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6 col-12">
-                                <div class="post-item">
-                                    <div class="post-inner">
-                                        <div class="post-thumb">
+                            <div className="col-xl-3 col-md-6 col-12">
+                                <div className="post-item">
+                                    <div className="post-inner">
+                                        <div className="post-thumb">
                                             <a href="index-3.html#">
                                                 <img src="assets/images/blog/trending/02.jpg" alt="trending-blog" />
                                             </a>
                                         </div>
-                                        <div class="post-content">
-                                            <div class="meta-tag">
-                                                <div class="categori">
+                                        <div className="post-content">
+                                            <div className="meta-tag">
+                                                <div className="categori">
                                                     <a href="index-3.html#">BBC</a>
                                                 </div>
                                             </div>
@@ -193,8 +193,8 @@ const Homepage = () => {
                                             <div class="meta-post">
                                                 <ul>
                                                     <li>
-                                                        <i class="icofont-calendar"></i>
-                                                        <a href="index-3.html#" class="date">12 2024</a>
+                                                        <i className="icofont-calendar"></i>
+                                                        <a href="index-3.html#" className="date">12 2024</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -202,17 +202,17 @@ const Homepage = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-3 col-md-6 col-12">
-                                <div class="post-item">
-                                    <div class="post-inner">
-                                        <div class="post-thumb">
+                            <div className="col-xl-3 col-md-6 col-12">
+                                <div className="post-item">
+                                    <div className="post-inner">
+                                        <div className="post-thumb">
                                             <a href="index-3.html#">
                                                 <img src="assets/images/blog/trending/03.jpg" alt="trending-blog" />
                                             </a>
                                         </div>
-                                        <div class="post-content">
-                                            <div class="meta-tag">
-                                                <div class="categori">
+                                        <div className="post-content">
+                                            <div className="meta-tag">
+                                                <div className="categori">
                                                     <a href="index-3.html#">MNC</a>
                                                 </div>
                                             </div>
@@ -220,8 +220,8 @@ const Homepage = () => {
                                             <div class="meta-post">
                                                 <ul>
                                                     <li>
-                                                        <i class="icofont-calendar"></i>
-                                                        <a href="index-3.html#" class="date">12 2024</a>
+                                                        <i className="icofont-calendar"></i>
+                                                        <a href="index-3.html#" className="date">12 2024</a>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -241,54 +241,54 @@ const Homepage = () => {
                             <h4>{t('photo_gallery')}</h4>
                             <a href="index-3.html#" class="text-btn">{t('view_all')}<i class="icofont-rounded-double-right"></i></a>
                         </div>
-                        <div class="section-wrapper">
-                            <div class="row justify-content-center g-0">
-                                <div class="gallery-item">
-                                    <div class="gallery-thumb">
+                        <div className="section-wrapper">
+                            <div className="row justify-content-center g-0">
+                                <div className="gallery-item">
+                                    <div className="gallery-thumb">
                                         <img src="assets/images/gallery/01.jpg" alt="gallery" />
-                                        <a href="assets/images/gallery/01.jpg" data-rel="lightcase" class="gallery-icon" title="Click Here"><i class="icofont-eye"></i></a>
+                                        <a href="assets/images/gallery/01.jpg" data-rel="lightcase" className="gallery-icon" title="Click Here"><i className="icofont-eye"></i></a>
                                     </div>
                                 </div>
-                                <div class="gallery-item">
-                                    <div class="gallery-thumb">
+                                <div className="gallery-item">
+                                    <div className="gallery-thumb">
                                         <img src="assets/images/gallery/02.jpg" alt="gallery" />
-                                        <a href="assets/images/gallery/02.jpg" data-rel="lightcase" class="gallery-icon" title="Click Here"><i class="icofont-eye"></i></a>
+                                        <a href="assets/images/gallery/02.jpg" data-rel="lightcase" className="gallery-icon" title="Click Here"><i className="icofont-eye"></i></a>
                                     </div>
                                 </div>
-                                <div class="gallery-item">
-                                    <div class="gallery-thumb">
+                                <div className="gallery-item">
+                                    <div className="gallery-thumb">
                                         <img src="assets/images/gallery/03.jpg" alt="gallery" />
-                                        <a href="assets/images/gallery/03.jpg" data-rel="lightcase" class="gallery-icon" title="Click Here"><i class="icofont-eye"></i></a>
+                                        <a href="assets/images/gallery/03.jpg" data-rel="lightcase" className="gallery-icon" title="Click Here"><i className="icofont-eye"></i></a>
                                     </div>
                                 </div>
-                                <div class="gallery-item">
-                                    <div class="gallery-thumb">
+                                <div className="gallery-item">
+                                    <div className="gallery-thumb">
                                         <img src="assets/images/gallery/04.jpg" alt="gallery" />
-                                        <a href="assets/images/gallery/04.jpg" data-rel="lightcase" class="gallery-icon" title="Click Here"><i class="icofont-eye"></i></a>
+                                        <a href="assets/images/gallery/04.jpg" data-rel="lightcase" className="gallery-icon" title="Click Here"><i className="icofont-eye"></i></a>
                                     </div>
                                 </div>
-                                <div class="gallery-item">
-                                    <div class="gallery-thumb">
+                                <div className="gallery-item">
+                                    <div className="gallery-thumb">
                                         <img src="assets/images/gallery/05.jpg" alt="gallery" />
-                                        <a href="assets/images/gallery/05.jpg" data-rel="lightcase" class="gallery-icon" title="Click Here"><i class="icofont-eye"></i></a>
+                                        <a href="assets/images/gallery/05.jpg" data-rel="lightcase" className="gallery-icon" title="Click Here"><i className="icofont-eye"></i></a>
                                     </div>
                                 </div>
-                                <div class="gallery-item">
-                                    <div class="gallery-thumb">
+                                <div className="gallery-item">
+                                    <div className="gallery-thumb">
                                         <img src="assets/images/gallery/06.jpg" alt="gallery" />
-                                        <a href="assets/images/gallery/06.jpg" data-rel="lightcase" class="gallery-icon" title="Click Here"><i class="icofont-eye"></i></a>
+                                        <a href="assets/images/gallery/06.jpg" data-rel="lightcase" className="gallery-icon" title="Click Here"><i className="icofont-eye"></i></a>
                                     </div>
                                 </div>
-                                <div class="gallery-item">
-                                    <div class="gallery-thumb">
+                                <div className="gallery-item">
+                                    <div className="gallery-thumb">
                                         <img src="assets/images/gallery/07.jpg" alt="gallery" />
-                                        <a href="assets/images/gallery/07.jpg" data-rel="lightcase" class="gallery-icon" title="Click Here"><i class="icofont-eye"></i></a>
+                                        <a href="assets/images/gallery/07.jpg" data-rel="lightcase" className="gallery-icon" title="Click Here"><i className="icofont-eye"></i></a>
                                     </div>
                                 </div>
-                                <div class="gallery-item">
-                                    <div class="gallery-thumb">
+                                <div className="gallery-item">
+                                    <div className="gallery-thumb">
                                         <img src="assets/images/gallery/08.jpg" alt="gallery" />
-                                        <a href="assets/images/gallery/08.jpg" data-rel="lightcase" class="gallery-icon" title="Click Here"><i class="icofont-eye"></i></a>
+                                        <a href="assets/images/gallery/08.jpg" data-rel="lightcase" className="gallery-icon" title="Click Here"><i className="icofont-eye"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -303,7 +303,7 @@ const Homepage = () => {
                         <div class="news-title">
                             <h3>{t('newsletter')}</h3>
                         </div>
-                        <div class="news-form">
+                        <div className="news-form">
                             <form action="https://foxcoders.com/">
                                 <label>
                                     <input type="email" name="email" placeholder={t('enter_email')} />
