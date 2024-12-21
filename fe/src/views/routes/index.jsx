@@ -10,6 +10,7 @@ import TagPage from "views/pages/tags-page/TagPage";
 import FavoriteFoodPage from "views/pages/favouritefoodpage";
 import ShareFoodPage from "views/pages/sharefoodpage";
 import Login from "views/pages/login-page";
+import Signup from "views/pages/signup-page";
 
 function AllRoutes() {
     return (
@@ -22,10 +23,11 @@ function AllRoutes() {
                 <Route path="share-food" element={<MainLayout><ShareFoodPage /></MainLayout>} />
                 <Route path=":foodId" element={<MainLayout><FoodDetailPage /></MainLayout>} />
                 <Route path="search" element={<MainLayout><SearchFoodPage /></MainLayout>} />
-                
+
             </Route>
             <Route path="/tags" element={<MainLayout><TagPage /></MainLayout>} />
-            <Route path="login" element={<Login />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
         </Routes>
     );
 }
