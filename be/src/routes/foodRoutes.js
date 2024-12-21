@@ -1,5 +1,5 @@
 import express from 'express';
-import { searchFoods, getIngredients, getFlavors, getTags, getAllFoods, addFood, getAdminOrUserFoods } from '../controllers/foodController.js';
+import { searchFoods, getIngredients, getFlavors, getTags, getAllFoods, addFood, getAdminOrUserFoods, updateFood, deleteFood } from '../controllers/foodController.js';
 import { authMiddleware } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
@@ -23,5 +23,9 @@ router.get('/all-foods', getAllFoods);
 router.post('/add-food', authMiddleware, addFood);
 
 router.get('/get-created-foods', authMiddleware, getAdminOrUserFoods);
+
+router.put('/update-food', authMiddleware, updateFood);
+
+router.delete('/delete-food', authMiddleware, deleteFood);
 
 export default router;
