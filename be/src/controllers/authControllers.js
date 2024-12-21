@@ -71,3 +71,12 @@ export const login = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+export const logout = async (req, res) => {
+  try {
+    return res.status(200).json({ message: 'Logout successful' });
+
+  } catch (error) {
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+};
