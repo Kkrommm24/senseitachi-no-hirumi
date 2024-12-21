@@ -25,7 +25,7 @@ function AllRoutes() {
                 
             </Route>
             <Route path="/tags" element={<MainLayout><TagPage /></MainLayout>} />
-            <Route path="auth/login" element={<Login />} />
+            <Route path="login" element={<Login />} />
         </Routes>
     );
 }

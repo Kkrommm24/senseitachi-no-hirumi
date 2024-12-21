@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getToken } from 'helper/storage';
 import queryString from 'query-string';
 
 const API = axios.create({
@@ -12,7 +13,7 @@ const API = axios.create({
 
 API.interceptors.request.use(
   function (req) {
-    const token = localStorage.getItem('token')
+    const token = getToken()
     if (token) req.headers['Authorization'] = `Bearer ${token}`
     return req
   },

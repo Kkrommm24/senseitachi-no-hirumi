@@ -33,6 +33,7 @@ export const authMiddleware = async (req, res, next) => {
 
     // Set complete user object
     req.user = user;
+    req.userId = user.id;
     console.log('User set in middleware:', req.user);
     
     next();
