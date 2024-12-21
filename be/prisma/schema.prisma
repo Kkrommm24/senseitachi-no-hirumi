@@ -31,6 +31,7 @@ model Food {
   description String?
   images      String[]
   price       Float
+  createdBy   Int
   ingredients FoodIngredient[]
   flavors     FoodFlavor[]
   favorites   Favorite[]
