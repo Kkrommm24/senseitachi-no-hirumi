@@ -1,7 +1,9 @@
 import jwt from 'jsonwebtoken';
-import { isTokenValid } from '../tokenStore.js';
+import { PrismaClient } from '@prisma/client';
 
-export const authMiddleware = (req, res, next) => {
+const prisma = new PrismaClient();
+
+export const authMiddleware = async (req, res, next) => {
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
@@ -13,14 +15,26 @@ export const authMiddleware = (req, res, next) => {
     return res.status(401).json({ message: 'Token missing' });
   }
 
-  // if (!isTokenValid(token)) {
-  //   return res.status(401).json({ message: 'Invalid token' });
-  // }
-
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decoded.userId;
-    console.log('decoded', decoded);
+    
+    // Fetch complete user data
+    const user = await prisma.user.findUnique({
+      where: { id: decoded.userId },
+      select: { 
+        id: true,
+        isAdmin: true
+      }
+    });
+
+    if (!user) {
+      return res.status(401).json({ message: 'User not found' });
+    }
+
+    // Set complete user object
+    req.user = user;
+    console.log('User set in middleware:', req.user);
+    
     next();
   } catch (error) {
     if (error.name === 'TokenExpiredError') {

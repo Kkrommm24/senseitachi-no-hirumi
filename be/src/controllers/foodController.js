@@ -98,6 +98,7 @@ export const getAllFoods = async (req, res) => {
 
 export const addFood = async (req, res) => {
   const { name, description, images, price, ingredients, flavors, tags, restaurant } = req.body;
+  const userId = req.user.id;
 
   console.log('Input data:', req.body);
 
@@ -164,6 +165,7 @@ export const addFood = async (req, res) => {
         description,
         images,
         price,
+        createdBy: userId,
         ingredients: {
           create: validIngredients.map(ingredient => ({
             ingredient: {
@@ -198,6 +200,34 @@ export const addFood = async (req, res) => {
     console.log('Created food data:', newFood);
 
     res.status(201).json(newFood);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+export const getAdminOrUserFoods = async (req, res) => {
+  try {
+    if (!req.user?.id) {
+      return res.status(401).json({ message: 'User not authenticated' });
+    }
+    const userId = req.user.id;
+    console.log('User ID:', userId);
+    const isAdmin = req.user.isAdmin;
+
+    const foods = await prisma.food.findMany({
+      where: isAdmin ? {} : { createdBy: userId },
+      select: {
+        id: true,
+        name: true,
+        description: true,
+        price: true,
+        images: true,
+        createdBy: true
+      }
+    });
+
+    res.json(foods);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal server error' });
