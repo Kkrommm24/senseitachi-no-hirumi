@@ -114,7 +114,7 @@ const ChooseByTagPage = () => {
           <div className="dishes-grid">
             {dishes.map((dish) => (
               <div key={dish.id} className="dish-card">
-                <img src={dish.image} alt={dish.name} className="dish-img" />
+                <img src={dish.images[0]} alt={dish.name} className="dish-img" />
                 <h3 className="dish-name">{dish.name}</h3>
                 <button
                   className={`select-dish-btn ${

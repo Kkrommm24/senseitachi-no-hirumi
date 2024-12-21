@@ -5,11 +5,12 @@ import Tag from "api/tag";
 const TagPage = () => {
   const [selectedTags, setSelectedTags] = useState([]);
   const [allTags, setAllTags] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
 
   const getFavouriteTags = async () => {
     try {
-      const response = await Tag.getFavouriteTags()
-      setSelectedTags(response.data.data.map(tag => tag.id));
+      const response = await Tag.getFavouriteTags();
+      setSelectedTags(response.data.data.map((tag) => tag.id));
     } catch (err) {
       console.error(err);
     }
@@ -42,6 +43,10 @@ const TagPage = () => {
   const handleSaveFavouriteTags = async () => {
     try {
       await Tag.saveFavouriteTags(selectedTags);
+      setShowPopup(true);
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
     } catch (error) {
       console.error(error);
     }
@@ -75,6 +80,12 @@ const TagPage = () => {
       <button className="link-button" onClick={() => handleSaveFavouriteTags()}>
         タグを保存する
       </button>
+      {/* Popup thông báo khi tag được lưu thành công */}
+      {showPopup && (
+        <div className="popup">
+          <p>タグが保存されました！</p> {/* Thông báo thành công */}
+        </div>
+      )}
     </div>
   );
 };

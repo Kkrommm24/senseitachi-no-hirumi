@@ -1,4 +1,5 @@
 import auth from 'api/auth';
+import { setToken, setUserId } from 'helper/storage';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -17,9 +18,9 @@ const Login = () => {
     try {
       const response = await auth.login({ email: username, password: password });
       console.log('Đăng nhập thành công:', response.data);
-      const token = response.data.token;
-      localStorage.setItem('token', token);
-      navigate('/'); 
+      setToken(response.data.token);
+      setUserId(response.data.userId);
+      navigate('/');
     } catch (err) {
       console.error('Đăng nhập thất bại:', err.response?.data || err.message);
       setError(err.response?.data?.message || 'ログインに失敗しました。もう一度お試しください。');
