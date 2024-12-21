@@ -223,7 +223,8 @@ export const getAdminOrUserFoods = async (req, res) => {
         description: true,
         price: true,
         images: true,
-        createdBy: true
+        createdBy: true,
+        foodRestaurant: true
       }
     });
 
