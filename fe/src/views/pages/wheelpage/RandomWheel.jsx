@@ -89,9 +89,20 @@ const RandomWheel = () => {
           }}
         >
           <h1 style={{ margin: 0 }}>ランダムホイール</h1>
-          <SpinWheel {...spinWheelProps}
-            key={segments.length}
-          />
+          <div className="relative">
+            {/* Custom arrow overlay */}
+            <div
+              className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-4 z-10"
+              style={{
+                width: '70px',
+                height: '110px',
+                clipPath: 'polygon(0% 0%, 100% 0%, 50% 100%)',
+                backgroundColor: '#ff5733',
+                filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.2))',
+              }}
+            />
+            <SpinWheel {...spinWheelProps} key={segments.length} />
+          </div>
           {/* Modal hiển thị kết quả */}
           <Modal
             isOpen={isModalOpen}
