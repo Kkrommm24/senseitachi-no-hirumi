@@ -1,4 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 const Footer = () => {
+    const { t } = useTranslation();
+
     return (
         <footer className="footer">
             <div className="bg-shape-style"></div>
@@ -16,12 +20,12 @@ const Footer = () => {
                         </div>
                         <div className="footer-menu">
                             <ul>
-                                <li><a href="index-3.html#">ホーム</a></li>
-                                <li><a href="index-3.html#">使い方</a></li>
-                                <li><a href="index-3.html#">メニュー</a></li>
-                                <li><a href="index-3.html#">シェフ</a></li>
-                                <li><a href="index-3.html#">レシピ</a></li>
-                                <li><a href="index-3.html#">お問い合わせ</a></li>
+                                <li><a href="index-3.html#">{t('home')}</a></li>
+                                <li><a href="index-3.html#">{t('how_to_use')}</a></li>
+                                <li><a href="index-3.html#">{t('menu')}</a></li>
+                                <li><a href="index-3.html#">{t('chef')}</a></li>
+                                <li><a href="index-3.html#">{t('recipes')}</a></li>
+                                <li><a href="index-3.html#">{t('contact_us')}</a></li>
                             </ul>
                         </div>
                     </div>

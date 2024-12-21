@@ -3,8 +3,10 @@ import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
 import FavoritesFood from "../favorites-food";
 import FoodList from "./food-list";
+import { useTranslation } from 'react-i18next';
 
 const Homepage = () => {
+    const { t } = useTranslation();
 
     const [foods, setFoods] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -32,8 +34,8 @@ const Homepage = () => {
             <section class="recipe-categori pt-2 home-3 bg-body pb-0">
                 <div class="container">
                     <div class="section-header border-0 style-2">
-                        <h4>レシピカテゴリー</h4>
-                        <a href="index-3.html#" class="text-btn">すべてのレシピ<i class="icofont-rounded-double-right"></i></a>
+                        <h4>{t('recipe_category')}</h4>
+                        <a href="index-3.html#" class="text-btn">{t('all_recipes')}<i class="icofont-rounded-double-right"></i></a>
                     </div>
                     <div class="section-wrapper">
                         <div class="row justify-content-center">
@@ -43,7 +45,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/01.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">チキン</a>
+                                        <a href="index-3.html#">{t('chicken')}</a>
                                     </div>
                                 </div>
                             </div>
@@ -53,7 +55,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/02.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">ファストフード</a>
+                                        <a href="index-3.html#">{t('fast_food')}</a>
                                     </div>
                                 </div>
                             </div>
@@ -63,7 +65,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/03.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">シーフード</a>
+                                        <a href="index-3.html#">{t('seafood')}</a>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +75,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/01.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">ホットピザ</a>
+                                        <a href="index-3.html#">{t('hot_pizza')}</a>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +85,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/08.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">サラダ</a>
+                                        <a href="index-3.html#">{t('salad')}</a>
                                     </div>
                                 </div>
                             </div>
@@ -93,7 +95,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/06.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">ソフトドリンク</a>
+                                        <a href="index-3.html#">{t('soft_drink')}</a>
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +105,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/07.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">ランチ</a>
+                                        <a href="index-3.html#">{t('lunch')}</a>
                                     </div>
                                 </div>
                             </div>
@@ -113,7 +115,7 @@ const Homepage = () => {
                                         <img src="assets/images/food-recipe/08.png" alt="food-recipe" />
                                     </div>
                                     <div class="recipe-content">
-                                        <a href="index-3.html#">ディナー</a>
+                                        <a href="index-3.html#">{t('dinner')}</a>
                                     </div>
                                 </div>
                             </div>
@@ -125,8 +127,8 @@ const Homepage = () => {
             <section class="recent-recipe home-3 pt-2 bg-body pb-0">
                 <div class="container">
                     <div class="section-header border-0 style-2">
-                        <h4>人気のレシピ</h4>
-                        <a href="index-3.html#" class="text-btn">すべて<i class="icofont-rounded-double-right"></i></a>
+                        <h4>{t('popular_recipes')}</h4>
+                        <a href="index-3.html#" class="text-btn">{t('view_all')}<i class="icofont-rounded-double-right"></i></a>
                     </div>
                     <FoodList foods={foods} />
                 </div>
@@ -135,8 +137,8 @@ const Homepage = () => {
             <section class="blog-section overflow-hidden trending pt-2 bg-body home-3 pb-0">
                 <div class="container">
                     <div class="section-header border-0 style-2">
-                        <h4>トレンド投稿</h4>
-                        <a href="index-3.html#" class="text-btn">すべて<i class="icofont-rounded-double-right"></i></a>
+                        <h4>{t('trending_posts')}</h4>
+                        <a href="index-3.html#" class="text-btn">{t('view_all')}<i class="icofont-rounded-double-right"></i></a>
                     </div>
                     <div class="section-wrapper">
                         <div class="row g-4">
@@ -151,7 +153,7 @@ const Homepage = () => {
                                                         <a href="index-3.html#">CNN</a>
                                                     </div>
                                                 </div>
-                                                <h5><a href="index-3.html#">寿司のための日本のトップレストラン</a></h5>
+                                                <h5><a href="index-3.html#">{t('top_restaurant_for_sushi')}</a></h5>
                                                 <div class="meta-post">
                                                     <ul>
                                                         <li>
@@ -187,7 +189,7 @@ const Homepage = () => {
                                                     <a href="index-3.html#">BBC</a>
                                                 </div>
                                             </div>
-                                            <h6><a href="index-3.html#">新しいお気に入りのヘルシーレシピ</a></h6>
+                                            <h6><a href="index-3.html#">{t('new_favorite_healthy_recipe')}</a></h6>
                                             <div class="meta-post">
                                                 <ul>
                                                     <li>
@@ -214,7 +216,7 @@ const Homepage = () => {
                                                     <a href="index-3.html#">MNC</a>
                                                 </div>
                                             </div>
-                                            <h6><a href="index-3.html#">新しいお気に入りのヘルシーレシピ</a></h6>
+                                            <h6><a href="index-3.html#">{t('new_favorite_healthy_recipe')}</a></h6>
                                             <div class="meta-post">
                                                 <ul>
                                                     <li>
@@ -236,8 +238,8 @@ const Homepage = () => {
                 <div class="container">
                     <div class="gallery-area">
                         <div class="section-header border-0 style-2">
-                            <h4>写真ギャラリー</h4>
-                            <a href="index-3.html#" class="text-btn">すべて<i class="icofont-rounded-double-right"></i></a>
+                            <h4>{t('photo_gallery')}</h4>
+                            <a href="index-3.html#" class="text-btn">{t('view_all')}<i class="icofont-rounded-double-right"></i></a>
                         </div>
                         <div class="section-wrapper">
                             <div class="row justify-content-center g-0">
@@ -299,21 +301,21 @@ const Homepage = () => {
                 <div class="container">
                     <div class="section-wrapper">
                         <div class="news-title">
-                            <h3>ニュースレター</h3>
+                            <h3>{t('newsletter')}</h3>
                         </div>
                         <div class="news-form">
                             <form action="https://foxcoders.com/">
                                 <label>
-                                    <input type="email" name="email" placeholder="メールアドレスを入力" />
+                                    <input type="email" name="email" placeholder={t('enter_email')} />
                                 </label>
-                                <input type="submit" name="submit" value="今すぐ購読" />
+                                <input type="submit" name="submit" value={t('subscribe_now')} />
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
             <a href="index-3.html#" class="scrollToTop"><i class="icofont-swoosh-up"></i></a>
-            <FavoritesFood />
+            {/* <FavoritesFood /> */}
         </div>
     )
 }
