@@ -72,6 +72,11 @@ const Login = () => {
               required
             />
           </div>
+          <div className="mb-4 text-right">
+            <Link to="/forget-password" className="text-sm text-[#fb524f] hover:underline">
+              パスワードをお忘れですか？
+            </Link>
+          </div>
           {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
           <button
             type="submit"

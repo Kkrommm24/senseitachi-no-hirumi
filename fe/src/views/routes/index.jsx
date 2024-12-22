@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import MainLayout from 'components/layout';
 import ChooseByTagPage from "views/pages/choosebytagpage/ChooseByTagPage";
+import ForgetPassword from "views/pages/forget-password-page";
+import ResetPassword from "views/pages/reset-password-page";
 
 import Homepage from 'views/pages/homepage'
 import RandomWheel from 'views/pages/wheelpage/RandomWheel.jsx';
@@ -28,6 +30,8 @@ function AllRoutes() {
             <Route path="/tags" element={<MainLayout><TagPage /></MainLayout>} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/forget-password" element={<ForgetPassword />} />
+            <Route path="/forget-password/reset-password/:token" element={<ResetPassword />} />
         </Routes>
     );
 }
