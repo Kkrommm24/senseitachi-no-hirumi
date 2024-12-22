@@ -7,26 +7,32 @@ const SearchFoodPage = () => {
 
   const [searchParams] = useSearchParams();
   const queryName = searchParams.get('name');
-
-   
+  const queryIngredients = searchParams.get('ingredients');
+  const queryFlavors = searchParams.get('flavors');
+  const queryTags = searchParams.get('tags');
+  const queryMinPrice = searchParams.get('minPrice');
+  const queryMaxPrice = searchParams.get('maxPrice');
 
   useEffect(() => {
-
     const fetchFoods = async () => {
       try {
-        const response = await Food.searchFoods({name: queryName});
+        const response = await Food.searchFoods({
+          name: queryName,
+          ingredients: queryIngredients,
+          flavors: queryFlavors,
+          tags: queryTags,
+          minPrice: queryMinPrice,
+          maxPrice: queryMaxPrice,
+        });
         setFoods(response.data);
         console.log(response.data);
-
-        // setLoading(false);
       } catch (err) {
         console.error(err);
-        // setLoading(false);
       }
     };
 
     fetchFoods();
-  }, [queryName]);
+  }, [queryName, queryIngredients, queryFlavors, queryTags, queryMinPrice, queryMaxPrice]);
 
   return (
     <div>
@@ -46,7 +52,7 @@ const SearchFoodPage = () => {
                     <div className="recipe-thumb custom-img">
                       <a href="index-3.html#">
                         {" "}
-                        <img src={food.image} alt="food-recipe" />
+                        <img src={food.images[0]} alt="food-recipe" />
                       </a>
                     </div>
                     <div className="recipe-content">
@@ -77,7 +83,7 @@ const SearchFoodPage = () => {
                           }}
                         >
                           <img
-                            src="assets/images/image.png"
+                            src="assets/images/images[0].png"
                             alt="food-recipe"
                             style={{
                               width: "30px",

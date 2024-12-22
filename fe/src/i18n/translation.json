@@ -44,7 +44,17 @@
         "add_favorites_success": "お気に入りリストに追加しました",
         "add_favorites_error": "お気に入りリストへの追加に失敗しました",
         "remove_favorites_success": "お気に入りリストから削除しました",
-        "remove_favorites_error": "お気に入りリストからの削除に失敗しました"
+        "remove_favorites_error": "お気に入りリストからの削除に失敗しました",
+        "ingredients": "材料",
+        "taste": "味",
+        "tags": "タグ",
+        "price_range": "価格帯",
+        "min_price": "最低価格",
+        "max_price": "最高価格",
+        "apply_filters": "フィルターを適用",
+        "enter_ingredients": "材料を入力",
+        "enter_taste": "味を入力",
+        "enter_tags": "タグを入力"
     },
     "vi": {
         "recipe_category": "Danh mục công thức",
@@ -91,6 +101,16 @@
         "add_favorites_success": "Thêm vào danh sách yêu thích thành công",
         "add_favorites_error": "Lỗi khi thêm vào danh sách yêu thích",
         "remove_favorites_success": "Xóa khỏi danh sách yêu thích thành công",
-        "remove_favorites_error": "Lỗi khi xóa khỏi danh sách yêu thích"
+        "remove_favorites_error": "Lỗi khi xóa khỏi danh sách yêu thích",
+        "ingredients": "Nguyên liệu",
+        "taste": "Hương vị",
+        "tags": "Thẻ",
+        "price_range": "Khoảng giá",
+        "min_price": "Giá tối thiểu",
+        "max_price": "Giá tối đa",
+        "apply_filters": "Áp dụng bộ lọc",
+        "enter_ingredients": "Nhập nguyên liệu",
+        "enter_taste": "Nhập hương vị",
+        "enter_tags": "Nhập thẻ"
     }
 }
