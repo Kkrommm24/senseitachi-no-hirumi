@@ -1,8 +1,10 @@
 import Food from "api/food";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const SearchFoodPage = () => {
+  const { t } = useTranslation();
   const [foods, setFoods] = useState([]);
 
   const [searchParams] = useSearchParams();
@@ -39,9 +41,9 @@ const SearchFoodPage = () => {
       <section className="recent-recipe home-3 padding-tb bg-body pb-0">
         <div className="container">
           <div className="section-header style-2">
-            <h4>人気のレシピ</h4>
+            <h4>{t('popular_recipes')}</h4>
             <a href="index-3.html#" className="text-btn">
-              すべて<i className="icofont-rounded-double-right"></i>
+              {t('view_all')}<i className="icofont-rounded-double-right"></i>
             </a>
           </div>
           <div className="section-wrapper">
@@ -58,7 +60,7 @@ const SearchFoodPage = () => {
                     <div className="recipe-content">
                       <div className="meta-tag">
                         <div className="categori">
-                          <a href="index-3.html#">ホット</a>
+                          <a href="index-3.html#">{t('hot')}</a>
                         </div>
                         <div className="rating">
                           <i className="icofont-star"></i>
@@ -118,9 +120,9 @@ const SearchFoodPage = () => {
         <div className="container">
           <div className="gallery-area">
             <div className="section-header style-2">
-              <h4>写真ギャラリー</h4>
+              <h4>{t('photo_gallery')}</h4>
               <a href="index-3.html#" className="text-btn">
-                すべて<i className="icofont-rounded-double-right"></i>
+                {t('view_all')}<i className="icofont-rounded-double-right"></i>
               </a>
             </div>
             <div className="section-wrapper">
@@ -239,7 +241,7 @@ const SearchFoodPage = () => {
         <div className="container">
           <div className="section-wrapper">
             <div className="news-title">
-              <h3>ニュースレター</h3>
+              <h3>{t('newsletter')}</h3>
             </div>
             <div className="news-form">
               <form action="https://foxcoders.com/">
@@ -247,10 +249,10 @@ const SearchFoodPage = () => {
                   <input
                     type="email"
                     name="email"
-                    placeholder="メールアドレスを入力"
+                    placeholder={t('enter_email')}
                   />
                 </label>
-                <input type="submit" name="submit" value="今すぐ購読" />
+                <input type="submit" name="submit" value={t('subscribe_now')} />
               </form>
             </div>
           </div>

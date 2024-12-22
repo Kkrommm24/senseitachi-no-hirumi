@@ -1,8 +1,10 @@
 import auth from 'api/auth';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const Signup = () => {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -26,7 +28,7 @@ const Signup = () => {
     setError('');
 
     if (formData.password !== formData.confirmPassword) {
-      setError('パスワードが一致しません');
+      setError(t('password_mismatch'));
       setLoading(false);
       return;
     }
@@ -37,11 +39,11 @@ const Signup = () => {
         password: formData.password,
         name: formData.name
       });
-      console.log('登録成功:', response.data);
+      console.log(t('registration_success'), response.data);
       navigate('/login');
     } catch (err) {
-      console.error('登録失敗:', err.response?.data || err.message);
-      setError(err.response?.data?.error || '登録に失敗しました。もう一度お試しください。');
+      console.error(t('registration_failed'), err.response?.data || err.message);
+      setError(err.response?.data?.error || t('registration_error'));
     } finally {
       setLoading(false);
     }
@@ -50,11 +52,11 @@ const Signup = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-[#ff7e5f] to-[#feb47b]">
       <div className="w-full max-w-md bg-white rounded-lg shadow-xl p-8">
-        <h2 className="text-3xl font-extrabold text-center text-[#fb524f] mb-6">新規登録</h2>
+        <h2 className="text-3xl font-extrabold text-center text-[#fb524f] mb-6">{t('signup')}</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-6 flex items-center">
             <label className="flex-shrink-0 w-24 text-sm font-medium text-gray-700 text-right">
-              お名前
+              {t('name')}
             </label>
             <div className="mx-3 h-6 w-px bg-gray-300"></div>
             <input
@@ -63,14 +65,14 @@ const Signup = () => {
               value={formData.name}
               onChange={handleChange}
               className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-[#fb524f] focus:border-[#fb524f] shadow-sm"
-              placeholder="お名前を入力してください"
+              placeholder={t('enter_name')}
               required
             />
           </div>
 
           <div className="mb-6 flex items-center">
             <label className="flex-shrink-0 w-24 text-sm font-medium text-gray-700 text-right">
-              メール
+              {t('email')}
             </label>
             <div className="mx-3 h-6 w-px bg-gray-300"></div>
             <input
@@ -79,14 +81,14 @@ const Signup = () => {
               value={formData.email}
               onChange={handleChange}
               className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-[#fb524f] focus:border-[#fb524f] shadow-sm"
-              placeholder="メールアドレスを入力してください"
+              placeholder={t('enter_email')}
               required
             />
           </div>
 
           <div className="mb-6 flex items-center">
             <label className="flex-shrink-0 w-24 text-sm font-medium text-gray-700 text-right">
-              パスワード
+              {t('password')}
             </label>
             <div className="mx-3 h-6 w-px bg-gray-300"></div>
             <input
@@ -95,14 +97,14 @@ const Signup = () => {
               value={formData.password}
               onChange={handleChange}
               className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-[#fb524f] focus:border-[#fb524f] shadow-sm"
-              placeholder="パスワードを入力してください"
+              placeholder={t('enter_password')}
               required
             />
           </div>
 
           <div className="mb-6 flex items-center">
             <label className="flex-shrink-0 w-24 text-sm font-medium text-gray-700 text-right">
-              確認用
+              {t('confirm_password')}
             </label>
             <div className="mx-3 h-6 w-px bg-gray-300"></div>
             <input
@@ -111,7 +113,7 @@ const Signup = () => {
               value={formData.confirmPassword}
               onChange={handleChange}
               className="flex-1 px-4 py-2 border border-gray-300 rounded-md focus:ring-[#fb524f] focus:border-[#fb524f] shadow-sm"
-              placeholder="パスワードを再入力してください"
+              placeholder={t('reenter_password')}
               required
             />
           </div>
@@ -125,15 +127,15 @@ const Signup = () => {
             }`}
             disabled={loading}
           >
-            {loading ? '登録中...' : '登録'}
+            {loading ? t('registering') : t('register')}
           </button>
         </form>
 
         <div className="mt-4 text-center">
           <p className="text-sm text-gray-600">
-            すでにアカウントをお持ちですか？{' '}
+            {t('already_have_account')}{' '}
             <Link to="/login" className="text-[#fb524f] hover:underline">
-              ログイン
+              {t('login')}
             </Link>
           </p>
         </div>

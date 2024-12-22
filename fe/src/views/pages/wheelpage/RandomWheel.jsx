@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { SpinWheel } from "spin-wheel-game";
 import { useSelector, useDispatch } from "react-redux";
+import { useTranslation } from 'react-i18next';
 import { deselectDish } from "store/slices/selectedDishesSlice";
 import Modal from "react-modal";
 
@@ -17,6 +18,7 @@ const getRandomColor = () => {
 
 // Component RandomWheel
 const RandomWheel = () => {
+  const { t } = useTranslation();
   const selectedDishes = useSelector((state) => state.selectedDishes.value);
   const dispatch = useDispatch();
   const segments = selectedDishes.map((dish) => ({
@@ -51,7 +53,7 @@ const RandomWheel = () => {
     onFinished: handleSpinFinish,
     primaryColor: "black",
     contrastColor: "white",
-    buttonText: "Spin",
+    buttonText: t('spin'),
     isOnlyOnce: false,
     size: 300,
     upDuration: 100,
@@ -88,7 +90,7 @@ const RandomWheel = () => {
             gap: "20px",
           }}
         >
-          <h1 style={{ margin: 0 }}>ランダムホイール</h1>
+          <h1 style={{ margin: 0 }}>{t('random_wheel')}</h1>
           <div className="relative">
             {/* Custom arrow overlay */}
             <div
@@ -111,16 +113,16 @@ const RandomWheel = () => {
             overlayClassName="fixed inset-0 bg-black bg-opacity-50"
           >
             <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">
-              <h2 className="text-2xl font-bold mb-4 text-center">🎉 お祝い! 🎉</h2>
+              <h2 className="text-2xl font-bold mb-4 text-center">🎉 {t('congratulations')}! 🎉</h2>
               <p className="text-lg mb-4 text-center">
-                <strong>食べ物: {selectedResult?.name}</strong>
+                <strong>{t('food')}: {selectedResult?.name}</strong>
               </p>
               <img src={selectedResult?.images[0]} alt={selectedResult?.name} className="w-full h-auto max-w-sm mx-auto rounded-lg mb-4" />
               <button
                 className="mt-4 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
                 onClick={() => setIsModalOpen(false)}
               >
-                Close
+                {t('close')}
               </button>
             </div>
           </Modal>
@@ -141,7 +143,7 @@ const RandomWheel = () => {
             <input
               type="text"
               name="text"
-              placeholder="Search your favorite food..."
+              placeholder={t('search_favorite_food')}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
@@ -199,7 +201,7 @@ const RandomWheel = () => {
                       marginLeft: "5px",
                     }}
                   >
-                    Delete
+                    {t('delete')}
                   </button>
                 </li>
               ))
@@ -212,7 +214,7 @@ const RandomWheel = () => {
                   fontStyle: "italic",
                 }}
               >
-                No items found
+                {t('no_items_found')}
               </li>
             )}
           </ul>
