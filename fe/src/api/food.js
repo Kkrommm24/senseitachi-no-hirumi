@@ -1,4 +1,3 @@
-import { removeFavorite } from 'store/slices/favoritesSlice';
 import API from './axios.config';
 
 const Food = {
