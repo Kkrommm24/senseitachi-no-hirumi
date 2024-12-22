@@ -91,8 +91,7 @@ export const forgotPassword = async (req, res) => {
 }
 
 export const resetPassword  = async (req, res) => {
-  const { newPassword } = req.body;
-  const { token } = req.params;
+  const { newPassword, token } = req.body;
 
   if (!token || !newPassword) {
     return res.status(400).json({ message: 'Missing token or new password' });

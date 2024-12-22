@@ -12,7 +12,7 @@ const transporter = nodemailer.createTransport({
 
 const sendResetPasswordEmail = async (email, userId) => {
   const token = jwt.sign({ userId }, process.env.JWT_SECRET, { expiresIn: '1h' });
-  const resetLink = `http://localhost:3000/api/auth/reset-password/${token}`;
+  const resetLink = `http://localhost:5173/forget-password/reset-password/${token}`;
 
   const mailOptions = {
     from: "capybuk@gmail.com",
