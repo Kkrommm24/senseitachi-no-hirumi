@@ -104,6 +104,19 @@ const Header = () => {
     }
   };
 
+  const handleAccountAction = (value) => {
+    switch(value) {
+      case "sign_out":
+        handleSignOut();
+        break;
+      case "profile":
+        navigate('/profile');
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <div className="w-full">
       {/* Search Area */}
@@ -391,11 +404,7 @@ const Header = () => {
               </div>
               <select 
                 className="border-none bg-transparent focus:outline-none"
-                onChange={(e) => {
-                  if (e.target.value === "sign_out") {
-                    handleSignOut();
-                  }
-                }}
+                onChange={(e) => handleAccountAction(e.target.value)}
               >
                 <option value="my_account">{t("my_account")}</option>
                 <option value="profile">{t("profile")}</option>

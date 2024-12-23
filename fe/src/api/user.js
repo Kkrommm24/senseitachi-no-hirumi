@@ -1,12 +1,23 @@
 import API from './axios.config'
+
 const user = {
   getProfile: () => {
-    const url = '/users/profile'
+    const url = '/profile'
     return API.get(url)
   },
-  updateUserInfo: (user_id, body) => {
-    const url = `/users/${user_id}`
-    return API.put(url, body)
+  updateUserProfile: (data) => {
+    const url = '/profile/update'
+    return API.put(url, data)
+  },
+  uploadImage: (image) => {
+    const url = '/upload-images';
+    const formData = new FormData();
+    formData.append('image', image);
+    return API.post(url, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      }
+    });
   },
   logout: () => {
     localStorage.clear();

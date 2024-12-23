@@ -142,7 +142,14 @@
         "spin": "スピン",
         "choose_by_tag": "タグで選ぶ",
         "favorite_foods": "お気に入り料理",
-        "share_food": "料理をシェア"
+        "share_food": "料理をシェア",
+        "edit": "編集",
+        "save": "保存",
+        "cancel": "キャンセル",
+        "change_profile_picture": "プロフィール写真を変更",
+        "current_password": "現在のパスワード",
+        "enter_current_password": "現在のパスワードを入力してください",
+        "confirm_new_password": "新しいパスワードを再入力してください"
     },
     "vi": {
         "recipe_category": "Danh mục công thức",
@@ -286,6 +293,13 @@
         "spin": "Quay",
         "choose_by_tag": "Chọn theo thẻ",
         "favorite_foods": "Món ăn yêu thích",
-        "share_food": "Chia sẻ món ăn"
+        "share_food": "Chia sẻ món ăn",
+        "edit": "Chỉnh sửa",
+        "save": "Lưu",
+        "cancel": "Hủy",
+        "change_profile_picture": "Thay đổi ảnh đại diện",
+        "current_password": "Mật khẩu hiện tại",
+        "enter_current_password": "Nhập mật khẩu hiện tại",
+        "confirm_new_password": "Nhập lại mật khẩu mới"
     }
 }
