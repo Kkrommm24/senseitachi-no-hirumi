@@ -19,9 +19,10 @@ const Login = () => {
 
     try {
       const response = await auth.login({ email: username, password: password });
-      console.log(t('login_success'), response.data);
       setToken(response.data.token);
       setUserId(response.data.userId);
+      setUsername('');
+      setPassword('');
       navigate('/');
     } catch (err) {
       console.error(t('login_failed'), err.response?.data || err.message);

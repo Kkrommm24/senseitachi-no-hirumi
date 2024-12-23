@@ -7,7 +7,6 @@
         "trending_posts": "トレンド投稿",
         "photo_gallery": "写真ギャラリー",
         "newsletter": "ニュースレター",
-        "enter_email": "メールアドレスを入力",
         "subscribe_now": "今すぐ購読",
         "chicken": "チキン",
         "fast_food": "ファストフード",
@@ -91,7 +90,6 @@
         "send_reset_link": "パスワードをリセットするためのリンクを送信します。",
         "enter_email": "メールアドレスを入力してください",
         "sending": "送信中...",
-        "send_reset_link": "リセットリンクを送信",
         "login_success": "ログイン成功",
         "login_failed": "ログイン失敗",
         "login_error": "ログインに失敗しました。もう一度お試しください。",
@@ -141,7 +139,10 @@
         "search_favorite_food": "お気に入りの食べ物を検索...",
         "delete": "削除",
         "no_items_found": "アイテムが見つかりません",
-        "spin": "スピン"
+        "spin": "スピン",
+        "choose_by_tag": "タグで選ぶ",
+        "favorite_foods": "お気に入り料理",
+        "share_food": "料理をシェア"
     },
     "vi": {
         "recipe_category": "Danh mục công thức",
@@ -151,7 +152,6 @@
         "trending_posts": "Bài đăng thịnh hành",
         "photo_gallery": "Thư viện ảnh",
         "newsletter": "Bản tin",
-        "enter_email": "Nhập địa chỉ email",
         "subscribe_now": "Đăng ký ngay",
         "chicken": "Gà",
         "fast_food": "Thức ăn nhanh",
@@ -234,7 +234,6 @@
         "send_reset_link": "Chúng tôi sẽ gửi liên kết đặt lại mật khẩu.",
         "enter_email": "Vui lòng nhập địa chỉ email",
         "sending": "Đang gửi...",
-        "send_reset_link": "Gửi liên kết đặt lại",
         "login_success": "Đăng nhập thành công",
         "login_failed": "Đăng nhập thất bại",
         "login_error": "Đăng nhập thất bại. Vui lòng thử lại.",
@@ -284,6 +283,9 @@
         "search_favorite_food": "Tìm kiếm món ăn yêu thích...",
         "delete": "Xóa",
         "no_items_found": "Không tìm thấy mục nào",
-        "spin": "Quay"
+        "spin": "Quay",
+        "choose_by_tag": "Chọn theo thẻ",
+        "favorite_foods": "Món ăn yêu thích",
+        "share_food": "Chia sẻ món ăn"
     }
 }

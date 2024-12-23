@@ -85,7 +85,7 @@ const SearchFoodPage = () => {
                           }}
                         >
                           <img
-                            src="assets/images/images[0].png"
+                            src="/assets/images/images[0].png"
                             alt="food-recipe"
                             style={{
                               width: "30px",
@@ -129,9 +129,9 @@ const SearchFoodPage = () => {
               <div className="row justify-content-center g-0">
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/01.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/01.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/01.jpg"
+                      href="/assets/images/gallery/01.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -142,9 +142,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/02.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/02.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/02.jpg"
+                      href="/assets/images/gallery/02.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -155,9 +155,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/03.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/03.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/03.jpg"
+                      href="/assets/images/gallery/03.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -168,9 +168,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/04.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/04.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/04.jpg"
+                      href="/assets/images/gallery/04.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -181,9 +181,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/05.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/05.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/05.jpg"
+                      href="/assets/images/gallery/05.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -194,9 +194,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/06.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/06.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/06.jpg"
+                      href="/assets/images/gallery/06.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -207,9 +207,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/07.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/07.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/07.jpg"
+                      href="/assets/images/gallery/07.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -220,9 +220,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/08.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/08.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/08.jpg"
+                      href="/assets/images/gallery/08.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
