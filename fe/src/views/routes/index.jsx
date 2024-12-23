@@ -25,7 +25,6 @@ function AllRoutes() {
                 <Route path="share-food" element={<MainLayout><ShareFoodPage /></MainLayout>} />
                 <Route path=":foodId" element={<MainLayout><FoodDetailPage /></MainLayout>} />
                 <Route path="search" element={<MainLayout><SearchFoodPage /></MainLayout>} />
-
             </Route>
             <Route path="/tags" element={<MainLayout><TagPage /></MainLayout>} />
             <Route path="/login" element={<Login />} />

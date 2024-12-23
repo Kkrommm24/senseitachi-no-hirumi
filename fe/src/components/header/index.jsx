@@ -1,7 +1,8 @@
 import Food from "api/food";
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
+import { useNavigate, useSearchParams, useLocation, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import auth from "api/auth";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -94,6 +95,15 @@ const Header = () => {
     }
   };
 
+  const handleSignOut = async () => {
+    try {
+      await auth.signout();
+      navigate('/login');
+    } catch (error) {
+      console.error('Signout error:', error);
+    }
+  };
+
   return (
     <div className="w-full">
       {/* Search Area */}
@@ -119,7 +129,7 @@ const Header = () => {
           <div className="logo">
             <a href="/" className="block">
               <img
-                src="assets/images/logo/01.png"
+                src="/assets/images/logo/01.png"
                 alt="logo"
                 className="h-12"
               />
@@ -134,13 +144,13 @@ const Header = () => {
       </div>
 
       {/* Desktop Header */}
-      <header className="hidden xl:block container pb-3 pt-4">
+      <header className="hidden xl:block container pb-3 pt-4 transition-all duration-300">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="logo">
             <a href="/">
               <img
-                src="assets/images/logo/01.png"
+                src="/assets/images/logo/01.png"
                 alt="logo"
                 className="h-16"
               />
@@ -302,43 +312,51 @@ const Header = () => {
 
             {/* Navigation Menu */}
             <nav className="border-t border-gray-100">
-              <ul className="flex justify-center items-center space-x-12 mt-4">
+              <ul className="flex justify-between items-center mt-4">
                 <li>
-                  <a
-                    href="/"
-                    className={`inline-flex items-center px-1 pb-2 text-base font-bold leading-5 focus:outline-none transition duration-150 ease-in-out border-b-2 
-                                        ${
-                                          location.pathname === "/"
-                                            ? "text-red-500 border-red-500"
-                                            : "text-gray-900 border-transparent hover:text-red-500 hover:border-red-500"
-                                        }`}
+                  <Link
+                    to="/"
+                    className={`inline-flex items-center px-1 pb-2 text-base font-bold leading-5 transition duration-150 ease-in-out border-b-2 
+                      ${location.pathname === "/" ? "text-red-500 border-red-500" : "text-gray-900 border-transparent hover:text-red-500 hover:border-red-500"}`}
                   >
                     {t("home")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="inline-flex items-center px-1 pb-2 text-base font-bold leading-5 text-gray-900 hover:text-red-500 focus:outline-none transition duration-150 ease-in-out border-b-2 border-transparent hover:border-red-500"
+                  <Link
+                    to="/choose-by-tag"
+                    className={`inline-flex items-center px-1 pb-2 text-base font-bold leading-5 transition duration-150 ease-in-out border-b-2 
+                      ${location.pathname === "/choose-by-tag" ? "text-red-500 border-red-500" : "text-gray-900 border-transparent hover:text-red-500 hover:border-red-500"}`}
                   >
-                    {t("recipe_list")}
-                  </a>
+                    {t("choose_by_tag")}
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="inline-flex items-center px-1 pb-2 text-base font-bold leading-5 text-gray-900 hover:text-red-500 focus:outline-none transition duration-150 ease-in-out border-b-2 border-transparent hover:border-red-500"
+                  <Link
+                    to="/foods/favourite"
+                    className={`inline-flex items-center px-1 pb-2 text-base font-bold leading-5 transition duration-150 ease-in-out border-b-2 
+                      ${location.pathname === "/foods/favourite" ? "text-red-500 border-red-500" : "text-gray-900 border-transparent hover:text-red-500 hover:border-red-500"}`}
                   >
-                    {t("decide_recipe")}
-                  </a>
+                    {t("favorite_foods")}
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    className="inline-flex items-center px-1 pb-2 text-base font-bold leading-5 text-gray-900 hover:text-red-500 focus:outline-none transition duration-150 ease-in-out border-b-2 border-transparent hover:border-red-500"
+                  <Link
+                    to="/tags"
+                    className={`inline-flex items-center px-1 pb-2 text-base font-bold leading-5 transition duration-150 ease-in-out border-b-2 
+                      ${location.pathname === "/tags" ? "text-red-500 border-red-500" : "text-gray-900 border-transparent hover:text-red-500 hover:border-red-500"}`}
                   >
-                    {t("share_recipe")}
-                  </a>
+                    {t("tags")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/foods/share-food"
+                    className={`inline-flex items-center px-1 pb-2 text-base font-bold leading-5 transition duration-150 ease-in-out border-b-2 
+                      ${location.pathname === "/foods/share-food" ? "text-red-500 border-red-500" : "text-gray-900 border-transparent hover:text-red-500 hover:border-red-500"}`}
+                  >
+                    {t("share_food")}
+                  </Link>
                 </li>
               </ul>
             </nav>
@@ -349,7 +367,7 @@ const Header = () => {
             {/* Language Selector */}
             <div className="flex items-center space-x-2">
               <img
-                src="assets/images/header/01.png"
+                src="/assets/images/header/01.png"
                 alt="language"
                 className="w-6 h-6"
               />
@@ -366,16 +384,23 @@ const Header = () => {
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-full overflow-hidden">
                 <img
-                  src="assets/images/chef/author/08.jpg"
+                  src="/assets/images/chef/author/08.jpg"
                   alt="author"
                   className="w-full h-full object-cover"
                 />
               </div>
-              <select className="border-none bg-transparent focus:outline-none">
-                <option value="1">{t("my_account")}</option>
-                <option value="1.25">{t("profile")}</option>
-                <option value="1.5">{t("set_favorite_tags")}</option>
-                <option value="2">{t("sign_out")}</option>
+              <select 
+                className="border-none bg-transparent focus:outline-none"
+                onChange={(e) => {
+                  if (e.target.value === "sign_out") {
+                    handleSignOut();
+                  }
+                }}
+              >
+                <option value="my_account">{t("my_account")}</option>
+                <option value="profile">{t("profile")}</option>
+                <option value="set_favorite_tags">{t("set_favorite_tags")}</option>
+                <option value="sign_out">{t("sign_out")}</option>
               </select>
             </div>
           </div>
