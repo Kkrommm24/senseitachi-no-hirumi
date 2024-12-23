@@ -11,6 +11,7 @@ import commentRoutes from './routes/commentRoutes.js';
 import getfooddetailsRoutes from './routes/getfooddetailsRoutes.js';
 import tagRoutes from './routes/tagRoutes.js';
 import uploadRoutes from './routes/uploadRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 
 const app = express();
 const httpServer = createServer(app);
@@ -34,6 +35,7 @@ app.use('/api', commentRoutes);
 app.use('/api', getfooddetailsRoutes);
 app.use('/api', tagRoutes);
 app.use('/api', uploadRoutes);
+app.use('/api', userRoutes);
 
 app.use(errorHandler);
 
