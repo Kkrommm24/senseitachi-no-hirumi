@@ -12,6 +12,7 @@ import SearchFoodPage from "views/pages/search-foods-page/SearchFoodPage";
 import TagPage from "views/pages/tags-page/TagPage";
 import FavoriteFoodPage from "views/pages/favouritefoodpage";
 import ShareFoodPage from "views/pages/sharefoodpage";
+import ManageFoodPage from "views/pages/manage-food-page";
 import Login from "views/pages/login-page";
 import Signup from "views/pages/signup-page";
 
@@ -21,9 +22,11 @@ function AllRoutes() {
             <Route path="/" element={<MainLayout><Homepage /></MainLayout>} />
             <Route path="/random-wheel" element={<MainLayout><RandomWheel /></MainLayout>} />
             <Route path="/choose-by-tag" element={<MainLayout><ChooseByTagPage /></MainLayout>} />
-            <Route path="foods">
+            <Route path="/foods">
+                <Route path="manage" element={<MainLayout><ManageFoodPage /></MainLayout>} />
+                <Route path="edit" element={<MainLayout><ShareFoodPage /></MainLayout>} />
                 <Route path="favorite" element={<MainLayout><FavoriteFoodPage /></MainLayout>} />
-                <Route path="share-food" element={<MainLayout><ShareFoodPage /></MainLayout>} />
+                <Route path="share" element={<MainLayout><ShareFoodPage /></MainLayout>} />
                 <Route path=":foodId" element={<MainLayout><FoodDetailPage /></MainLayout>} />
                 <Route path="search" element={<MainLayout><SearchFoodPage /></MainLayout>} />
             </Route>

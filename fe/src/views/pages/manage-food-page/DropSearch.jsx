@@ -1,10 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
 
-const DropdownSearch = ({ data, setData, removeData, previousSelectedData }) => {
+const DropdownSearch = ({ data, setData, removeData }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [selectedData, setSelectedData] = useState(previousSelectedData || []);
+  const [selectedData, setSelectedData] = useState([]);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -19,7 +18,7 @@ const DropdownSearch = ({ data, setData, removeData, previousSelectedData }) => 
   }, []);
 
   const filteredData = data.filter(item =>
-    item.toLowerCase().includes(searchTerm.toLowerCase())
+    item['name'].toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleSelectData = (item) => {
@@ -45,31 +44,31 @@ const DropdownSearch = ({ data, setData, removeData, previousSelectedData }) => 
           setIsDropdownOpen(true);
         }}
         onClick={() => setIsDropdownOpen(true)}
-        placeholder={t('typing')}
+        placeholder="タイピング"
         className="w-full p-2 border rounded"
       />
-
+      
       {isDropdownOpen && (
         <div className="absolute z-10 w-full mt-1 bg-white border rounded-md shadow-lg max-h-60 overflow-auto">
           {filteredData.map((item) => (
             <div
-              key={item}
+              key={item.id}
               onClick={() => handleSelectData(item)}
               className="p-2 hover:bg-gray-100 cursor-pointer"
             >
-              {item}
+              {item['name']}
             </div>
           ))}
         </div>
       )}
-
+      
       <div className="flex flex-wrap gap-2 mt-2">
-        {selectedData.map((item, index) => (
+        {selectedData.map((item) => (
           <div
-            key={index}
+            key={item.id}
             className="flex items-center bg-gray-100 rounded-full px-3 py-1"
           >
-            <span>{item}</span>
+            <span>{item['name']}</span>
             <button
               type="button"
               onClick={() => {

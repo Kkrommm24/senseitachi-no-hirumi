@@ -1,47 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import Slider from 'react-slick';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { useTranslation } from 'react-i18next';
+import Slider from 'react-slick';  
+import "slick-carousel/slick/slick.css";  
+import "slick-carousel/slick/slick-theme.css";  
 import MapComponent from './MapComponent';
 import Food from 'api/food';
 import Tag from 'api/tag';
 import DropdownSearch from './DropSearch';
-import { useLocation, useNavigate } from 'react-router-dom';
 
-function ShareFoodPage() {
-  const location = useLocation();
-  const food = location.state?.food;
-  const navigate = useNavigate();
-
+function ShareFoodPage() {  
   const [formData, setFormData] = useState({  
-    name: food?.name || '',  
-    images: food?.images || [],  
+    name: '',  
+    images: [],  
     restaurant: {
-      name: food?.foodRestaurant?.name || '',
-      address: food?.foodRestaurant?.address || '',
-      longitude: food?.foodRestaurant?.longitude || 105.804817, // Default to HN City coordinates
-      latitude: food?.foodRestaurant?.latitude || 21.028511
+      name: '',
+      address: '',
+      longitude: 105.804817, // Default to HN City coordinates
+      latitude: 21.028511
     },  
-    tags: food?.foodTag?.map(tag => tag.tag.name) || [],
-    price: food?.price || 0,
-    ingredients: food?.ingredients?.map(ingredient => ingredient.ingredient.name) || [],
-    flavors: food?.flavors?.map(flavor => flavor.flavor.name) || [],
-    description: food?.description || '', 
+    tags: [],
+    price: 0,
+    ingredients: [],
+    flavors: [],
+    description: ''  
   }); 
 
   const [ingredients, setIngredients] = useState([]);
   const [flavors, setFlavors] = useState([]);
   const [tags, setTags] = useState([]);
 
-  const sliderSettings = {
-    dots: true,
-    infinite: formData.images.length >= 2,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: true
-  };
+  const sliderSettings = {  
+    dots: true,  
+    infinite: formData.images.length >= 2, 
+    speed: 500,  
+    slidesToShow: 1,  
+    slidesToScroll: 1,  
+    arrows: true  
+  }; 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,25 +44,22 @@ function ShareFoodPage() {
         const flavorsResponse = await Food.getFlavors();
         const tagsResponse = await Tag.getAllTags();
   
-        setIngredients(ingredientsResponse.data.map((ingredient) => ingredient.name));
-        setFlavors(flavorsResponse.data.map((flavor) => flavor.name));
-        setTags(tagsResponse.data.map((tag) => tag.name));
+        setIngredients(ingredientsResponse.data);
+        setFlavors(flavorsResponse.data);
+        setTags(tagsResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
-
+  
     fetchData();
   }, []);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {  
+    e.preventDefault();  
     // Upload images
     const uploadedImageUrls = await Promise.all(
       formData.images.map(async (image) => {
-        if (typeof image === 'string') {
-          return image;
-        }
         try {
           const response = await Food.uploadImage(image.file);
           return response.data.imageUrl;
@@ -90,14 +81,8 @@ function ShareFoodPage() {
 
     // Submit the final form data
     console.log('Form submitted:', finalFormData);
-    if (food) {
-      // Update existing food
-      Food.updateFood(finalFormData, food.id);
-      navigate('/foods/manage');
-      return;
-    }
     Food.addFood(finalFormData);
-  };
+  };  
 
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
@@ -111,45 +96,45 @@ function ShareFoodPage() {
     }));
   };
 
-  const removeImage = (index) => {
-    URL.revokeObjectURL(formData.images[index]);
-    setFormData(prev => ({
-      ...prev,
-      images: prev.images.filter((_, i) => i !== index)
-    }));
-  };
+  const removeImage = (index) => {  
+    URL.revokeObjectURL(formData.images[index]);  
+    setFormData(prev => ({  
+      ...prev,  
+      images: prev.images.filter((_, i) => i !== index)  
+    }));  
+  };  
 
-  const handleMapClick = (event) => {
-    setFormData(prev => ({
-      ...prev,
-      restaurant: {
+  const handleMapClick = (event) => {  
+    setFormData(prev => ({  
+      ...prev,  
+      restaurant: { 
         ...prev['restaurant'],
-        latitude: event['lat'],
-        longitude: event['lng']
-      }
-    }));
-  };
+        latitude: event['lat'],  
+        longitude: event['lng'] 
+      }  
+    }));  
+  }; 
 
-  return (
-    <div className="container mx-auto p-6">
-      <form onSubmit={handleSubmit} className="flex gap-6">
-        {/* Left Column */}
-        <div className="w-1/2 space-y-6">
-          {/* Tên món ăn */}
-          <div>
-            <input
-              type="text"
-              placeholder={t('enter_food_name')}
-              className="w-full p-2 border rounded-md"
-              value={formData.name}
-              onChange={(e) => setFormData(prev => ({...prev, name: e.target.value}))}
-            />
+  return (  
+    <div className="container mx-auto p-6">  
+      <form onSubmit={handleSubmit} className="flex gap-6">  
+        {/* Left Column */}  
+        <div className="w-1/2 space-y-6">  
+          {/* Tên món ăn */}  
+          <div>  
+            <input  
+              type="text"  
+              placeholder="料理名を入力してください"  
+              className="w-full p-2 border rounded-md"  
+              value={formData.name}  
+              onChange={(e) => setFormData(prev => ({...prev, name: e.target.value}))}  
+            />  
           </div>
           {/* Price */}
           <div>
             <input
               type="number"
-              placeholder={t('enter_price')}
+              placeholder="価格を入力してください"
               className='w-full p-2 border rounded-md'
               value={formData.price}
               min="0"
@@ -157,29 +142,29 @@ function ShareFoodPage() {
             />
           </div>
 
-          {/* Upload hình ảnh */}
-          <div className="space-y-2">
-            <div className="flex items-center space-x-2">
-              <label className="cursor-pointer px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">
-                <span>{t('upload_images')}</span>
-                <input
-                  type="file"
-                  multiple
-                  accept="image/*"
-                  className="hidden"
-                  onChange={handleImageUpload}
-                />
-              </label>
-            </div>
+          {/* Upload hình ảnh */}  
+          <div className="space-y-2">  
+            <div className="flex items-center space-x-2">  
+              <label className="cursor-pointer px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600">  
+                <span>画像をアップロードします</span>  
+                <input  
+                  type="file"  
+                  multiple  
+                  accept="image/*"  
+                  className="hidden"  
+                  onChange={handleImageUpload}  
+                />  
+              </label>  
+            </div>  
 
-            {/* Image Slider */}
-            {formData.images.length > 0 && (
-              <div className="mt-4">
-                <Slider {...sliderSettings}>
+            {/* Image Slider */}  
+            {formData.images.length > 0 && (  
+              <div className="mt-4">  
+                <Slider {...sliderSettings}>  
                 {formData.images.map((image, index) => (
                   <div key={index} className="relative">
                     <img
-                      src={typeof image === "string" ? image : image.url}
+                      src={image.url}
                       alt={`Upload ${index + 1}`}
                       className="w-full h-64 object-cover rounded-md"
                     />
@@ -191,16 +176,16 @@ function ShareFoodPage() {
                       x
                     </button>
                   </div>
-                ))}
-                </Slider>
-              </div>
-            )}
-          </div>
+                ))}  
+                </Slider>  
+              </div>  
+            )}  
+          </div>  
 
           {/* Tags */}  
           <div className="space-y-2"> 
             <label className='text-pretty text-sm font-bold'>タグ</label>
-            <DropdownSearch data={tags} previousSelectedData={formData.tags}
+            <DropdownSearch data={tags} 
             setData={(data) =>  setFormData((prev) => ({ ...prev, tags: [...prev.tags, data.name] }))} 
             removeData={(data) => setFormData((prev) => ({ ...prev, tags: prev.tags.filter((tag) => tag !== data.name) }))}
             />
@@ -209,7 +194,7 @@ function ShareFoodPage() {
           {/* Ingredients */}
           <div className="space-y-2"> 
             <label className='text-pretty text-sm font-bold'>材料</label>
-            <DropdownSearch data={ingredients} previousSelectedData={formData.ingredients}
+            <DropdownSearch data={ingredients} 
             setData={(data) =>  setFormData((prev) => ({ ...prev, ingredients: [...prev.ingredients, data.name] }))} 
             removeData={(data) => setFormData((prev) => ({ ...prev, ingredients: prev.ingredients.filter((ingredient) => ingredient !== data.name) }))}
             />
@@ -218,29 +203,29 @@ function ShareFoodPage() {
           {/* Flavors */}
           <div className="space-y-2"> 
             <label className='text-pretty text-sm font-bold'>フレーバー</label>
-            <DropdownSearch data={flavors} previousSelectedData={formData.flavors}
+            <DropdownSearch data={flavors} 
             setData={(data) =>  setFormData((prev) => ({ ...prev, flavors: [...prev.flavors, data.name] }))} 
             removeData={(data) => setFormData((prev) => ({ ...prev, flavors: prev.flavors.filter((flavor) => flavor !== data.name) }))}
             />
           </div>
-        </div>
+        </div>  
 
-        {/* Right Column */}
-        <div className="w-1/2 space-y-6">
-          {/* Nút lưu */}
-          <div className="flex justify-end">
-            <button
-              type="submit"
-              className="px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"
-            >
-              {t('share')}
-            </button>
+        {/* Right Column */}  
+        <div className="w-1/2 space-y-6">  
+          {/* Nút lưu */}  
+          <div className="flex justify-end">  
+            <button  
+              type="submit"  
+              className="px-6 py-2 bg-red-500 text-white rounded-md hover:bg-red-600"  
+            >  
+              共有
+            </button>  
           </div>
           {/* Restaurant Name */}
           <div>
             <input
               type="text"
-              placeholder={t('enter_restaurant_name')}
+              placeholder="レストラン名を入力してください"
               className="w-full p-2 border rounded-md"
               value={formData.restaurant.name}
               onChange={(e) => setFormData(prev => ({
@@ -257,7 +242,7 @@ function ShareFoodPage() {
           <div>
             <input
               type="text"
-              placeholder={t('enter_restaurant_address')}
+              placeholder="レストランの住所を入力してください"
               className="w-full p-2 border rounded-md"
               value={formData.restaurant.address}
               onChange={(e) => setFormData(prev => ({
@@ -269,24 +254,24 @@ function ShareFoodPage() {
               }))}
             />
           </div>
-          {/* Google Maps */}
-          <div className="w-full h-[300px] rounded-md overflow-hidden">
+          {/* Google Maps */}  
+          <div className="w-full h-[300px] rounded-md overflow-hidden">  
               <MapComponent position={{lat: formData.restaurant.latitude, lng: formData.restaurant.longitude}} onLocationSelect={handleMapClick}/>
-          </div>
+          </div>  
 
-          {/* Mô tả */}
-          <div>
-            <textarea
-              placeholder={t('enter_food_description')}
-              className="w-full p-2 border rounded-md h-32"
-              value={formData.description}
-              onChange={(e) => setFormData(prev => ({...prev, description: e.target.value}))}
-            />
-          </div>
-        </div>
-      </form>
-    </div>
-  );
+          {/* Mô tả */}  
+          <div>  
+            <textarea  
+              placeholder="食べ物の説明を入力してください"  
+              className="w-full p-2 border rounded-md h-32"  
+              value={formData.description}  
+              onChange={(e) => setFormData(prev => ({...prev, description: e.target.value}))}  
+            />  
+          </div>  
+        </div>  
+      </form>  
+    </div>  
+  );  
 }
 
 export default ShareFoodPage;
