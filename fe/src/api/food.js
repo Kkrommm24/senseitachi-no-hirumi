@@ -71,7 +71,19 @@ const Food = {
     addFood: (foodData) => {
         const url = '/add-food';
         return API.post(url, foodData);
-    }
+    },
+    getCreatedFood: () => {
+        const url = '/get-created-foods';
+        return API.get(url);
+    },
+    deleteFood: (foodId) => {
+        const url = `/delete-food?id=${foodId}`
+        return API.delete(url);
+    },
+    updateFood: (foodData, id) => {
+        const url = `/update-food?id=${id}`;
+        return API.put(url, foodData);
+    },
 };
 
 export default Food;

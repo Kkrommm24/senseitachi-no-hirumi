@@ -6,27 +6,22 @@ import MapComponent from './MapComponent';
 import Food from 'api/food';
 import Tag from 'api/tag';
 import DropdownSearch from './DropSearch';
-import { useLocation, useNavigate } from 'react-router-dom';
 
-function ShareFoodPage() {
-  const location = useLocation();
-  const food = location.state?.food;
-  const navigate = useNavigate();
-
+function ShareFoodPage() {  
   const [formData, setFormData] = useState({  
-    name: food?.name || '',  
-    images: food?.images || [],  
+    name: '',  
+    images: [],  
     restaurant: {
-      name: food?.foodRestaurant?.name || '',
-      address: food?.foodRestaurant?.address || '',
-      longitude: food?.foodRestaurant?.longitude || 105.804817, // Default to HN City coordinates
-      latitude: food?.foodRestaurant?.latitude || 21.028511
+      name: '',
+      address: '',
+      longitude: 105.804817, // Default to HN City coordinates
+      latitude: 21.028511
     },  
-    tags: food?.foodTag?.map(tag => tag.tag.name) || [],
-    price: food?.price || 0,
-    ingredients: food?.ingredients?.map(ingredient => ingredient.ingredient.name) || [],
-    flavors: food?.flavors?.map(flavor => flavor.flavor.name) || [],
-    description: food?.description || '', 
+    tags: [],
+    price: 0,
+    ingredients: [],
+    flavors: [],
+    description: ''  
   }); 
 
   const [ingredients, setIngredients] = useState([]);
@@ -49,9 +44,9 @@ function ShareFoodPage() {
         const flavorsResponse = await Food.getFlavors();
         const tagsResponse = await Tag.getAllTags();
   
-        setIngredients(ingredientsResponse.data.map((ingredient) => ingredient.name));
-        setFlavors(flavorsResponse.data.map((flavor) => flavor.name));
-        setTags(tagsResponse.data.map((tag) => tag.name));
+        setIngredients(ingredientsResponse.data);
+        setFlavors(flavorsResponse.data);
+        setTags(tagsResponse.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -65,9 +60,6 @@ function ShareFoodPage() {
     // Upload images
     const uploadedImageUrls = await Promise.all(
       formData.images.map(async (image) => {
-        if (typeof image === 'string') {
-          return image;
-        }
         try {
           const response = await Food.uploadImage(image.file);
           return response.data.imageUrl;
@@ -89,12 +81,6 @@ function ShareFoodPage() {
 
     // Submit the final form data
     console.log('Form submitted:', finalFormData);
-    if (food) {
-      // Update existing food
-      Food.updateFood(finalFormData, food.id);
-      navigate('/foods/manage');
-      return;
-    }
     Food.addFood(finalFormData);
   };  
 
@@ -178,7 +164,7 @@ function ShareFoodPage() {
                 {formData.images.map((image, index) => (
                   <div key={index} className="relative">
                     <img
-                      src={typeof image === "string" ? image : image.url}
+                      src={image.url}
                       alt={`Upload ${index + 1}`}
                       className="w-full h-64 object-cover rounded-md"
                     />
@@ -199,7 +185,7 @@ function ShareFoodPage() {
           {/* Tags */}  
           <div className="space-y-2"> 
             <label className='text-pretty text-sm font-bold'>タグ</label>
-            <DropdownSearch data={tags} previousSelectedData={formData.tags}
+            <DropdownSearch data={tags} 
             setData={(data) =>  setFormData((prev) => ({ ...prev, tags: [...prev.tags, data.name] }))} 
             removeData={(data) => setFormData((prev) => ({ ...prev, tags: prev.tags.filter((tag) => tag !== data.name) }))}
             />
@@ -208,7 +194,7 @@ function ShareFoodPage() {
           {/* Ingredients */}
           <div className="space-y-2"> 
             <label className='text-pretty text-sm font-bold'>材料</label>
-            <DropdownSearch data={ingredients} previousSelectedData={formData.ingredients}
+            <DropdownSearch data={ingredients} 
             setData={(data) =>  setFormData((prev) => ({ ...prev, ingredients: [...prev.ingredients, data.name] }))} 
             removeData={(data) => setFormData((prev) => ({ ...prev, ingredients: prev.ingredients.filter((ingredient) => ingredient !== data.name) }))}
             />
@@ -217,7 +203,7 @@ function ShareFoodPage() {
           {/* Flavors */}
           <div className="space-y-2"> 
             <label className='text-pretty text-sm font-bold'>フレーバー</label>
-            <DropdownSearch data={flavors} previousSelectedData={formData.flavors}
+            <DropdownSearch data={flavors} 
             setData={(data) =>  setFormData((prev) => ({ ...prev, flavors: [...prev.flavors, data.name] }))} 
             removeData={(data) => setFormData((prev) => ({ ...prev, flavors: prev.flavors.filter((flavor) => flavor !== data.name) }))}
             />
