@@ -19,6 +19,7 @@ const Header = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
 
   const queryName = searchParams.get("name");
   const hasNameParam = searchParams.has("name");
@@ -78,6 +79,10 @@ const Header = () => {
     setDropdownOpen(!dropdownOpen);
   };
 
+  const toggleAccountDropdown = () => {
+    setAccountDropdownOpen(!accountDropdownOpen);
+  };
+
   // Add new state for filters
   const [filters, setFilters] = useState({
     ingredients: '',
@@ -133,6 +138,7 @@ const Header = () => {
         handleSignOut();
         break;
       case "profile":
+        setAccountDropdownOpen(false);
         navigate('/profile');
         break;
       default:
@@ -426,21 +432,35 @@ const Header = () => {
             </div>
 
             {/* User Account */}
-            <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-full overflow-hidden">
-                <img
-                  src={user.avatar || "/assets/images/chef/author/08.jpg"}
-                  alt="author"
-                  className="w-full h-full object-cover"
-                />
+            <div className="relative">
+              <div className="flex items-center space-x-3 cursor-pointer" onClick={toggleAccountDropdown}>
+                <div className="w-10 h-10 rounded-full overflow-hidden">
+                  <img
+                    src={user.avatar || "/assets/images/chef/author/08.jpg"}
+                    alt="author"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <span>{user.name}</span>
               </div>
-              <select 
-                className="border-none bg-transparent focus:outline-none"
-                onChange={(e) => handleAccountAction(e.target.value)}
-              >
-                <option value="profile">{t("profile")}</option>
-                <option value="sign_out">{t("sign_out")}</option>
-              </select>
+              {accountDropdownOpen && (
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-10">
+                  <ul>
+                    <li
+                      onClick={() => handleAccountAction("profile")}
+                      className="p-3 hover:bg-gray-100 cursor-pointer"
+                    >
+                      {t("profile")}
+                    </li>
+                    <li
+                      onClick={() => handleAccountAction("sign_out")}
+                      className="p-3 hover:bg-gray-100 cursor-pointer"
+                    >
+                      {t("sign_out")}
+                    </li>
+                  </ul>
+                </div>
+              )}
             </div>
           </div>
         </div>

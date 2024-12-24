@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { HeartFilled, HeartOutlined } from '@ant-design/icons';
 import Food from 'api/food';
@@ -61,7 +61,7 @@ const FoodList = ({ foods }) => {
                                         className="text-[#fb524f] text-4xl cursor-pointer"
                                     />
                                 ) : (
-                                    <HeartFilled
+                                    <HeartOutlined
                                         onClick={() => handleAddToFavorites(food.id)}
                                         className="text-[#000000] text-4xl cursor-pointer"
                                     />
@@ -96,7 +96,7 @@ const FoodList = ({ foods }) => {
                                         <div className="meta-post">
                                             <div style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
                                                 <img
-                                                    src="assets/images/image.png"
+                                                    src="/assets/images/image.png"
                                                     alt="food-recipe"
                                                     style={{
                                                         width: "30px",
