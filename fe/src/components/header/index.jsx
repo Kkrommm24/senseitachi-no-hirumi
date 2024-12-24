@@ -429,9 +429,7 @@ const Header = () => {
                 className="border-none bg-transparent focus:outline-none"
                 onChange={(e) => handleAccountAction(e.target.value)}
               >
-                <option value="my_account">{t("my_account")}</option>
                 <option value="profile">{t("profile")}</option>
-                <option value="set_favorite_tags">{t("set_favorite_tags")}</option>
                 <option value="sign_out">{t("sign_out")}</option>
               </select>
             </div>
