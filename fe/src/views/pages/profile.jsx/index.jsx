@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useDispatch } from 'react-redux';
-import userApi from '../../../api/user';
-import { setUser } from '../../../store/slices/userSlice';
+import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import userApi from "../../../api/user";
+import { setUser } from "../../../store/slices/userSlice";
 
 const Profile = () => {
   const { t } = useTranslation();
@@ -11,24 +11,27 @@ const Profile = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [passwordError, setPasswordError] = useState(null);
   const [userData, setUserData] = useState({
-    name: '',
-    email: '',
-    password: '',
-    avatar: '/assets/images/chef/author/08.jpg'
+    name: "",
+    email: "",
+    password: "",
+    avatar: "/assets/images/chef/author/08.jpg",
   });
   const [editData, setEditData] = useState({
     ...userData,
-    currentPassword: '',
-    newPassword: '',
-    confirmPassword: ''
+    currentPassword: "",
+    newPassword: "",
+    confirmPassword: "",
   });
   const [selectedFile, setSelectedFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState(null);
   const [imageError, setImageError] = useState(null);
 
-  const inputStyles = "w-full h-12 px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-300";
-  const inputErrorStyles = "w-full h-12 px-4 border border-red-500 ring-1 ring-red-500 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-300";
-  const readOnlyStyles = "text-lg text-gray-600 h-12 px-4 flex items-center bg-gray-50 rounded-lg";
+  const inputStyles =
+    "w-full h-12 px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-300";
+  const inputErrorStyles =
+    "w-full h-12 px-4 border border-red-500 ring-1 ring-red-500 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500 transition-all duration-300";
+  const readOnlyStyles =
+    "text-lg text-gray-600 h-12 px-4 flex items-center bg-gray-50 rounded-lg";
 
   useEffect(() => {
     fetchUserProfile();
@@ -41,17 +44,17 @@ const Profile = () => {
       setUserData({
         name: response.data.name,
         email: response.data.email,
-        password: '********',
-        avatar: response.data.avatar || '/assets/images/chef/author/08.jpg'
+        password: "********",
+        avatar: response.data.avatar || "/assets/images/chef/author/08.jpg",
       });
       setEditData({
         name: response.data.name,
         email: response.data.email,
-        password: '',
-        avatar: response.data.avatar || '/assets/images/chef/author/08.jpg',
-        currentPassword: '',
-        newPassword: '',
-        confirmPassword: ''
+        password: "",
+        avatar: response.data.avatar || "/assets/images/chef/author/08.jpg",
+        currentPassword: "",
+        newPassword: "",
+        confirmPassword: "",
       });
     } catch (err) {
       console.error(err);
@@ -69,12 +72,12 @@ const Profile = () => {
     if (file) {
       // Validate file type
       if (!file.type.match(/^image\/(jpeg|png|jpg)$/)) {
-        setImageError(t('invalid_image_type'));
+        setImageError(t("invalid_image_type"));
         return;
       }
       // Validate file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
-        setImageError(t('image_too_large'));
+        setImageError(t("image_too_large"));
         return;
       }
 
@@ -94,7 +97,7 @@ const Profile = () => {
       setIsLoading(true);
       setPasswordError(null);
 
-       let avatarUrl = userData.avatar;
+      let avatarUrl = userData.avatar;
 
       if (selectedFile) {
         const uploadResponse = await userApi.uploadImage(selectedFile);
@@ -109,7 +112,7 @@ const Profile = () => {
 
       if (editData.currentPassword && editData.newPassword) {
         if (editData.newPassword !== editData.confirmPassword) {
-          setPasswordError('New password and confirm password do not match');
+          setPasswordError("New password and confirm password do not match");
           setIsLoading(false);
           return;
         }
@@ -119,29 +122,37 @@ const Profile = () => {
       }
 
       await userApi.updateUserProfile(updateData);
-      
+
       setUserData({
         ...editData,
-        password: editData.newPassword ? '********' : userData.password,
-        avatar: avatarUrl
+        password: editData.newPassword ? "********" : userData.password,
+        avatar: avatarUrl,
+      });
+
+      setEditData({
+        ...editData,
+        newPassword: "",
+        confirmPassword: "",
       });
 
       // Update user slice
-      dispatch(setUser({
-        name: updateData.name,
-        email: updateData.email,
-        avatar: updateData.avatar,
-      }));
-      
+      dispatch(
+        setUser({
+          name: updateData.name,
+          email: updateData.email,
+          avatar: updateData.avatar,
+        })
+      );
+
       setIsEditing(false);
       setSelectedFile(null);
       setPreviewUrl(null);
       setImageError(null);
     } catch (err) {
-      if (err.response?.data?.message === 'Current password is incorrect') {
-        setPasswordError('Current password is incorrect');
+      if (err.response?.data?.message) {
+        setPasswordError(err.response?.data?.message);
       } else {
-        setPasswordError('Failed to update profile');
+        setPasswordError("Failed to update profile");
       }
       console.error(err);
     } finally {
@@ -168,7 +179,9 @@ const Profile = () => {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">
       <div className="bg-white rounded-xl shadow-lg p-8 transition-all duration-300 hover:shadow-xl">
-        <h2 className="text-2xl font-bold text-custom-red mb-8 text-center">{t('profile')}</h2>
+        <h2 className="text-2xl font-bold text-custom-red mb-8 text-center">
+          {t("profile")}
+        </h2>
         <div className="flex flex-col md:flex-row gap-12">
           {/* Left Side - Image */}
           <div className="w-full md:w-1/3">
@@ -182,7 +195,7 @@ const Profile = () => {
             {isEditing && (
               <div className="mt-6">
                 <label className="block text-sm font-semibold text-gray-700 mb-3">
-                  {t('change_profile_picture')}
+                  {t("change_profile_picture")}
                 </label>
                 <input
                   type="file"
@@ -208,13 +221,15 @@ const Profile = () => {
                 {/* Name field */}
                 <div className="transition-all duration-300">
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    {t('name')}
+                    {t("name")}
                   </label>
                   {isEditing ? (
                     <input
                       type="text"
                       value={editData.name}
-                      onChange={(e) => setEditData({ ...editData, name: e.target.value })}
+                      onChange={(e) =>
+                        setEditData({ ...editData, name: e.target.value })
+                      }
                       className={inputStyles}
                     />
                   ) : (
@@ -225,13 +240,15 @@ const Profile = () => {
                 {/* Email field */}
                 <div className="transition-all duration-300">
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    {t('email')}
+                    {t("email")}
                   </label>
                   {isEditing ? (
                     <input
                       type="email"
                       value={editData.email}
-                      onChange={(e) => setEditData({ ...editData, email: e.target.value })}
+                      onChange={(e) =>
+                        setEditData({ ...editData, email: e.target.value })
+                      }
                       className={inputStyles}
                     />
                   ) : (
@@ -242,7 +259,7 @@ const Profile = () => {
                 {/* Password Fields with improved styling */}
                 <div className="transition-all duration-300">
                   <label className="block text-sm font-semibold text-gray-700 mb-2">
-                    {isEditing ? t('current_password') : t('password')}
+                    {isEditing ? t("current_password") : t("password")}
                   </label>
                   {isEditing ? (
                     <div className="space-y-2">
@@ -251,19 +268,16 @@ const Profile = () => {
                           type="password"
                           value={editData.currentPassword}
                           onChange={(e) => {
-                            setEditData({ ...editData, currentPassword: e.target.value });
+                            setEditData({
+                              ...editData,
+                              currentPassword: e.target.value,
+                            });
                             setPasswordError(null);
                           }}
-                          className={passwordError ? inputErrorStyles : inputStyles}
-                          placeholder={t('enter_current_password')}
+                          className={inputStyles}
+                          placeholder={t("enter_current_password")}
                         />
                       </div>
-                      {passwordError && (
-                        <p className="text-red-500 text-sm mt-2 bg-red-50 p-2 rounded-lg">
-                          <i className="icofont-warning-alt mr-2"></i>
-                          {passwordError}
-                        </p>
-                      )}
                     </div>
                   ) : (
                     <p className={readOnlyStyles}>********</p>
@@ -275,25 +289,28 @@ const Profile = () => {
                   <>
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {t('new_password')}
+                        {t("new_password")}
                       </label>
                       <div className="relative">
                         <input
                           type={"password"}
                           value={editData.newPassword}
                           onChange={(e) => {
-                            setEditData({ ...editData, newPassword: e.target.value });
+                            setEditData({
+                              ...editData,
+                              newPassword: e.target.value,
+                            });
                             setPasswordError(null); // Clear error when user types
                           }}
-                          className={passwordError ? inputErrorStyles : inputStyles}
-                          placeholder={t('enter_new_password')}
+                          className={inputStyles}
+                          placeholder={t("enter_new_password")}
                         />
                       </div>
                     </div>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {t('confirm_password')}
+                        {t("confirm_password")}
                       </label>
                       <div className="space-y-2">
                         <div className="relative">
@@ -301,14 +318,23 @@ const Profile = () => {
                             type={"password"}
                             value={editData.confirmPassword}
                             onChange={(e) => {
-                              setEditData({ ...editData, confirmPassword: e.target.value });
+                              setEditData({
+                                ...editData,
+                                confirmPassword: e.target.value,
+                              });
                               setPasswordError(null); // Clear error when user types
                             }}
-                            className={passwordError ? inputErrorStyles : inputStyles}
-                            placeholder={t('confirm_new_password')}
+                            className={inputStyles}
+                            placeholder={t("confirm_new_password")}
                           />
                         </div>
                       </div>
+                      {passwordError && (
+                        <p className="text-red-500 text-sm mt-2 bg-red-50 p-2 rounded-lg">
+                          <i className="icofont-warning-alt mr-2"></i>
+                          {passwordError}
+                        </p>
+                      )}
                     </div>
                   </>
                 )}
@@ -322,14 +348,14 @@ const Profile = () => {
                       onClick={handleCancel}
                       className="px-6 py-2.5 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-all duration-300"
                     >
-                      {t('cancel')}
+                      {t("cancel")}
                     </button>
                     <button
                       onClick={handleSave}
                       className="px-6 py-2.5 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
                     >
                       <i className="icofont-save mr-2"></i>
-                      {t('save')}
+                      {t("save")}
                     </button>
                   </>
                 ) : (
@@ -338,7 +364,7 @@ const Profile = () => {
                     className="px-6 py-2.5 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-all duration-300"
                   >
                     <i className="icofont-edit mr-2"></i>
-                    {t('edit')}
+                    {t("edit")}
                   </button>
                 )}
               </div>

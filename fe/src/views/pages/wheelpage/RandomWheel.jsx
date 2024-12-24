@@ -94,7 +94,7 @@ const RandomWheel = () => {
           <div className="relative">
             {/* Custom arrow overlay */}
             <div
-              className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-4 z-10"
+              className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-4 z-1"
               style={{
                 width: '70px',
                 height: '110px',
@@ -109,7 +109,7 @@ const RandomWheel = () => {
           <Modal
             isOpen={isModalOpen}
             onRequestClose={() => setIsModalOpen(false)}
-            className="fixed inset-0 flex items-center justify-center p-4"
+            className="fixed inset-0 flex items-center justify-center p-4 z-50"
             overlayClassName="fixed inset-0 bg-black bg-opacity-50"
           >
             <div className="bg-white rounded-lg shadow-lg p-6 max-w-md w-full">

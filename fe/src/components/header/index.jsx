@@ -6,13 +6,14 @@ import auth from "api/auth";
 import { useDispatch, useSelector } from "react-redux";
 import userApi from "api/user";
 import { setUser } from "store/slices/userSlice";
+import { Dropdown, Menu } from 'antd';
+import { clearStorage, getLanguage, setLanguage } from 'helper/storage'; // Import functions from storage.js
 
 const Header = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const { t, i18n } = useTranslation();
   const location = useLocation();
-  console.log(location.pathname);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
 
@@ -21,7 +22,7 @@ const Header = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
 
-  const queryName = searchParams.get("name");
+  const queryName = searchParams.get("name") ?? "";
   const hasNameParam = searchParams.has("name");
 
   const handleInputChange = async (e) => {
@@ -52,6 +53,13 @@ const Header = () => {
     fetchUserProfile();
   }, [dispatch]);
 
+  useEffect(() => {
+    const savedLanguage = getLanguage();
+    if (savedLanguage) {
+      i18n.changeLanguage(savedLanguage);
+    }
+  }, [i18n]);
+
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
       e.preventDefault();
@@ -73,6 +81,7 @@ const Header = () => {
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
+    setLanguage(lng);
   };
 
   const toggleDropdown = () => {
@@ -126,6 +135,7 @@ const Header = () => {
   const handleSignOut = async () => {
     try {
       await auth.signout();
+      clearStorage();
       navigate('/login');
     } catch (error) {
       console.error('Signout error:', error);
@@ -145,6 +155,13 @@ const Header = () => {
         break;
     }
   };
+
+  const languageMenu = (
+    <Menu onClick={(e) => changeLanguage(e.key)}>
+      <Menu.Item key="ja">日本語</Menu.Item>
+      <Menu.Item key="vi">Tiếng Việt</Menu.Item>
+    </Menu>
+  );
 
   return (
     <div className="w-full">
@@ -169,13 +186,13 @@ const Header = () => {
       <div className="xl:hidden">
         <nav className="flex items-center justify-between bg-white shadow-sm px-4 py-2">
           <div className="logo">
-            <a href="/" className="block">
+            <Link to="/" className="block">
               <img
                 src="/assets/images/logo/01.png"
                 alt="logo"
                 className="h-12"
               />
-            </a>
+            </Link>
           </div>
           <button className="flex flex-col space-y-1.5">
             <span className="block w-6 h-0.5 bg-gray-800"></span>
@@ -190,13 +207,13 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="logo">
-            <a href="/">
+            <Link to="/">
               <img
                 src="/assets/images/logo/01.png"
                 alt="logo"
                 className="h-16"
               />
-            </a>
+            </Link>
           </div>
 
           {/* Search and Menu */}
@@ -416,20 +433,11 @@ const Header = () => {
           {/* Language and User Account */}
           <div className="flex items-center space-x-6">
             {/* Language Selector */}
-            <div className="flex items-center space-x-2">
-              <img
-                src="/assets/images/header/01.png"
-                alt="language"
-                className="w-6 h-6"
-              />
-              <select
-                onChange={(e) => changeLanguage(e.target.value)}
-                className="border-none bg-transparent focus:outline-none"
-              >
-                <option value="ja">日本語</option>
-                <option value="vi">Tiếng Việt</option>
-              </select>
-            </div>
+            <Dropdown overlay={languageMenu} trigger={['click']}>
+              <div className="cursor-pointer">
+                {i18n.language === 'ja' ? '日本語' : 'Tiếng Việt'}
+              </div>
+            </Dropdown>
 
             {/* User Account */}
             <div className="relative">
@@ -444,7 +452,7 @@ const Header = () => {
                 <span>{user.name}</span>
               </div>
               {accountDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-10">
+                <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-md shadow-lg z-[1000]">
                   <ul>
                     <li
                       onClick={() => handleAccountAction("profile")}
