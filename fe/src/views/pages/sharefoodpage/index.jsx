@@ -9,6 +9,7 @@ import Tag from 'api/tag';
 import DropdownSearch from './DropSearch';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { t } from 'i18next';
+import './Popup.css'
 
 function ShareFoodPage() {
   const location = useLocation();
@@ -30,7 +31,7 @@ function ShareFoodPage() {
     flavors: food?.flavors?.map(flavor => flavor.flavor.name) || [],
     description: food?.description || '', 
   }); 
-
+  const [showPopup, setShowPopup] = useState(false);
   const [ingredients, setIngredients] = useState([]);
   const [flavors, setFlavors] = useState([]);
   const [tags, setTags] = useState([]);
@@ -90,6 +91,7 @@ function ShareFoodPage() {
     };
 
     // Submit the final form data
+    setShowPopup(true);
     console.log('Form submitted:', finalFormData);
     if (food) {
       // Update existing food
@@ -134,6 +136,7 @@ function ShareFoodPage() {
   };
 
   return (
+    <>
     <div className="container mx-auto p-6">
       <form onSubmit={handleSubmit} className="flex gap-6">
         {/* Left Column */}
@@ -289,6 +292,19 @@ function ShareFoodPage() {
         </div>
       </form>
     </div>
+
+    {/* Popup */}
+    {showPopup && (
+      <div className="popup">
+        <div className="popup-content">
+          <h2>{t('success')}</h2>
+          <p>{t('updated_successfully')}</p>
+          <button onClick={() => setShowPopup(false)}>{t('close')}</button>
+      </div>
+      </div>
+    )  
+    }
+    </>
   );
 }
 

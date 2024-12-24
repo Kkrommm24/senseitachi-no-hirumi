@@ -1,5 +1,7 @@
 {
     "ja": {
+        "success": "成功",
+        "updated_successfully": "更新されました",
         "recipe_category": "レシピカテゴリー",
         "all_recipes": "すべてのレシピ",
         "popular_recipes": "人気のレシピ",
@@ -153,6 +155,8 @@
         "manage_food": "食べ物を管理する"
     },
     "vi": {
+        "success": "Thành công",
+        "updated_successfully": "Đã cập nhật thành công",
         "recipe_category": "Danh mục công thức",
         "all_recipes": "Tất cả công thức",
         "popular_recipes": "Công thức phổ biến",
