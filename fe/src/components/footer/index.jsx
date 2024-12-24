@@ -10,7 +10,7 @@ const Footer = () => {
                 <div className="footer-top">
                     <div className="footer-area text-center">
                         <div className="footer-logo">
-                            <a href="index.html"><img src="assets/images/header/footer/01.png" alt="footer-logo" /></a>
+                            <a href="index.html"><img src="/assets/images/header/footer/01.png" alt="footer-logo" /></a>
                         </div>
                         <div className="scocial-media">
                             <a href="index-3.html#" className="facebook"><i className="icofont-facebook"></i></a>

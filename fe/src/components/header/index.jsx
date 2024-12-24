@@ -3,12 +3,18 @@ import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams, useLocation, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import auth from "api/auth";
+import { useDispatch, useSelector } from "react-redux";
+import userApi from "api/user";
+import { setUser } from "store/slices/userSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const { t, i18n } = useTranslation();
   const location = useLocation();
+  console.log(location.pathname);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   const [searchResults, setSearchResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -27,6 +33,23 @@ const Header = () => {
   useEffect(() => {
     setSearchTerm(queryName);
   }, [queryName]);
+
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      try {
+        const response = await userApi.getProfile();
+        dispatch(setUser({
+          name: response.data.name,
+          email: response.data.email,
+          avatar: response.data.avatar,
+        }));
+      } catch (error) {
+        console.error("Failed to fetch user profile:", error);
+      }
+    };
+
+    fetchUserProfile();
+  }, [dispatch]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -346,9 +369,9 @@ const Header = () => {
                 </li>
                 <li>
                   <Link
-                    to="/foods/favourite"
+                    to="/foods/favorite"
                     className={`inline-flex items-center px-1 pb-2 text-base font-bold leading-5 transition duration-150 ease-in-out border-b-2 
-                      ${location.pathname === "/foods/favourite" ? "text-red-500 border-red-500" : "text-gray-900 border-transparent hover:text-red-500 hover:border-red-500"}`}
+                      ${location.pathname === "/foods/favorite" ? "text-red-500 border-red-500" : "text-gray-900 border-transparent hover:text-red-500 hover:border-red-500"}`}
                   >
                     {t("favorite_foods")}
                   </Link>
@@ -397,7 +420,7 @@ const Header = () => {
             <div className="flex items-center space-x-3">
               <div className="w-10 h-10 rounded-full overflow-hidden">
                 <img
-                  src="/assets/images/chef/author/08.jpg"
+                  src={user.avatar || "/assets/images/chef/author/08.jpg"}
                   alt="author"
                   className="w-full h-full object-cover"
                 />

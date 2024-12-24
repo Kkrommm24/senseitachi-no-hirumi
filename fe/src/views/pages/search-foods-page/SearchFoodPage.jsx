@@ -27,7 +27,7 @@ const SearchFoodPage = () => {
           maxPrice: queryMaxPrice,
         });
         setFoods(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (err) {
         console.error(err);
       }

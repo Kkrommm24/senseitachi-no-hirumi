@@ -17,7 +17,7 @@ const Homepage = () => {
             try {
                 const response = await Food.getAllFood();
                 setFoods(response.data);
-                console.log(response.data);
+                // console.log(response.data);
 
                 // setLoading(false);
             } catch (err) {

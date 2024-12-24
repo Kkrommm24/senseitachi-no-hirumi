@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch } from 'react-redux';
 import userApi from '../../../api/user';
+import { setUser } from '../../../store/slices/userSlice';
 
 const Profile = () => {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [passwordError, setPasswordError] = useState(null);
@@ -91,7 +94,7 @@ const Profile = () => {
       setIsLoading(true);
       setPasswordError(null);
 
-      let avatarUrl = userData.avatar;
+       let avatarUrl = userData.avatar;
 
       if (selectedFile) {
         const uploadResponse = await userApi.uploadImage(selectedFile);
@@ -112,13 +115,23 @@ const Profile = () => {
         }
         updateData.currentPassword = editData.currentPassword;
         updateData.newPassword = editData.newPassword;
+        updateData.confirmPassword = editData.confirmPassword;
       }
+
+      await userApi.updateUserProfile(updateData);
       
       setUserData({
         ...editData,
         password: editData.newPassword ? '********' : userData.password,
-        avatar: avatarUrl // Use the avatar URL from response
+        avatar: avatarUrl
       });
+
+      // Update user slice
+      dispatch(setUser({
+        name: updateData.name,
+        email: updateData.email,
+        avatar: updateData.avatar,
+      }));
       
       setIsEditing(false);
       setSelectedFile(null);
