@@ -387,9 +387,9 @@ const Header = () => {
                 </li>
                 <li>
                   <Link
-                    to="/foods/share-food"
+                    to="/foods/share"
                     className={`inline-flex items-center px-1 pb-2 text-base font-bold leading-5 transition duration-150 ease-in-out border-b-2 
-                      ${location.pathname === "/foods/share-food" ? "text-red-500 border-red-500" : "text-gray-900 border-transparent hover:text-red-500 hover:border-red-500"}`}
+                      ${location.pathname === "/foods/share" ? "text-red-500 border-red-500" : "text-gray-900 border-transparent hover:text-red-500 hover:border-red-500"}`}
                   >
                     {t("share_food")}
                   </Link>
