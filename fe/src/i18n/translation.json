@@ -149,7 +149,8 @@
         "change_profile_picture": "プロフィール写真を変更",
         "current_password": "現在のパスワード",
         "enter_current_password": "現在のパスワードを入力してください",
-        "confirm_new_password": "新しいパスワードを再入力してください"
+        "confirm_new_password": "新しいパスワードを再入力してください",
+        "manage_food": "食べ物を管理する"
     },
     "vi": {
         "recipe_category": "Danh mục công thức",
@@ -300,6 +301,7 @@
         "change_profile_picture": "Thay đổi ảnh đại diện",
         "current_password": "Mật khẩu hiện tại",
         "enter_current_password": "Nhập mật khẩu hiện tại",
-        "confirm_new_password": "Nhập lại mật khẩu mới"
+        "confirm_new_password": "Nhập lại mật khẩu mới",
+        "manage_food": "Quản lý món ăn"
     }
 }

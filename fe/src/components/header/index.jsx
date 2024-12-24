@@ -394,6 +394,15 @@ const Header = () => {
                     {t("share_food")}
                   </Link>
                 </li>
+                <li>
+                  <Link
+                    to="/foods/manage"
+                    className={`inline-flex items-center px-1 pb-2 text-base font-bold leading-5 transition duration-150 ease-in-out border-b-2 
+                      ${location.pathname === "/foods/manage" ? "text-red-500 border-red-500" : "text-gray-900 border-transparent hover:text-red-500 hover:border-red-500"}`}
+                  >
+                    {t("manage_food")}
+                  </Link>
+                </li>
               </ul>
             </nav>
           </div>
