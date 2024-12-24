@@ -8,6 +8,7 @@ import Food from 'api/food';
 import Tag from 'api/tag';
 import DropdownSearch from './DropSearch';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { t } from 'i18next';
 
 function ShareFoodPage() {
   const location = useLocation();
