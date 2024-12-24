@@ -16,7 +16,7 @@ const FoodList = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await Food.getAllFood();
+      const response = await Food.getCreatedFood();
       const allFoods = response.data;
       setFoods(allFoods);
       setTotalPages(Math.ceil(allFoods.length / itemsPerPage));
