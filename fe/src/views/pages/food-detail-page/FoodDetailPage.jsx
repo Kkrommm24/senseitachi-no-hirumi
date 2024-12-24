@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import Food from "api/food";
 import Comment from "api/comment";
 
 const FoodDetailPage = () => {
+  const { t } = useTranslation();
   const { foodId } = useParams();
   const [comment, setComment] = useState("");
   const [foodData, setFoodData] = useState({
@@ -32,19 +34,18 @@ const FoodDetailPage = () => {
       await Comment.saveComment(foodId, comment);
       setComment("");
     } catch (error) {
-      console.error("コメントの送信中にエラーが発生しました:", error);
+      console.error(t('comment_error'), error);
     }
 
     try {
       const response = await Food.getFoodDetail(foodId);
       setFoodData(response.data);
     } catch (error) {
-      console.error("Lỗi khi lấy chi tiết món ăn:", error);
+      console.error(t('fetch_food_detail_error'), error);
     }
   };
 
   const toggleFavorite = () => {
-    // Chuyển đổi trạng thái
     if (foodData.isFavorite) {
       setFoodData({ ...foodData, isFavorite: false });
     } else setFoodData({ ...foodData, isFavorite: true });
@@ -56,7 +57,7 @@ const FoodDetailPage = () => {
         const response = await Food.getFoodDetail(foodId);
         setFoodData(response.data);
       } catch (error) {
-        console.error("Lỗi khi lấy chi tiết món ăn:", error);
+        console.error(t('fetch_food_detail_error'), error);
       }
     };
     fetchFoodDetail();
@@ -98,7 +99,7 @@ const FoodDetailPage = () => {
                 : "bg-gray-300 text-gray-700 hover:bg-gray-400"
             }`}
           >
-            {foodData.isFavorite ? "❤️ お気に入り済み" : "🤍 お気に入りに追加"}
+            {foodData.isFavorite ? t('favorite_added') : t('add_to_favorites')}
           </button>
 
           <p className="text-gray-700 text-lg leading-7">
@@ -108,7 +109,7 @@ const FoodDetailPage = () => {
           {foodData.flavors && foodData.flavors.length > 0 && (
             <div className="mt-6">
               <h2 className="text-2xl font-semibold text-gray-800 mb-3">
-                フレーバー
+                {t('flavors')}
               </h2>
               <div className="flex flex-wrap gap-2">
                 {foodData.flavors.map((flavor, index) => (
@@ -126,7 +127,7 @@ const FoodDetailPage = () => {
           {foodData.ingredients && foodData.ingredients.length > 0 && (
             <div className="mt-6">
               <h2 className="text-2xl font-semibold text-gray-800 mb-4 flex items-center">
-                材料
+                {t('ingredients')}
               </h2>
 
               <div className="flex flex-wrap gap-2">
@@ -145,7 +146,7 @@ const FoodDetailPage = () => {
           {foodData.restaurants.length > 0 && (
             <div className="mt-6">
               <h2 className="text-2xl font-semibold text-gray-800 mb-3">
-                近くのレストラン
+                {t('nearby_restaurants')}
               </h2>
               <ul className="list-disc pl-5 text-gray-700 space-y-2">
                 {foodData.restaurants.map((restaurant, index) => (
@@ -158,7 +159,7 @@ const FoodDetailPage = () => {
 
         <div className="w-1/3 bg-gray-50 rounded-lg shadow-md p-4">
           <h2 className="text-2xl font-semibold text-gray-800 mb-4">
-            コメント
+            {t('comments')}
           </h2>
 
           <div className="space-y-4">
@@ -178,7 +179,7 @@ const FoodDetailPage = () => {
           <form onSubmit={handleSubmit} className="mt-6 space-y-3">
             <textarea
               onChange={(e) => setComment(e.target.value)}
-              placeholder="コメントを追加..."
+              placeholder={t('add_comment')}
               className="w-full p-3 border rounded-md shadow-sm focus:ring-2 focus:ring-blue-500 focus:outline-none"
               value={comment}
             />
@@ -186,7 +187,7 @@ const FoodDetailPage = () => {
               type="submit"
               className="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 shadow-md"
             >
-              コメントを送信する
+              {t('submit_comment')}
             </button>
           </form>
         </div>

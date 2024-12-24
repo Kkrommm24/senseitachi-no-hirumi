@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const DropdownSearch = ({ data, setData, removeData, previousSelectedData }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -44,10 +45,10 @@ const DropdownSearch = ({ data, setData, removeData, previousSelectedData }) => 
           setIsDropdownOpen(true);
         }}
         onClick={() => setIsDropdownOpen(true)}
-        placeholder="タイピング"
+        placeholder={t('typing')}
         className="w-full p-2 border rounded"
       />
-      
+
       {isDropdownOpen && (
         <div className="absolute z-10 w-full mt-1 bg-white border rounded-md shadow-lg max-h-60 overflow-auto">
           {filteredData.map((item) => (
@@ -61,7 +62,7 @@ const DropdownSearch = ({ data, setData, removeData, previousSelectedData }) => 
           ))}
         </div>
       )}
-      
+
       <div className="flex flex-wrap gap-2 mt-2">
         {selectedData.map((item, index) => (
           <div

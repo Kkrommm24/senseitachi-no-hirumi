@@ -13,6 +13,7 @@
 - Chạy lệnh `npx prisma migrate dev --name init` để khởi tạo db.
 - Chạy lệnh `npx prisma generate` để khởi tạo prisma client.
 - Tham khảo file `package.json` ở thư mục gốc để tham khảo các lệnh.
+- lenh chay seeder: node src/seed
 - Chạy lệnh node -e "console.log(require('crypto').randomBytes(64).toString('hex'))" để JWT_SECRET dưới be
 - Đối với BE, thì thực hiện login (viết request login, đã có route trong be) -> copy token -> vào request -> Authorization -> Bearer Token -> Paste token đã copy vào là chạy được
 - xem db: npx prisma studio

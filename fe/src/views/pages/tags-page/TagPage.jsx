@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from 'react-i18next';
 import "./TagPage.css";
 import Tag from "api/tag";
 
 const TagPage = () => {
+  const { t } = useTranslation();
   const [selectedTags, setSelectedTags] = useState([]);
   const [allTags, setAllTags] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
 
   const getFavouriteTags = async () => {
     try {
-      const response = await Tag.getFavouriteTags()
-      setSelectedTags(response.data.data.map(tag => tag.id));
+      const response = await Tag.getFavouriteTags();
+      setSelectedTags(response.data.data.map((tag) => tag.id));
     } catch (err) {
       console.error(err);
     }
@@ -20,10 +23,8 @@ const TagPage = () => {
       const response = await Tag.getAllTags();
       setAllTags(response.data);
     } catch (err) {
-      // setError(err);
       console.error(err);
     }
-    // setLoading(false);
   };
 
   useEffect(() => {
@@ -42,6 +43,10 @@ const TagPage = () => {
   const handleSaveFavouriteTags = async () => {
     try {
       await Tag.saveFavouriteTags(selectedTags);
+      setShowPopup(true);
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
     } catch (error) {
       console.error(error);
     }
@@ -49,10 +54,10 @@ const TagPage = () => {
 
   return (
     <div className="container w-3/4 min-w-[700px] max-w-[1200px]">
-      <h1 className="title">すべてのタグ</h1>
+      <h1 className="title">{t('all_tags')}</h1>
 
       <div className="tag-selection">
-        <h2 className="tag-selection-title">タグを選択:</h2>
+        <h2 className="tag-selection-title">{t('select_tags')}</h2>
         <div className="tags">
           {allTags.map((tag) => (
             <label
@@ -73,8 +78,13 @@ const TagPage = () => {
         </div>
       </div>
       <button className="link-button" onClick={() => handleSaveFavouriteTags()}>
-        タグを保存する
+        {t('save_tags')}
       </button>
+      {showPopup && (
+        <div className="popup">
+          <p>{t('tags_saved')}</p>
+        </div>
+      )}
     </div>
   );
 };

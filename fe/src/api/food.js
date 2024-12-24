@@ -49,6 +49,10 @@ const Food = {
         const url = '/add-favorites/';
         return API.post(url, { foodId });
     },
+    removeFavoritesFood: (foodId) => {
+        const url = `/favorites/${foodId}`;
+        return API.delete(url);
+    },
     uploadImage: (image) => {
         const url = '/upload-images';
         const formData = new FormData();

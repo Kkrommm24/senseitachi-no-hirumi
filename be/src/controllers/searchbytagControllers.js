@@ -27,7 +27,7 @@ export const searchFoodsByTag = async (req, res) => {
       select: {
         id: true,
         name: true,
-        image: true, 
+        images: true, 
       },
     });
 

@@ -1,6 +1,6 @@
 const FoodItem = ({ id, images, name, removeFood }) => {
   return (
-    <div 
+    <div
     key={id}
     className="bg-white rounded-lg shadow-md overflow-hidden"
     >

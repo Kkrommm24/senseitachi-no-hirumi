@@ -17,11 +17,11 @@ export const authMiddleware = async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    
+
     // Fetch complete user data
     const user = await prisma.user.findUnique({
       where: { id: decoded.userId },
-      select: { 
+      select: {
         id: true,
         isAdmin: true
       }
@@ -33,8 +33,9 @@ export const authMiddleware = async (req, res, next) => {
 
     // Set complete user object
     req.user = user;
+    req.userId = user.id;
     console.log('User set in middleware:', req.user);
-    
+
     next();
   } catch (error) {
     if (error.name === 'TokenExpiredError') {

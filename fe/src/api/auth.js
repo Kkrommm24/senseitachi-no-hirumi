@@ -17,6 +17,10 @@ const auth = {
     const url = '/auth/reset-password'
     return API.post(url, credentials)
   },
+  signout: () => {
+    const url = '/logout'
+    return API.post(url)
+  },
 }
 
 export default auth

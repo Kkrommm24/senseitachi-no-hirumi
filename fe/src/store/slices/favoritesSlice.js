@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
 import Food from 'api/food';
 
 // Tạo một async thunk để gọi API

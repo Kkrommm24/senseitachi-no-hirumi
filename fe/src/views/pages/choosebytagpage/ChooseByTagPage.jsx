@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { selectDish, deselectDish } from "store/slices/selectedDishesSlice";
 import "./ChooseByTagPage.css";
 import Tag from "api/tag";
@@ -7,6 +8,7 @@ import { Link } from "react-router-dom";
 import Food from "api/food";
 
 const ChooseByTagPage = () => {
+  const { t } = useTranslation();
   const [selectedTags, setSelectedTags] = useState([]);
   const [allTags, setAllTags] = useState([]);
   const [dishes, setDishes] = useState([])
@@ -61,7 +63,7 @@ const ChooseByTagPage = () => {
     }
   };
 
-  
+
 
   useEffect(() => {
     const tagNames = selectedTags.length ? selectedTags.join(', ') : undefined;
@@ -84,10 +86,10 @@ const ChooseByTagPage = () => {
 
   return (
     <div className="container w-3/4 min-w-[700px] max-w-[1200px] m-auto">
-      <h1 className="title">タグで料理を選ぶ</h1>
+      <h1 className="title">{t('choose_dish_by_tag')}</h1>
 
       <div className="tag-selection">
-        <h2 className="tag-selection-title">タグを選択:</h2>
+        <h2 className="tag-selection-title">{t('select_tags')}</h2>
         <div className="tags">
           {allTags.map((tag) => (
             <label
@@ -109,12 +111,12 @@ const ChooseByTagPage = () => {
       </div>
 
       <div className="dishes">
-        <h2 className="dishes-title">選ばれた料理:</h2>
+        <h2 className="dishes-title">{t('selected_dishes')}</h2>
         {dishes.length > 0 ? (
           <div className="dishes-grid">
             {dishes.map((dish) => (
               <div key={dish.id} className="dish-card">
-                <img src={dish.image} alt={dish.name} className="dish-img" />
+                <img src={dish.images[0]} alt={dish.name} className="dish-img" />
                 <h3 className="dish-name">{dish.name}</h3>
                 <button
                   className={`select-dish-btn ${
@@ -129,19 +131,19 @@ const ChooseByTagPage = () => {
                   }`}</span>
                   <span className="button-text">
                     {selectedDishes.some((d) => d.id === dish.id)
-                      ? "ランダムホイールから取り除く"
-                      : "ランダムホイールに追加する"}
+                      ? t('remove_from_wheel')
+                      : t('add_to_wheel')}
                   </span>
                 </button>
               </div>
             ))}
           </div>
         ) : (
-          <p className="no-dishes">選ばれた料理はありません。</p>
+          <p className="no-dishes">{t('no_dishes_selected')}</p>
         )}
       </div>
 
-      <Link className="link-button" to="/random-wheel">ランダムホイールページに移動する</Link>
+      <Link className="link-button" to="/random-wheel">{t('go_to_wheel')}</Link>
     </div>
   );
 };

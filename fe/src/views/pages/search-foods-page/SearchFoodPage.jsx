@@ -1,41 +1,49 @@
 import Food from "api/food";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const SearchFoodPage = () => {
+  const { t } = useTranslation();
   const [foods, setFoods] = useState([]);
 
   const [searchParams] = useSearchParams();
   const queryName = searchParams.get('name');
-
-   
+  const queryIngredients = searchParams.get('ingredients');
+  const queryFlavors = searchParams.get('flavors');
+  const queryTags = searchParams.get('tags');
+  const queryMinPrice = searchParams.get('minPrice');
+  const queryMaxPrice = searchParams.get('maxPrice');
 
   useEffect(() => {
-
     const fetchFoods = async () => {
       try {
-        const response = await Food.searchFoods({name: queryName});
+        const response = await Food.searchFoods({
+          name: queryName,
+          ingredients: queryIngredients,
+          flavors: queryFlavors,
+          tags: queryTags,
+          minPrice: queryMinPrice,
+          maxPrice: queryMaxPrice,
+        });
         setFoods(response.data);
-        console.log(response.data);
-
-        // setLoading(false);
+        // console.log(response.data);
       } catch (err) {
         console.error(err);
-        // setLoading(false);
       }
     };
 
     fetchFoods();
-  }, [queryName]);
+  }, [queryName, queryIngredients, queryFlavors, queryTags, queryMinPrice, queryMaxPrice]);
 
   return (
     <div>
       <section className="recent-recipe home-3 padding-tb bg-body pb-0">
         <div className="container">
           <div className="section-header style-2">
-            <h4>人気のレシピ</h4>
+            <h4>{t('popular_recipes')}</h4>
             <a href="index-3.html#" className="text-btn">
-              すべて<i className="icofont-rounded-double-right"></i>
+              {t('view_all')}<i className="icofont-rounded-double-right"></i>
             </a>
           </div>
           <div className="section-wrapper">
@@ -46,13 +54,13 @@ const SearchFoodPage = () => {
                     <div className="recipe-thumb custom-img">
                       <a href="index-3.html#">
                         {" "}
-                        <img src={food.image} alt="food-recipe" />
+                        <img src={food.images[0]} alt="food-recipe" />
                       </a>
                     </div>
                     <div className="recipe-content">
                       <div className="meta-tag">
                         <div className="categori">
-                          <a href="index-3.html#">ホット</a>
+                          <a href="index-3.html#">{t('hot')}</a>
                         </div>
                         <div className="rating">
                           <i className="icofont-star"></i>
@@ -77,7 +85,7 @@ const SearchFoodPage = () => {
                           }}
                         >
                           <img
-                            src="assets/images/image.png"
+                            src="/assets/images/images[0].png"
                             alt="food-recipe"
                             style={{
                               width: "30px",
@@ -112,18 +120,18 @@ const SearchFoodPage = () => {
         <div className="container">
           <div className="gallery-area">
             <div className="section-header style-2">
-              <h4>写真ギャラリー</h4>
+              <h4>{t('photo_gallery')}</h4>
               <a href="index-3.html#" className="text-btn">
-                すべて<i className="icofont-rounded-double-right"></i>
+                {t('view_all')}<i className="icofont-rounded-double-right"></i>
               </a>
             </div>
             <div className="section-wrapper">
               <div className="row justify-content-center g-0">
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/01.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/01.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/01.jpg"
+                      href="/assets/images/gallery/01.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -134,9 +142,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/02.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/02.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/02.jpg"
+                      href="/assets/images/gallery/02.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -147,9 +155,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/03.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/03.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/03.jpg"
+                      href="/assets/images/gallery/03.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -160,9 +168,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/04.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/04.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/04.jpg"
+                      href="/assets/images/gallery/04.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -173,9 +181,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/05.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/05.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/05.jpg"
+                      href="/assets/images/gallery/05.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -186,9 +194,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/06.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/06.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/06.jpg"
+                      href="/assets/images/gallery/06.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -199,9 +207,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/07.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/07.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/07.jpg"
+                      href="/assets/images/gallery/07.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -212,9 +220,9 @@ const SearchFoodPage = () => {
                 </div>
                 <div className="gallery-item">
                   <div className="gallery-thumb">
-                    <img src="assets/images/gallery/08.jpg" alt="gallery" />
+                    <img src="/assets/images/gallery/08.jpg" alt="gallery" />
                     <a
-                      href="assets/images/gallery/08.jpg"
+                      href="/assets/images/gallery/08.jpg"
                       data-rel="lightcase"
                       className="gallery-icon"
                       title="Click Here"
@@ -233,7 +241,7 @@ const SearchFoodPage = () => {
         <div className="container">
           <div className="section-wrapper">
             <div className="news-title">
-              <h3>ニュースレター</h3>
+              <h3>{t('newsletter')}</h3>
             </div>
             <div className="news-form">
               <form action="https://foxcoders.com/">
@@ -241,10 +249,10 @@ const SearchFoodPage = () => {
                   <input
                     type="email"
                     name="email"
-                    placeholder="メールアドレスを入力"
+                    placeholder={t('enter_email')}
                   />
                 </label>
-                <input type="submit" name="submit" value="今すぐ購読" />
+                <input type="submit" name="submit" value={t('subscribe_now')} />
               </form>
             </div>
           </div>
