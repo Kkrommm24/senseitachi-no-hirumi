@@ -95,7 +95,7 @@
         "login_success": "ログイン成功",
         "login_failed": "ログイン失敗",
         "login_error": "ログインに失敗しました。もう一度お試しください。",
-        "login": "ログイン",
+        "login": "サインイン",
         "username": "ユーザー名",
         "enter_username": "ユーザー名を入力してください",
         "password": "パスワード",
@@ -306,6 +306,7 @@
         "current_password": "Mật khẩu hiện tại",
         "enter_current_password": "Nhập mật khẩu hiện tại",
         "confirm_new_password": "Nhập lại mật khẩu mới",
-        "manage_food": "Quản lý món ăn"
+        "manage_food": "Quản lý món ăn",
+        "email": "Email"
     }
 }
