@@ -9,6 +9,7 @@ import Tag from 'api/tag';
 import DropdownSearch from './DropSearch';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { t } from 'i18next';
+import './Popup.css'
 
 function ShareFoodPage() {
   const location = useLocation();
@@ -19,10 +20,10 @@ function ShareFoodPage() {
     name: food?.name || '',  
     images: food?.images || [],  
     restaurant: {
-      name: food?.foodRestaurant?.name || '',
-      address: food?.foodRestaurant?.address || '',
-      longitude: food?.foodRestaurant?.longitude || 105.804817, // Default to HN City coordinates
-      latitude: food?.foodRestaurant?.latitude || 21.028511
+      name: food?.foodRestaurant[0]?.restaurant?.name || '',
+      address: food?.foodRestaurant[0]?.restaurant?.address || '',
+      longitude: food?.foodRestaurant[0]?.restaurant?.longitude || 105.804817, // Default to HN City coordinates
+      latitude: food?.foodRestaurant[0]?.restaurant?.latitude || 21.028511
     },  
     tags: food?.foodTag?.map(tag => tag.tag.name) || [],
     price: food?.price || 0,
@@ -30,7 +31,7 @@ function ShareFoodPage() {
     flavors: food?.flavors?.map(flavor => flavor.flavor.name) || [],
     description: food?.description || '', 
   }); 
-
+  const [showPopup, setShowPopup] = useState(false);
   const [ingredients, setIngredients] = useState([]);
   const [flavors, setFlavors] = useState([]);
   const [tags, setTags] = useState([]);
@@ -90,11 +91,14 @@ function ShareFoodPage() {
     };
 
     // Submit the final form data
+    setShowPopup(true);
     console.log('Form submitted:', finalFormData);
     if (food) {
       // Update existing food
       Food.updateFood(finalFormData, food.id);
-      navigate('/foods/manage');
+      setTimeout(() => {
+        navigate('/foods/manage', {flushSync: true});
+      }, 2000);
       return;
     }
     Food.addFood(finalFormData);
@@ -132,6 +136,7 @@ function ShareFoodPage() {
   };
 
   return (
+    <>
     <div className="container mx-auto p-6">
       <form onSubmit={handleSubmit} className="flex gap-6">
         {/* Left Column */}
@@ -202,8 +207,8 @@ function ShareFoodPage() {
           <div className="space-y-2"> 
             <label className='text-pretty text-sm font-bold'>タグ</label>
             <DropdownSearch data={tags} previousSelectedData={formData.tags}
-            setData={(data) =>  setFormData((prev) => ({ ...prev, tags: [...prev.tags, data.name] }))} 
-            removeData={(data) => setFormData((prev) => ({ ...prev, tags: prev.tags.filter((tag) => tag !== data.name) }))}
+            setData={(data) =>  setFormData((prev) => ({ ...prev, tags: [...prev.tags, data] }))} 
+            removeData={(data) => setFormData((prev) => ({ ...prev, tags: prev.tags.filter((tag) => tag !== data) }))}
             />
           </div>
 
@@ -211,8 +216,8 @@ function ShareFoodPage() {
           <div className="space-y-2"> 
             <label className='text-pretty text-sm font-bold'>材料</label>
             <DropdownSearch data={ingredients} previousSelectedData={formData.ingredients}
-            setData={(data) =>  setFormData((prev) => ({ ...prev, ingredients: [...prev.ingredients, data.name] }))} 
-            removeData={(data) => setFormData((prev) => ({ ...prev, ingredients: prev.ingredients.filter((ingredient) => ingredient !== data.name) }))}
+            setData={(data) =>  setFormData((prev) => ({ ...prev, ingredients: [...prev.ingredients, data] }))} 
+            removeData={(data) => setFormData((prev) => ({ ...prev, ingredients: prev.ingredients.filter((ingredient) => ingredient !== data) }))}
             />
           </div>
 
@@ -220,8 +225,8 @@ function ShareFoodPage() {
           <div className="space-y-2"> 
             <label className='text-pretty text-sm font-bold'>フレーバー</label>
             <DropdownSearch data={flavors} previousSelectedData={formData.flavors}
-            setData={(data) =>  setFormData((prev) => ({ ...prev, flavors: [...prev.flavors, data.name] }))} 
-            removeData={(data) => setFormData((prev) => ({ ...prev, flavors: prev.flavors.filter((flavor) => flavor !== data.name) }))}
+            setData={(data) =>  setFormData((prev) => ({ ...prev, flavors: [...prev.flavors, data] }))} 
+            removeData={(data) => setFormData((prev) => ({ ...prev, flavors: prev.flavors.filter((flavor) => flavor !== data) }))}
             />
           </div>
         </div>
@@ -287,6 +292,19 @@ function ShareFoodPage() {
         </div>
       </form>
     </div>
+
+    {/* Popup */}
+    {showPopup && (
+      <div className="popup">
+        <div className="popup-content">
+          <h2>{t('success')}</h2>
+          <p>{t('updated_successfully')}</p>
+          <button onClick={() => setShowPopup(false)}>{t('close')}</button>
+      </div>
+      </div>
+    )  
+    }
+    </>
   );
 }
 

@@ -261,7 +261,7 @@ export const getAdminOrUserFoods = async (req, res) => {
         price: true,
         images: true,
         createdBy: true,
-        foodRestaurant: {include: {restaurant: {select : {name: true, address: true}}}},
+        foodRestaurant: {select: { restaurant: true }},
         ingredients: { include: { ingredient: true } },
         flavors: { include: { flavor: true } },
         foodTag: { include: { tag: true } },

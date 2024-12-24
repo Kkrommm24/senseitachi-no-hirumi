@@ -61,23 +61,6 @@ export const getUserProfile = async (req, res) => {
       if (email) updateData.email = email;
       if (avatar) updateData.avatar = avatar;
   
-      // Handle password update
-      if (currentPassword && newPassword) {
-        // Validate current password
-        const isPasswordValid = await bcrypt.compare(currentPassword, user.password);
-        if (!isPasswordValid) {
-          return res.status(401).json({ message: 'Current password is incorrect' });
-        }
-
-        // Check if newPassword matches confirmPassword
-        if (newPassword !== req.body.confirmPassword) {
-          return res.status(400).json({ message: 'New password and confirmation do not match' });
-        }
-
-        // Hash and update password
-        updateData.password = await bcrypt.hash(newPassword, 10);
-      }
-  
       // Update user
       const updatedUser = await prisma.user.update({
         where: { id: userId },
