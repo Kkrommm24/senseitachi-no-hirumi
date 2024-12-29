@@ -16,10 +16,10 @@ export const saveFavoriteTag = async (req, res) => {
   }
 
   try {
+    // Find existing favorite tags for the user
     const existingTags = await prisma.userFavoriteTag.findMany({
       where: {
         userId,
-        tagId: { in: tagIds }
       },
       select: {
         tagId: true
@@ -27,14 +27,28 @@ export const saveFavoriteTag = async (req, res) => {
     });
 
     const existingTagIds = existingTags.map(tag => tag.tagId);
-    const newTagIds = tagIds.filter(tagId => !existingTagIds.includes(tagId));
 
+    // Determine which tags to add and which to remove
+    const newTagIds = tagIds.filter(tagId => !existingTagIds.includes(tagId));
+    const removeTagIds = existingTagIds.filter(tagId => !tagIds.includes(tagId));
+
+    // Add new favorite tags
     if (newTagIds.length > 0) {
       await prisma.userFavoriteTag.createMany({
         data: newTagIds.map(tagId => ({
           userId,
           tagId
         }))
+      });
+    }
+
+    // Remove tags that are no longer favorite
+    if (removeTagIds.length > 0) {
+      await prisma.userFavoriteTag.deleteMany({
+        where: {
+          userId,
+          tagId: { in: removeTagIds }
+        }
       });
     }
 

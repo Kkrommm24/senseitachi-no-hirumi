@@ -4,6 +4,7 @@ import { HeartFilled, HeartOutlined } from '@ant-design/icons';
 import Food from 'api/food';
 import { message } from 'antd';
 import { useTranslation } from 'react-i18next'; // Add this import
+import PropTypes from 'prop-types'; // Add this import
 
 const FoodList = ({ foods }) => {
     const { t } = useTranslation(); // Add this hook
@@ -51,7 +52,7 @@ const FoodList = ({ foods }) => {
     return (
         <div className="section-wrapper">
             <div className="row justify-content-center">
-                {favoriteFoods.slice(0, 9).map((food) => (
+                {foods.slice(0, 9).map((food) => (
                     <div key={food.id} className='col-xl-4 col-md-6 col-12 relative'>
                         {token && (
                             <div className='absolute z-50 right-5 top-2'>
@@ -113,7 +114,7 @@ const FoodList = ({ foods }) => {
                                                         textOverflow: "ellipsis",
                                                     }}
                                                 >
-                                                    {food.comments[0].content}
+                                                    {foods.comments ? food.comments[0].content: ''}
                                                 </div>
                                             </div>
                                         </div>

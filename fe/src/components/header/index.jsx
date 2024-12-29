@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import userApi from "api/user";
 import { setUser } from "store/slices/userSlice";
 import { Dropdown, Menu } from 'antd';
-import { clearStorage, getLanguage, setLanguage } from 'helper/storage'; // Import functions from storage.js
+import { clearStorage, getLanguage, getToken, setLanguage } from 'helper/storage'; // Import functions from storage.js
 
 const Header = () => {
   const navigate = useNavigate();
@@ -34,9 +34,15 @@ const Header = () => {
 
   useEffect(() => {
     setSearchTerm(queryName);
-  }, [queryName]);
+  }, [queryName])
+  
+  const token = getToken();
 
   useEffect(() => {
+    if (!token) {
+      navigate("/login");
+      return;
+    }
     const fetchUserProfile = async () => {
       try {
         const response = await userApi.getProfile();
@@ -51,7 +57,7 @@ const Header = () => {
     };
 
     fetchUserProfile();
-  }, [dispatch]);
+  }, [dispatch, token, navigate]);
 
   useEffect(() => {
     const savedLanguage = getLanguage();
@@ -92,7 +98,6 @@ const Header = () => {
     setAccountDropdownOpen(!accountDropdownOpen);
   };
 
-  // Add new state for filters
   const [filters, setFilters] = useState({
     ingredients: '',
     taste: '',
@@ -156,6 +161,21 @@ const Header = () => {
     }
   };
 
+  useEffect(() => {
+    const ingredients = searchParams.get("ingredients") || '';
+    const taste = searchParams.get("flavors") || '';
+    const tags = searchParams.get("tags") || '';
+    const minPrice = searchParams.get("minPrice") || '';
+    const maxPrice = searchParams.get("maxPrice") || '';
+
+    setFilters({
+      ingredients,
+      taste,
+      tags,
+      priceRange: { min: minPrice, max: maxPrice }
+    });
+  }, [searchParams]);
+
   const languageMenu = (
     <Menu onClick={(e) => changeLanguage(e.key)}>
       <Menu.Item key="ja">日本語</Menu.Item>
@@ -218,19 +238,24 @@ const Header = () => {
 
           {/* Search and Menu */}
           <div className="flex-1 max-w-2xl mx-8">
-            <div className="relative">
+            <div className="relative"
+                onBlur={() => {
+                if (!hasNameParam) {
+                    setSearchResults([]);
+                  }
+                }}
+            >
               <input
                 type="text"
                 placeholder={t("enter_here")}
                 value={searchTerm}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
-                onBlur={() => {
-                  if (!hasNameParam) {
-                    setSearchTerm("");
-                    setSearchResults([]);
-                  }
-                }}
+                // onBlur={() => {
+                //   if (!hasNameParam) {
+                //     setSearchResults([]);
+                //   }
+                // }}
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
               />
               <button
@@ -250,7 +275,7 @@ const Header = () => {
 
               {/* Dropdown Menu */}
               {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-96 bg-white border border-gray-300 rounded-md shadow-lg z-10 p-4">
+                <div className="absolute right-0 mt-2 w-96 bg-white border border-gray-300 rounded-md shadow-lg z-[2000] p-4">
                   <form className="space-y-4">
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -335,16 +360,17 @@ const Header = () => {
                       {searchResults.map((item, index) => (
                         <li
                           key={index}
-                          onClick={() => {
+                          onClick={(e) => {
+                            e.stopPropagation();
                             navigate(`/foods/${item.id}`);
                             setSearchTerm("");
                             setSearchResults([]);
                           }}
                           className="p-3 hover:bg-gray-100 cursor-pointer flex items-center space-x-4"
                         >
-                          {item.image && (
+                          {item.images.length && (
                             <img
-                              src={item.image}
+                              src={item.images[0]}
                               alt={item.name}
                               className="w-12 h-12 object-cover rounded-full"
                             />

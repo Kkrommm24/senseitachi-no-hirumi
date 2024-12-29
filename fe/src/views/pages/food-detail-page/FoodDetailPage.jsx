@@ -57,7 +57,7 @@ const FoodDetailPage = () => {
         const response = await Food.getFoodDetail(foodId);
         setFoodData(response.data);
       } catch (error) {
-        console.error(t('fetch_food_detail_error'), error);
+        console.error(error);
       }
     };
     fetchFoodDetail();
