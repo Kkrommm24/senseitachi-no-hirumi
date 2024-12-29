@@ -21,7 +21,7 @@ const FoodDetailPage = () => {
       { userName: "Bob", content: "Tôi thích vị tươi của cá." },
     ],
     price: "700000",
-    isFavorite: true,
+    isFavourite: true,
   });
 
   const handleSubmit = async (e) => {
@@ -45,10 +45,18 @@ const FoodDetailPage = () => {
     }
   };
 
-  const toggleFavorite = () => {
-    if (foodData.isFavorite) {
-      setFoodData({ ...foodData, isFavorite: false });
-    } else setFoodData({ ...foodData, isFavorite: true });
+  const toggleFavorite = async () => {
+    try {
+      if (foodData.isFavourite) {
+        await Food.removeFavoritesFood(parseInt(foodId));
+        setFoodData({ ...foodData, isFavourite: false });
+      } else {
+        await Food.addFavoritesFood(parseInt(foodId));
+        setFoodData({ ...foodData, isFavourite: true });
+      }
+    } catch (error) {
+      console.error(t('favorite_toggle_error'), error);
+    }
   };
 
   useEffect(() => {
@@ -62,6 +70,8 @@ const FoodDetailPage = () => {
     };
     fetchFoodDetail();
   }, [foodId]);
+
+  console.log(foodData)
 
   return (
     <div className="max-w-6xl mx-auto p-6">
@@ -93,13 +103,13 @@ const FoodDetailPage = () => {
 
           <button
             onClick={toggleFavorite}
-            className={`px-4 py-2 rounded-xl shadow-md flex justify-center font-bold items-center mb-6 h-[36px] w-[200px] ${
-              foodData.isFavorite
+            className={`py-2 rounded-xl shadow-md flex justify-center font-bold items-center mb-6 h-[36px] w-[220px] ${
+              foodData.isFavourite
                 ? "text-red-500 hover:bg-red-100 border-2 border-red-500"
                 : "bg-gray-300 text-gray-700 hover:bg-gray-400"
             }`}
           >
-            {foodData.isFavorite ? t('favorite_added') : t('add_to_favorites')}
+            {foodData.isFavourite ? t('favorite_added') : t('add_to_favorites')}
           </button>
 
           <p className="text-gray-700 text-lg leading-7">

@@ -1,5 +1,5 @@
 import Food from "api/food";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate, useSearchParams, useLocation, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import auth from "api/auth";
@@ -21,16 +21,35 @@ const Header = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
+  const [searchDropdownOpen, setSearchDropdownOpen] = useState(false);
 
   const queryName = searchParams.get("name") ?? "";
   const hasNameParam = searchParams.has("name");
+
+  const searchRef = useRef(null);
 
   const handleInputChange = async (e) => {
     setSearchTerm(e.target.value);
     if (!hasNameParam) {
       await handleSearch(e.target.value);
-    } else setSearchParams({ name: e.target.value });
+      setSearchDropdownOpen(true);
+    } else {
+      setSearchParams({ name: e.target.value });
+    }
   };
+
+  const handleClickOutside = (event) => {
+    if (searchRef.current && !searchRef.current.contains(event.target)) {
+      setSearchDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     setSearchTerm(queryName);
@@ -238,24 +257,13 @@ const Header = () => {
 
           {/* Search and Menu */}
           <div className="flex-1 max-w-2xl mx-8">
-            <div className="relative"
-                onBlur={() => {
-                if (!hasNameParam) {
-                    setSearchResults([]);
-                  }
-                }}
-            >
+            <div className="relative" ref={searchRef}>
               <input
                 type="text"
                 placeholder={t("enter_here")}
                 value={searchTerm}
                 onChange={handleInputChange}
                 onKeyDown={handleKeyDown}
-                // onBlur={() => {
-                //   if (!hasNameParam) {
-                //     setSearchResults([]);
-                //   }
-                // }}
                 className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
               />
               <button
@@ -353,7 +361,7 @@ const Header = () => {
               )}
 
               {/* Search Results Dropdown */}
-              {searchResults.length > 0 && !hasNameParam && (
+              {searchDropdownOpen && searchResults.length > 0 && !hasNameParam && (
                 <div className="absolute w-full mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-10">
                   {searchResults[0] !== t("no_food_found") ? (
                     <ul>
@@ -365,6 +373,7 @@ const Header = () => {
                             navigate(`/foods/${item.id}`);
                             setSearchTerm("");
                             setSearchResults([]);
+                            setSearchDropdownOpen(false);
                           }}
                           className="p-3 hover:bg-gray-100 cursor-pointer flex items-center space-x-4"
                         >
