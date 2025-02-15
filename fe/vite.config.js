@@ -34,4 +34,8 @@ export default defineConfig({
       plugins: [tailwindcss()],
     },
   },
+  root: __dirname,
+  build: {
+    outDir: 'dist'
+  }
 })
